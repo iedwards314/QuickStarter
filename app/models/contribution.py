@@ -7,5 +7,5 @@ class Contribution(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    user = db.relationship("User", back_populates="contribution")
-    project = db.relationship("Project", back_populates="contribution")
+    user = db.relationship("User", back_populates="contributions")
+    project = db.relationship("Project", back_populates="contributions")
