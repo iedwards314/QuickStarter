@@ -1,1 +1,17 @@
 /* TODO Add site wide styles */
+@font-face {
+    font-family: FrankfurterPlain;
+    src: url("./fonts/FrankfurterPlain.otf") format("opentype");
+}
+
+@font-face {
+    font-family: MaisonNueBook;
+    src: url("./fonts/Maison\ Neue\ Book.woff") format("woff");
+}
+
+* {
+    text-decoration: none;
+} *:visited {
+    text-decoration: none;
+    color: white;
+}

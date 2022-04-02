@@ -1,0 +1,56 @@
+body {
+    margin: 0px;
+    background-color: #2B2B2B;
+}
+
+.banner-upper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    background-color: #2B2B2B;
+    border-bottom: 1px solid #444444;
+} .banner-logo {
+    font-family: 'FrankfurterPlain';
+    font-size: 35px;
+    color: #44FFF0;
+} .nav-button {
+    cursor: pointer;
+} .nav-button:hover {
+    color: #44FFF0;
+    transition: color 1s;
+}
+
+.banner-left-button-container {
+    font-family: "MaisonNueBook";
+    color: white;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 1%
+} .banner-create-project {
+    margin-left: 20px;
+}
+
+.banner-right-button-container {
+    font-family: "MaisonNueBook";
+    color: white;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 1%
+} .banner-search {
+    margin-right: 20px;
+}
+
+.banner-lower-container {
+    font-family: "MaisonNueBook";
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #444444;
+} .lower-nav-button {
+    margin-left: 18px;
+    margin-right: 18px;
+}
