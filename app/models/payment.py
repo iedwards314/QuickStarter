@@ -9,4 +9,4 @@ class Payment(db.Model):
     area_code = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    user = db.relationship("User", back_populates="payment")
+    # user = db.relationship("User", back_populates="payment")

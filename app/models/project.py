@@ -10,7 +10,7 @@ class Project(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
 
-    user = db.relationship("User", back_populates="project")
+    # user = db.relationship("User", back_populates="project")
     category = db.relationship("Category", back_populates="project")
     update = db.relationship("Update", back_populates="project", cascade="all, delete")
     reward = db.relationship("Reward", back_populates="project", cascade="all, delete")
