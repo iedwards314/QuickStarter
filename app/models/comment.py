@@ -7,5 +7,5 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
 
-    # user = db.relationship("User", back_populates="comment")
+    user = db.relationship("User", back_populates="comment")
     project = db.relationship("Project", back_populates="comment")
