@@ -9,7 +9,6 @@ function ProjectForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user_id = useSelector((state) => state.session.user.id)
-  const project_categories = useSelector((state) => state.session.categories)
 
   const [description, setDescription] = useState("");
   const [goal, setGoal] = useState(0);
