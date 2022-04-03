@@ -36,7 +36,7 @@ def upgrade():
     )
     op.create_table('projects',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('description', sa.String(length=200), nullable=False),
+    sa.Column('description', sa.Text, nullable=False),
     sa.Column('goal', sa.Integer(), nullable=False),
     sa.Column('end_date', sa.Date(), nullable=False),
     sa.Column('image', sa.String(length=100), nullable=True),
