@@ -1,7 +1,46 @@
 import { NavLink } from 'react-router-dom';
+import { useSelector} from 'react-redux';
+import LogoutButton from '../auth/LogoutButton';
 import './style/banner-style.css'
 
 const BannerUpper = () => {
+    const user = useSelector(state => state.session.user);
+
+    let links;
+    if (user) {
+        links = (
+            <div className='banner-right-button-container'>
+                <NavLink to="">
+                    {/* Create search functionality and link */}
+                    <div className='banner-search nav-button'>
+                        <p>Search</p>
+                    </div>
+                </NavLink>
+                <LogoutButton />
+            </div>
+        )
+    } else {
+        links = (
+            <div className='banner-right-button-container'>
+                <NavLink to="">
+                    <div className='banner-search nav-button'>
+                        <p>Search</p>
+                    </div>
+                </NavLink>
+                <NavLink to="/login">
+                    <div className='banner-search nav-button'>
+                        <p>Login</p>
+                    </div>
+                </NavLink>
+                <NavLink to="/sign-up">
+                    <div className='nav-button'>
+                        <p>&nbsp;Sign Up</p>
+                    </div>
+                </NavLink>
+            </div>
+        )
+    }
+
     return (
         <div
             className='banner-upper-container'
@@ -19,23 +58,29 @@ const BannerUpper = () => {
                     </div>
                 </NavLink>
             </div>
-            <NavLink to="/">
+            <NavLink exact to="/">
                 <div>
                     <p className='banner-logo nav-button'>QUICKSTARTER</p>
                 </div>
             </NavLink>
-            <div className='banner-right-button-container'>
+            {links}
+            {/* <div className='banner-right-button-container'>
                 <NavLink to="">
                     <div className='banner-search nav-button'>
                         <p>Search</p>
                     </div>
                 </NavLink>
-                <NavLink to="">
-                    <div className='nav-button'>
+                <NavLink to="/login">
+                    <div className='banner-search nav-button'>
                         <p>Login</p>
                     </div>
                 </NavLink>
-            </div>
+                <NavLink to="/sign-up">
+                    <div className='nav-button'>
+                        <p>&nbsp;Sign Up</p>
+                    </div>
+                </NavLink>
+            </div> */}
         </div>
     )
 };
