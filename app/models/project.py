@@ -21,10 +21,12 @@ class Project(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'title': self.title,
             'description': self.description,
             'goal': self.goal,
             'end_date': self.end_date,
             'image': self.image,
             'user_id': self.user_id,
             'category_id': self.category_id,
+            'user': self.user.username
         }
