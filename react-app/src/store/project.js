@@ -2,6 +2,7 @@ const LOAD = "projects/LOAD"
 const ADD_ONE = "projects/ADD_ONE"
 const DELETE_ONE = "projects/DELETE_ONE"
 const EDIT_ONE = "projects/EDIT_ONE"
+const GET_ONE = "projects/GET_ONE"
 
 const load = (projects) => ({
     type: LOAD,
@@ -23,8 +24,13 @@ const editOne = (project) => ({
     project,
 })
 
+const getOne = (project) => ({
+    type: GET_ONE,
+    project
+})
+
 export const getProjects = () => async (dispatch) => {
-    const response = await fetch(`/projects`)
+    const response = await fetch(`/api/projects`)
     if (response.ok) {
         const projects = await response.json();
         dispatch(load(projects))
@@ -32,8 +38,17 @@ export const getProjects = () => async (dispatch) => {
     }
 }
 
+export const getProject = (project) => async (dispatch) => {
+    const reponse = await fetch(`/api/projects/${project.id}`)
+    if (response.ok) {
+        const project = await response.json();
+        dispatch(getOne(project))
+        return project
+    }
+}
+
 export const addProject = (project) => async (dispatch) => {
-    const response = await fetch(`/projects/create`, {
+    const response = await fetch(`/api/projects/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -48,12 +63,24 @@ export const addProject = (project) => async (dispatch) => {
 }
 
 export const deleteProject = (projectId) => async (dispatch) => {
-    const response = await fetch(`/projects/delete/${projectId}`, {
+    const response = await fetch(`/api/projects/delete/${projectId}`, {
         method: "DELETE",
     });
     if (response.ok) {
         const projectId = await response.json();
         dispatch(deleteOne(projectId))
+        return;
+    }
+}
+
+export const editProject = (project, id) => async (dispatch) => {
+    const response = await fetch(`/api/projects/edit/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(project)
+    });
+    if (response.ok) {
+        const editProject = await response.json();
+        dispatch(editOne(editProject))
         return;
     }
 }
@@ -68,7 +95,8 @@ const projectReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             const allProjects = {};
-            action.projects.forEach((project) => {
+            console.log('HEY THERE NMOPTICE ME',action.projects.projects)
+            action.projects.projects.forEach((project) => {
                 allProjects[project.id] = project
             })
             return { ...state, projects: allProjects }
@@ -84,6 +112,11 @@ const projectReducer = (state = initialState, action) => {
             setState = {...state}
             let prj = action.project
             setState.projects[prj.id] = prj
+            return setState
+        case GET_ONE:
+            setState = {...state}
+            let project = action.project
+            setState.selected[project.id] = project
             return setState
         default:
             return state;
