@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Banner from './components/Banner/index';
 import SplashPage from './components/SplashPage/index';
+import TierRewards from './components/TierRewards';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,7 +45,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <SplashPage />
+          {/* <SplashPage /> */}
+          <TierRewards />
         </Route>
       </Switch>
     </BrowserRouter>
