@@ -7,7 +7,7 @@ import './style/index.css';
 const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const { projectId }  = useParams();
-
+    
     // When done remove tier rewards from "/" route
     // useSelector => rewards
 
@@ -49,7 +49,7 @@ const TierRewards = () => {
                         onRequestClose={closeModal}
                         className="reward-modal"
                     >
-                        <TierRewardForm />
+                        <TierRewardForm projectId={projectId}/>
                     </Modal>
                 </div>
 
