@@ -8,20 +8,20 @@ import './ProjectForm.css';
 function ProjectForm() {
   const dispatch = useDispatch();
   const history = useHistory();
-  //const user_id = useSelector((state) => state.session?.user.id) FIX
+  const user_id = useSelector((state) => state.session?.user.id)
 
   const [description, setDescription] = useState("");
   const [goal, setGoal] = useState(0);
   const [end_date, set_end_date] = useState('2000-01-01')
   const [image, setImage] = useState('')
-  const [category, set_category] = useState(1)
+  const [category_id, set_category_id] = useState(1)
 
 
   const updateDescription = (e) => setDescription(e.target.value);
   const updateGoal = (e) => setGoal(e.target.value);
   const updateEndDate = (e) => set_end_date(e.target.value);
   const updateImage = (e) => setImage(e.target.value);
-  const updateCategory = (e) => set_category(e.target.value);
+  const updateCategory = (e) => set_category_id(e.target.value);
 
 
 
@@ -31,8 +31,6 @@ function ProjectForm() {
 
 
   const handleSubmit = async (e) => {
-      let category_id = category; //FIX
-      let user_id = 1; //FIX
     e.preventDefault();
     const payload = {
       description,
@@ -85,12 +83,12 @@ function ProjectForm() {
         />
         <label for="ctgy">Project Category</label>
         <select name="ctgy" onChange={updateCategory}>
-            <option value={() => 1}>Tech</option>
-            <option value={() => 2}>Food</option>
-            <option value={() => 3}>Film</option>
-            <option value={() => 4}>Health</option>
-            <option value={() => 5}>Music</option>
-            <option value={() => 6}>Games</option>
+            <option value={() => 1}>Games</option>
+            <option value={() => 2}>Music</option>
+            <option value={() => 3}>Health</option>
+            <option value={() => 4}>Film</option>
+            <option value={() => 5}>Food</option>
+            <option value={() => 6}>Tech</option>
         </select>
         <button className="create-new-project-button" type="submit">Create new Project</button>
       </form>
