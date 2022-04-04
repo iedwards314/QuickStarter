@@ -27,8 +27,8 @@ const TierRewards = () => {
                 <p className='reward-title-title'>Example title goes here hahahahaha</p>
                 <p className='reward-title-user'>by User</p>
             </div>
-            <div>
 
+            <div className='pledge-container'>
                 <div className="reward-support-text">
                     <p>Support this project</p>
                     <p>Select an option below</p>

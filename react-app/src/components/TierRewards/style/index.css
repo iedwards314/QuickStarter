@@ -37,3 +37,8 @@
       margin: 0px;
       padding-bottom: 30px;
   }
+
+  .pledge-container {
+      position: absolute;
+      left: 25%;
+  }
