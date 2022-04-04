@@ -24,7 +24,7 @@ const ProjectsList = () => {
                 {projectsArr?.map((project) => (
                   <li class="project-name" key={project?.id}>
                     <NavLink className="addButton" exact to={`/projects/${project?.id}`}>
-                      {`Project ID:(${project?.id}) Project Description:(${project?.description})`}
+                      {`Project Title:(${project?.title}) Project Description:(${project?.description})`}
                     </NavLink>
                   </li>
                 ))}

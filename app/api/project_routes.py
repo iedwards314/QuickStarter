@@ -18,6 +18,7 @@ def get_project():
 def create_project():
     data = dict(request.json)
     newProject = Project(
+        title = data['title'],
         description=data['description'],
         goal=data['goal'],
         end_date=data['end_date'],

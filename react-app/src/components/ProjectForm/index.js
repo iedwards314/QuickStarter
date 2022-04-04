@@ -10,6 +10,7 @@ function ProjectForm() {
   const history = useHistory();
   const user_id = useSelector((state) => state.session?.user.id)
 
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [goal, setGoal] = useState(0);
   const [end_date, set_end_date] = useState('2000-01-01')
@@ -17,6 +18,7 @@ function ProjectForm() {
   const [category_id, set_category_id] = useState(1)
 
 
+  const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
   const updateGoal = (e) => setGoal(e.target.value);
   const updateEndDate = (e) => set_end_date(e.target.value);
@@ -33,6 +35,7 @@ function ProjectForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
+      title,
       description,
       goal,
       end_date,
@@ -46,6 +49,15 @@ function ProjectForm() {
   return (
     <section className="new-form-holder centered middled">
       <form className="create-project-form" onSubmit={handleSubmit}>
+        <label for="title">Enter a Title: </label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Description"
+          required
+          value={title}
+          onChange={updateTitle}
+        />
         <label for="desc">Enter a Description: </label>
         <input
           type="text"
