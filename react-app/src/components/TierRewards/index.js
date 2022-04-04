@@ -5,6 +5,7 @@ import './style/index.css';
 const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     // When done remove tier rewards from "/" route
+    // useSelector => rewards
 
     const openModal = () => {
         setIsOpen(true);
@@ -36,6 +37,7 @@ const TierRewards = () => {
                 <div className="reward-modal-container">
                 {/* Modal container */}
                     <Modal
+                        style={{ overlay: { backgroundColor: "rgba(68,68,68,.3"}}}
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         className="reward-modal"
