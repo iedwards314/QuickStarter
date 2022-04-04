@@ -1,5 +1,6 @@
 import Modal from 'react-modal';
 import TierRewardForm from './TierRewardForm';
+import RewardCard from './RewardCard';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,11 +26,10 @@ const TierRewards = () => {
 
     let title;
     if (currentProject) {
-        console.log(currentProject);
             title = (
             <>
                 <p className='reward-title-title'>{currentProject.title}</p>
-                <p className='reward-title-user'>by {currentProject.user}</p>
+                <p className='reward-title-user'>by {currentProject.username}</p>
             </>
             )
     } else {
@@ -39,7 +39,6 @@ const TierRewards = () => {
 
     }
     // When done remove tier rewards from "/" route
-    // useSelector => rewards
 
     const openModal = () => {
         setIsOpen(true);
@@ -55,22 +54,27 @@ const TierRewards = () => {
         <div className="reward-container">
             <div className="reward-title-container">
                 {title}
-                {/* <p className='reward-title-title'>Example title goes here hahahahaha</p>
-                <p className='reward-title-user'>by User</p> */}
             </div>
 
             <div className='pledge-container'>
                 <div className="reward-support-text">
-                    <p>Support this project</p>
-                    <p>Select an option below</p>
+                    <div>
+                        <p style={{fontSize: "22px",
+                               margin: "75px 0px 0px 0px"}}>Support this project</p>
+                        <p style={{fontSize: "14px",
+                               margin: "5px 0px 0px 0px"}}>Select an option below</p>
+                    </div>
+
+                    <div
+                        className='reward-open-modal'
+                        onClick={() => {
+                            openModal();
+                        }}
+                    >
+                        Add reward
+                    </div>
                 </div>
 
-                <div
-                    onClick={() => {
-                        openModal();
-                    }}>
-                    Add reward
-                </div>
 
                 <div className="reward-modal-container">
                     {/* Modal container */}
@@ -99,6 +103,9 @@ const TierRewards = () => {
                             </div>
                         </div>
                     </label>
+                    {currentProject?.rewards?.map((reward) => (
+                        <RewardCard reward={reward}/>
+                    ))}
                 </div>
 
             </div>
