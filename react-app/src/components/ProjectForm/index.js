@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { getProjectTypes, createProject } from "../../store/project";
+import { getProjectTypes, addProject } from "../../store/project";
 
 import './ProjectForm.css';
 
 function ProjectForm() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user_id = useSelector((state) => state.session.user.id)
+  //const user_id = useSelector((state) => state.session?.user.id) FIX
 
   const [description, setDescription] = useState("");
   const [goal, setGoal] = useState(0);
@@ -31,6 +31,8 @@ function ProjectForm() {
 
 
   const handleSubmit = async (e) => {
+      let category_id = category; //FIX
+      let user_id = 1; //FIX
     e.preventDefault();
     const payload = {
       description,
@@ -40,7 +42,7 @@ function ProjectForm() {
       user_id,
       category_id
     };
-    const createdProject = await dispatch(createProject(payload));
+    const createdProject = await dispatch(addProject(payload));
   };
 
   return (
@@ -73,15 +75,7 @@ function ProjectForm() {
           value={end_date}
           onChange={updateEndDate}
         />
-        <label for="img">Enter a Description: </label>
-        <input
-          type="text"
-          name="img"
-          placeholder="Image URL"
-          value={image}
-          onChange={updateImage}
-        />
-        <label for="img">Enter a Description: </label>
+        <label for="img">Enter an Image URL: </label>
         <input
           type="text"
           name="img"
