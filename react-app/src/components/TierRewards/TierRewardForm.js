@@ -27,7 +27,6 @@ const TierRewardForm = ({projectId}) => {
 
     const handleSubmit = () => {
        setHasSubmitted(true);
-       console.log("hi");
 
            const reward = {
                project_id: projectId,
