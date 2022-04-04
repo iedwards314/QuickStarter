@@ -11,6 +11,8 @@
 
 * {
     text-decoration: none;
+    color: white;
+    font-family: "MaisonNueBook";
 } *:visited {
     text-decoration: none;
     color: white;
