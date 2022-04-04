@@ -1,12 +1,14 @@
-import { use } from "express/lib/application";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addReward } from "../../store/rewards";
 
-const TierRewardForm = (projectId) => {
+const TierRewardForm = ({projectId}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [amount, setAmount] = useState("");
+    const [cost, setCost] = useState("");
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let errors = [];
@@ -17,14 +19,23 @@ const TierRewardForm = (projectId) => {
         if (description) {
             if (description.length === 0) errors.push("Please enter a value for description.")
         }
-        if (amount) {
-            if (amount <= 0) errors.push("Please enter an amount greater than 0.")
+        if (cost) {
+            if (cost <= 0) errors.push("Please enter an amount greater than 0.")
         }
         setErrors(errors);
-    }, [title, description, amount]);
+    }, [title, description, cost]);
 
     const handleSubmit = () => {
        setHasSubmitted(true);
+
+           const reward = {
+               project_id: projectId,
+               title,
+               description,
+               cost
+           };
+           dispatch(addReward(reward));
+
     }
 
     return (
@@ -46,7 +57,7 @@ const TierRewardForm = (projectId) => {
             <p>Amount</p>
             <input
                 type="number"
-                onChange={(e) => setAmount(e.target.value)}
+                onChange={(e) => setCost(e.target.value)}
             />
             <div
                 className="reward-form-submit"

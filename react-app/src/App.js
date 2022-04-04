@@ -38,15 +38,22 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/create-project' exact={true}>
+          <ProjectForm />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-          {/* <SplashPage /> */}
+        {/* <Route path="/projects/:projectId">
+        </Route> */}
+        <ProtectedRoute path="/projects/:projectId/rewards">
           <TierRewards />
+        </ProtectedRoute>
+        <Route path='/' exact={true} >
+          <SplashPage />
         </Route>
       </Switch>
     </BrowserRouter>

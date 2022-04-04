@@ -39,7 +39,7 @@ export const getProjects = () => async (dispatch) => {
 }
 
 export const getProject = (project) => async (dispatch) => {
-    const reponse = await fetch(`/api/projects/${project.id}`)
+    const response = await fetch(`/api/projects/${project.id}`)
     if (response.ok) {
         const project = await response.json();
         dispatch(getOne(project))

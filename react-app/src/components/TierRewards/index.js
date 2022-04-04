@@ -1,11 +1,13 @@
 import Modal from 'react-modal';
 import TierRewardForm from './TierRewardForm';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './style/index.css';
 
 const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
-
+    const { projectId }  = useParams();
+    
     // When done remove tier rewards from "/" route
     // useSelector => rewards
 
@@ -22,11 +24,11 @@ const TierRewards = () => {
     return (
         <div className="reward-container">
             <div className="reward-title-container">
-                <p>Some title</p>
-                <p>by User</p>
+                <p className='reward-title-title'>Example title goes here hahahahaha</p>
+                <p className='reward-title-user'>by User</p>
             </div>
-            <div>
 
+            <div className='pledge-container'>
                 <div className="reward-support-text">
                     <p>Support this project</p>
                     <p>Select an option below</p>
@@ -47,7 +49,7 @@ const TierRewards = () => {
                         onRequestClose={closeModal}
                         className="reward-modal"
                     >
-                        <TierRewardForm />
+                        <TierRewardForm projectId={projectId}/>
                     </Modal>
                 </div>
 
