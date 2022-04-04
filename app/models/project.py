@@ -16,3 +16,14 @@ class Project(db.Model):
     reward = db.relationship("Reward", back_populates="project", cascade="all, delete")
     contributions = db.relationship("Contribution", back_populates="project", cascade="all, delete")
     comments = db.relationship("Comment", back_populates="project", cascade="all, delete")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'description': self.description,
+            'goal': self.goal,
+            'end_date': self.end_date,
+            'image': self.image,
+            'user_id': self.user_id,
+            'category_id': self.category_id,
+        }
