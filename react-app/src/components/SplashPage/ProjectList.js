@@ -32,14 +32,15 @@ const ProjectsList = () => {
             );
           }
         };
-        return (
-          <>
-            <h2>Project List</h2>
-            <div class="project-list-container">
-                {projectListMap()}
-            </div>
-          </>
-        );
-    };
+
+    return (
+      <>
+        <h2>Project List</h2>
+        <div class="project-list-container">
+            {projectListMap()}
+        </div>
+      </>
+    );
+};
 
 export default ProjectsList;
