@@ -5,10 +5,12 @@ const RewardCard = ({reward}) => {
             <label className='reward-card'>
                 <div className='reward-card'>
                     <input type="radio" name="reward"></input>
-                    <div style={{ display: "inline-block" }}>
+                    <div style={{ display: "inline-block"}}>
                         <p>{reward.cost}</p>
+                    </div>
                         <p>{reward.title}</p>
                         <p>{reward.description}</p>
+                    <div>
                     </div>
                     <div>
                         <input type="number"></input>

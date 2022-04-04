@@ -58,16 +58,23 @@ const TierRewards = () => {
 
             <div className='pledge-container'>
                 <div className="reward-support-text">
-                    <p>Support this project</p>
-                    <p>Select an option below</p>
+                    <div>
+                        <p style={{fontSize: "22px",
+                               margin: "75px 0px 0px 0px"}}>Support this project</p>
+                        <p style={{fontSize: "14px",
+                               margin: "5px 0px 0px 0px"}}>Select an option below</p>
+                    </div>
+
+                    <div
+                        className='reward-open-modal'
+                        onClick={() => {
+                            openModal();
+                        }}
+                    >
+                        Add reward
+                    </div>
                 </div>
 
-                <div
-                    onClick={() => {
-                        openModal();
-                    }}>
-                    Add reward
-                </div>
 
                 <div className="reward-modal-container">
                     {/* Modal container */}
