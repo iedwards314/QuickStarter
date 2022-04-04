@@ -49,7 +49,7 @@ function ProjectForm() {
   return (
     <section className="new-form-holder centered middled">
       <form className="create-project-form" onSubmit={handleSubmit}>
-        <label for="title">Enter a Title: </label>
+        <label htmlFor="title">Enter a Title: </label>
         <input
           type="text"
           name="title"
@@ -58,7 +58,7 @@ function ProjectForm() {
           value={title}
           onChange={updateTitle}
         />
-        <label for="desc">Enter a Description: </label>
+        <label htmlFor="desc">Enter a Description: </label>
         <input
           type="text"
           name="desc"
@@ -67,7 +67,7 @@ function ProjectForm() {
           value={description}
           onChange={updateDescription}
         />
-        <label for="goal">Enter a funding goal for your project: </label>
+        <label htmlFor="goal">Enter a funding goal for your project: </label>
         <input
           type="number"
           name="goal"
@@ -76,7 +76,7 @@ function ProjectForm() {
           value={goal}
           onChange={updateGoal}
         />
-        <label for="enddate">Enter a funding goal for your project: </label>
+        <label htmlFor="enddate">Enter a funding goal for your project: </label>
         <input
           type="date"
           name="enddate"
@@ -85,7 +85,7 @@ function ProjectForm() {
           value={end_date}
           onChange={updateEndDate}
         />
-        <label for="img">Enter an Image URL: </label>
+        <label htmlFor="img">Enter an Image URL: </label>
         <input
           type="text"
           name="img"
@@ -93,7 +93,7 @@ function ProjectForm() {
           value={image}
           onChange={updateImage}
         />
-        <label for="ctgy">Project Category</label>
+        <label htmlFor="ctgy">Project Category</label>
         <select name="ctgy" onChange={updateCategory}>
             <option value={() => 1}>Games</option>
             <option value={() => 2}>Music</option>

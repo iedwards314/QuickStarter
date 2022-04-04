@@ -10,11 +10,11 @@ def projects():
     return {'projects': [project.to_dict() for project in projects]}
 
 @project_routes.route('/<int:id>')
-def get_project():
+def get_project(id):
     project = Project.query.get(id)
     return project.to_dict()
 
-@project_routes.route('/api/projects/create', methods=['POST'])
+@project_routes.route('/create', methods=['POST'])
 def create_project():
     data = dict(request.json)
     newProject = Project(
