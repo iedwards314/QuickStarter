@@ -5,7 +5,7 @@ import './style/index.css';
 
 const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState(null);
+
     // When done remove tier rewards from "/" route
     // useSelector => rewards
 
@@ -36,7 +36,7 @@ const TierRewards = () => {
                     onClick={() => {
                         openModal();
                     }}>
-                    Button!
+                    Add reward
                 </div>
 
                 <div className="reward-modal-container">
@@ -51,37 +51,23 @@ const TierRewards = () => {
                     </Modal>
                 </div>
 
+
                 <div>
-                    <div
-                        id={1}
-                        onClick={(e) => setSelected(e.target.id)}>
-                        {/* <div className={selected === 1 ? 'reward-circle selected' : 'reward-circle'} /> */}
-                        <div>
-                            <div>
-                                <label className='reward-card'>
-                                    <div className='reward-card'>
-                                        <input type="radio" name="reward"></input>
-                                        <p>hello</p>
-                                    </div>
-                                </label>
+                    <label className='reward-card'>
+                        <div className='reward-card'>
+                            <input type="radio" name="reward"></input>
+                            <div style={{ display: "inline-block" }}>
+                                <p>Pledge without a reward</p>
                             </div>
                             <div>
-                                <label className='reward-card'>
-                                    <div className='reward-card'>
-                                        <input type="radio" name="reward"></input>
-                                        <p>hello</p>
-                                    </div>
-                                </label>
+                                <input type="number"></input>
+                                <div style={{ cursor:"pointer"}}>Continue</div>
+                                {/* Add onclick for continue div to render payment page */}
                             </div>
-
                         </div>
-                        {/* <select>
-                            <option>Pledge without a reward</option>
-                        </select> */}
-                        <p>Pledge without a reward</p>
-                    </div>
-
+                    </label>
                 </div>
+
             </div>
         </div>
     )
