@@ -1,5 +1,6 @@
 import Modal from 'react-modal';
 import TierRewardForm from './TierRewardForm';
+import RewardCard from './RewardCard';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -95,6 +96,9 @@ const TierRewards = () => {
                             </div>
                         </div>
                     </label>
+                    {currentProject?.rewards?.map((reward) => (
+                        <RewardCard reward={reward}/>
+                    ))}
                 </div>
 
             </div>

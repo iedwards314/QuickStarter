@@ -19,6 +19,13 @@ class Project(db.Model):
     comments = db.relationship("Comment", back_populates="project", cascade="all, delete")
 
     def to_dict(self):
+        # print("REAWRD!!!!", self.reward[0].__dict__["title"])
+        rewardArray = []
+        for reward in self.reward:
+            rewardArray.append({ "title": reward.__dict__["title"],
+                                 "description": reward.__dict__["description"],
+                                 "cost": reward.__dict__["cost"] })
+
         return {
             'id': self.id,
             'title': self.title,
@@ -28,5 +35,6 @@ class Project(db.Model):
             'image': self.image,
             'user_id': self.user_id,
             'category_id': self.category_id,
-            'username': self.user.username
+            'username': self.user.username,
+            'rewards': rewardArray
         }
