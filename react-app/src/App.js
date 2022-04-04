@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Banner from './components/Banner/index';
 import SplashPage from './components/SplashPage/index';
+import TierRewards from './components/TierRewards';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,11 +38,19 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/create-project' exact={true}>
+          <ProjectForm />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        {/* <Route path="/projects/:projectId">
+        </Route> */}
+        <ProtectedRoute path="/projects/:projectId/rewards">
+          <TierRewards />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />

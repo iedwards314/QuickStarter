@@ -1,0 +1,44 @@
+.reward-modal {
+    background-color: #2B2B2B;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    right: 30%;
+    bottom: 20%;
+    border: none;
+    overflow: hidden;
+    outline-color: white;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
+  }
+
+  .reward-card {
+    width: 591px;
+    height: 109px;
+    background-color: #444444;
+  }
+
+  .reward-container {
+    color: white;
+  }
+
+  .reward-title-container {
+      background-color: #444444;
+      text-align: center;
+  } .reward-title-title {
+      padding-top: 30px;
+      font-size: 32px;
+      margin: 0px;
+  } .reward-title-user {
+      font-size: 18px;
+      margin: 0px;
+      padding-bottom: 30px;
+  }
+
+  .pledge-container {
+      position: absolute;
+      left: 25%;
+  }
