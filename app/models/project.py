@@ -28,5 +28,5 @@ class Project(db.Model):
             'image': self.image,
             'user_id': self.user_id,
             'category_id': self.category_id,
-            'user': self.user.username
+            'username': self.user.username
         }

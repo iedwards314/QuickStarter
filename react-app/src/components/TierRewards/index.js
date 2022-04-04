@@ -25,11 +25,10 @@ const TierRewards = () => {
 
     let title;
     if (currentProject) {
-        console.log(currentProject);
             title = (
             <>
                 <p className='reward-title-title'>{currentProject.title}</p>
-                <p className='reward-title-user'>by {currentProject.user}</p>
+                <p className='reward-title-user'>by {currentProject.username}</p>
             </>
             )
     } else {
@@ -39,7 +38,6 @@ const TierRewards = () => {
 
     }
     // When done remove tier rewards from "/" route
-    // useSelector => rewards
 
     const openModal = () => {
         setIsOpen(true);
@@ -55,8 +53,6 @@ const TierRewards = () => {
         <div className="reward-container">
             <div className="reward-title-container">
                 {title}
-                {/* <p className='reward-title-title'>Example title goes here hahahahaha</p>
-                <p className='reward-title-user'>by User</p> */}
             </div>
 
             <div className='pledge-container'>
