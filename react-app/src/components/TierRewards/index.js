@@ -1,13 +1,43 @@
 import Modal from 'react-modal';
 import TierRewardForm from './TierRewardForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProject } from '../../store/project';
 import './style/index.css';
 
 const TierRewards = () => {
+    const dispatch = useDispatch();
+    const project = useSelector((state) => state.project.selected)
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [currentProject, setCurrentProject] = useState(null);
     const { projectId }  = useParams();
-    
+
+
+    useEffect(() => {
+        const addProject = async () => {
+            const project = { id: projectId }
+            const ret = await dispatch(getProject(project));
+            setCurrentProject(ret);
+        }
+        addProject();
+    }, [dispatch])
+
+    let title;
+    if (currentProject) {
+        console.log(currentProject);
+            title = (
+            <>
+                <p className='reward-title-title'>{currentProject.title}</p>
+                <p className='reward-title-user'>by {currentProject.user}</p>
+            </>
+            )
+    } else {
+        title = (
+            <p>... loading</p>
+        )
+
+    }
     // When done remove tier rewards from "/" route
     // useSelector => rewards
 
@@ -24,8 +54,9 @@ const TierRewards = () => {
     return (
         <div className="reward-container">
             <div className="reward-title-container">
-                <p className='reward-title-title'>Example title goes here hahahahaha</p>
-                <p className='reward-title-user'>by User</p>
+                {title}
+                {/* <p className='reward-title-title'>Example title goes here hahahahaha</p>
+                <p className='reward-title-user'>by User</p> */}
             </div>
 
             <div className='pledge-container'>
