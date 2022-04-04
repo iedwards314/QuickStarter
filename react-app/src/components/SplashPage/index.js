@@ -1,5 +1,6 @@
 import FundingInfoCard from './FundingInfoCard';
 import ProjectCarousel from './ProjectCarousel';
+import ProjectsList from './ProjectList';
 import './style/splash-page.css';
 
 const SplashPage = () => {
@@ -15,6 +16,7 @@ const SplashPage = () => {
             </div>
             <FundingInfoCard />
             <ProjectCarousel />
+            <ProjectsList />
         </div>
     )
 };
