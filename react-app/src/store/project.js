@@ -60,6 +60,7 @@ export const deleteProject = (projectId) => async (dispatch) => {
 
 const initialState = {
     projects: {},
+    selected: {},
 }
 
 const projectReducer = (state = initialState, action) => {
