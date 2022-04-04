@@ -14,3 +14,20 @@
     0 8px 8px rgba(0,0,0,0.12),
     0 16px 16px rgba(0,0,0,0.12);
   }
+
+  .reward-circle {
+      border: 1px solid white;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+  }
+
+  .selected {
+      background-color: #44FFF0;
+  }
+
+  .reward-card {
+    width: 591px;
+    height: 109px;
+    background-color: #444444;
+  }
