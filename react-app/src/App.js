@@ -43,13 +43,13 @@ function App() {
         <Route path='/create-project' exact={true}>
           <ProjectForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        <ProtectedRoute path='/users' exact={true}>
           <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path='/users/:userId' exact={true}>
           <User />
         </ProtectedRoute>
-        <Route path="/projects/:projectId">
+        <Route path="/projects/:projectId" exact={true}>
           <ProjectPage />
         </Route>
         <ProtectedRoute path="/projects/:projectId/rewards">
