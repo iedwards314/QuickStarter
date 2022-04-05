@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addReward } from "../../store/rewards";
 import { getProject } from "../../store/project";
+import './style/tierform.css'
 
-const TierRewardForm = ({projectId}) => {
+
+const TierRewardForm = ({ projectId }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [cost, setCost] = useState("");
@@ -28,7 +30,8 @@ const TierRewardForm = ({projectId}) => {
     }, [title, description, cost]);
 
     const handleSubmit = () => {
-       setHasSubmitted(true);
+        setHasSubmitted(true);
+
 
            const reward = {
                project_id: projectId,
@@ -44,31 +47,42 @@ const TierRewardForm = ({projectId}) => {
 
     return (
         <div className="reward-form-container">
-            <p>Reward Title</p>
-            <input
-                type="text"
-                placeholder="Reward Title"
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <p>Description</p>
-            <textarea
-                placeholder="Description"
-                rows={10}
-                columns={10}
-                style={{resize: "None"}}
-                onChange={(e) => setDescription(e.target.value)}
-            />
-            <p>Amount</p>
-            <input
-                type="number"
-                onChange={(e) => setCost(e.target.value)}
-            />
+            <div>
+                <p className="form-ptag">Reward Title</p>
+                <input
+                    type="text"
+                    placeholder="Reward Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                    className="form-title-inputbox"
+                />
+            </div>
+            <div>
+                <p className="form-ptag">Description</p>
+                <textarea
+                    placeholder="Description"
+                    rows={10}
+                    columns={10}
+                    style={{ resize: "None" }}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className="form-desc-inputbox"
+                />
+            </div>
+            <div>
+                <p className="form-ptag">Amount</p>
+                <input
+                    type="number"
+                    onChange={(e) => setCost(e.target.value)}
+                    placeholder="Amount"
+                    className="form-amount-inputbox"
+                />
+            </div>
             <div
                 className="reward-form-submit"
                 onClick={handleSubmit}
-                style={{backgroundColor: "red",
-                        cursor: "pointer",
-                        display: "inline-block"}}>
+                style={{
+                    cursor: "pointer",
+                    display: "inline-block"
+                }}>
                 <p>Submit</p>
             </div>
             {errors?.map((error) => (

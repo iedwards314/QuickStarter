@@ -23,13 +23,14 @@ const TierRewards = () => {
     }, [dispatch, projectId])
 
     let title;
+
     if (project) {
             title = (
             <>
                 <p className='reward-title-title'>{project[projectId]?.title}</p>
                 <p className='reward-title-user'>by {project[projectId]?.username}</p>
             </>
-            )
+        )
     } else {
         title = (
             <p>... loading</p>
@@ -57,10 +58,14 @@ const TierRewards = () => {
             <div className='pledge-container'>
                 <div className="reward-support-text">
                     <div>
-                        <p style={{fontSize: "22px",
-                               margin: "75px 0px 0px 0px"}}>Support this project</p>
-                        <p style={{fontSize: "14px",
-                               margin: "5px 0px 0px 0px"}}>Select an option below</p>
+                        <p style={{
+                            fontSize: "22px",
+                            margin: "75px 0px 0px 0px"
+                        }}>Support this project</p>
+                        <p style={{
+                            fontSize: "14px",
+                            margin: "5px 0px 0px 0px"
+                        }}>Select an option below</p>
                     </div>
 
                     <div
@@ -83,7 +88,7 @@ const TierRewards = () => {
                         onRequestClose={closeModal}
                         className="reward-modal"
                     >
-                        <TierRewardForm projectId={projectId}/>
+                        <TierRewardForm projectId={projectId} />
                     </Modal>
                 </div>
 
@@ -92,12 +97,13 @@ const TierRewards = () => {
                     <label className='reward-card'>
                         <div className='reward-card'>
                             <input type="radio" name="reward"></input>
-                            <div style={{ display: "inline-block" }}>
+                            <div className='reward-text'>
                                 <p>Pledge without a reward</p>
                             </div>
-                            <div>
-                                <input type="number"></input>
-                                <div style={{ cursor:"pointer"}}>Continue</div>
+                            <div className='reward-inputbox'>
+                                <label className='dollarsign'>$</label>
+                                <input className='reward-number-inputbox' placeholder='Number' type="number"></input>
+                                <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
                                 {/* Add onclick for continue div to render payment page */}
                             </div>
                         </div>
