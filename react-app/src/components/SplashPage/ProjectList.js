@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getProjects } from "../../store/project";
+import "./style/project-list.css"
 
 const ProjectsList = () => {
     const dispatch = useDispatch();
@@ -17,30 +18,34 @@ const ProjectsList = () => {
     console.log('STATE',projects)
 
     const projectListMap = () => {
-            console.log('LABEL FOR IAN', Object.values(projects))
+
           if (projects !== undefined) {
             projectsArr = Object.values(projects);
             return (
-              <ul>
+              <>
                 {projectsArr?.map((project) => (
-                  <li class="project-name" key={project?.id}>
-                    <NavLink className="addButton" exact to={`/projects/${project?.id}`}>
-                      {`Project ID:(${project?.id}) Project Description:(${project?.description})`}
+                  <div className="project-div" key={project?.id}>
+                    <img className="project-image" src={project?.image} alt="project image" />
+                    <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
+                      <h3>{project?.title}</h3>
                     </NavLink>
-                  </li>
+                    <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
+                      {project?.description}
+                    </NavLink>
+                  </div>
                 ))}
-              </ul>
+              </>
             );
           }
         };
-        return (
-          <>
-            <h2>Project List</h2>
-            <div class="project-list-container">
-                {projectListMap()}
-            </div>
-          </>
-        );
-    };
+
+    return (
+      <>
+        <div className="project-list-container">
+            {projectListMap()}
+        </div>
+      </>
+    );
+};
 
 export default ProjectsList;

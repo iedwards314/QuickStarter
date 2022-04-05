@@ -52,7 +52,7 @@ const BannerUpper = () => {
                         <p>Discover</p>
                     </div>
                 </NavLink>
-                <NavLink to="">
+                <NavLink to="/create-project">
                     <div className='banner-create-project nav-button'>
                         <p>Create a project</p>
                     </div>
