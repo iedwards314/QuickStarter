@@ -6,6 +6,8 @@ import "./style/project-list.css"
 
 const ProjectsList = () => {
     const dispatch = useDispatch();
+    // eslint-disable-next-line
+    const state = useSelector((state) => state)
     const projects = useSelector((state) => state.project.projects);
     let projectsArr = [];
 

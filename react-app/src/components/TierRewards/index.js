@@ -5,33 +5,32 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProject } from '../../store/project';
+import { getRewards } from '../../store/rewards';
 import './style/index.css';
 
 const TierRewards = () => {
     const dispatch = useDispatch();
     const project = useSelector((state) => state.project.selected)
+    const rewards = useSelector((state) => Object.values(state.rewards))
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [currentProject, setCurrentProject] = useState(null);
     const { projectId }  = useParams();
 
-
     useEffect(() => {
-        const addProject = async () => {
             const project = { id: projectId }
-            const ret = await dispatch(getProject(project));
-            setCurrentProject(ret);
-        }
-        addProject();
-    }, [dispatch])
+            dispatch(getProject(project));
+            dispatch(getRewards(projectId))
+
+    }, [dispatch, projectId])
 
     let title;
-    if (currentProject) {
+
+    if (project) {
             title = (
             <>
-                <p className='reward-title-title'>{currentProject.title}</p>
-                <p className='reward-title-user'>by {currentProject.username}</p>
+                <p className='reward-title-title'>{project[projectId]?.title}</p>
+                <p className='reward-title-user'>by {project[projectId]?.username}</p>
             </>
-            )
+        )
     } else {
         title = (
             <p>... loading</p>
@@ -59,10 +58,14 @@ const TierRewards = () => {
             <div className='pledge-container'>
                 <div className="reward-support-text">
                     <div>
-                        <p style={{fontSize: "22px",
-                               margin: "75px 0px 0px 0px"}}>Support this project</p>
-                        <p style={{fontSize: "14px",
-                               margin: "5px 0px 0px 0px"}}>Select an option below</p>
+                        <p style={{
+                            fontSize: "22px",
+                            margin: "75px 0px 0px 0px"
+                        }}>Support this project</p>
+                        <p style={{
+                            fontSize: "14px",
+                            margin: "5px 0px 0px 0px"
+                        }}>Select an option below</p>
                     </div>
 
                     <div
@@ -79,12 +82,13 @@ const TierRewards = () => {
                 <div className="reward-modal-container">
                     {/* Modal container */}
                     <Modal
+                        ariaHideApp={false}
                         style={{ overlay: { backgroundColor: "rgba(68,68,68,.3" } }}
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         className="reward-modal"
                     >
-                        <TierRewardForm projectId={projectId}/>
+                        <TierRewardForm projectId={projectId} />
                     </Modal>
                 </div>
 
@@ -93,17 +97,18 @@ const TierRewards = () => {
                     <label className='reward-card'>
                         <div className='reward-card'>
                             <input type="radio" name="reward"></input>
-                            <div style={{ display: "inline-block" }}>
+                            <div className='reward-text'>
                                 <p>Pledge without a reward</p>
                             </div>
-                            <div>
-                                <input type="number"></input>
-                                <div style={{ cursor:"pointer"}}>Continue</div>
+                            <div className='reward-inputbox'>
+                                <label className='dollarsign'>$</label>
+                                <input className='reward-number-inputbox' placeholder='Number' type="number"></input>
+                                <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
                                 {/* Add onclick for continue div to render payment page */}
                             </div>
                         </div>
                     </label>
-                    {currentProject?.rewards?.map((reward) => (
+                    {rewards?.map((reward) => (
                         <RewardCard reward={reward}/>
                     ))}
                 </div>
