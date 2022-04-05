@@ -7,6 +7,7 @@ const TierRewardForm = ({projectId}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [cost, setCost] = useState("");
+    // eslint-disable-next-line
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
