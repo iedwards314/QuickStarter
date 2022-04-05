@@ -5,31 +5,34 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProject } from '../../store/project';
+import { getRewards } from '../../store/rewards';
 import './style/index.css';
 
 const TierRewards = () => {
     const dispatch = useDispatch();
     const project = useSelector((state) => state.project.selected)
+    const rewards = useSelector((state) => Object.values(state.rewards))
     const [modalIsOpen, setIsOpen] = useState(false);
     const [currentProject, setCurrentProject] = useState(null);
     const { projectId }  = useParams();
-
+    if (project) {
+        console.log(project);
+        console.log(rewards);
+    }
 
     useEffect(() => {
-        const addProject = async () => {
             const project = { id: projectId }
-            const ret = await dispatch(getProject(project));
-            setCurrentProject(ret);
-        }
-        addProject();
+            const ret = dispatch(getProject(project));
+            dispatch(getRewards(projectId))
+
     }, [dispatch])
 
     let title;
-    if (currentProject) {
+    if (project) {
             title = (
             <>
-                <p className='reward-title-title'>{currentProject.title}</p>
-                <p className='reward-title-user'>by {currentProject.username}</p>
+                <p className='reward-title-title'>{project[projectId]?.title}</p>
+                <p className='reward-title-user'>by {project[projectId]?.username}</p>
             </>
             )
     } else {
@@ -103,7 +106,7 @@ const TierRewards = () => {
                             </div>
                         </div>
                     </label>
-                    {currentProject?.rewards?.map((reward) => (
+                    {project[projectId]?.rewards?.map((reward) => (
                         <RewardCard reward={reward}/>
                     ))}
                 </div>

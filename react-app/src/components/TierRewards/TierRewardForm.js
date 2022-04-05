@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addReward } from "../../store/rewards";
+import { getProject } from "../../store/project";
 
 const TierRewardForm = ({projectId}) => {
     const [title, setTitle] = useState("");
@@ -34,7 +35,9 @@ const TierRewardForm = ({projectId}) => {
                description,
                cost
            };
+           const project = { id: projectId }
            dispatch(addReward(reward));
+           dispatch(getProject(project));
 
     }
 
