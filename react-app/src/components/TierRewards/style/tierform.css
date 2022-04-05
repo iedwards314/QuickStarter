@@ -1,0 +1,67 @@
+.form-ptag {
+    margin: none;
+    color: white;
+}
+
+.reward-form-container {
+    margin: 7% 10% 10% 10%;
+}
+
+.form-title-inputbox {
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 14px;
+    background-color: #2B2B2B;
+    border: 2px solid #444444;
+    color: white;
+    box-sizing: border-box;
+}
+
+.form-title-inputbox:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.form-desc-inputbox {
+    width: 100%;
+    margin: 0px 40px 0px 0px;
+    padding: 10px 10px;
+    font-size: 14px;
+    background-color: #2B2B2B;
+    border: 2px solid #444444;
+    color: white;
+    box-sizing: border-box;
+}
+
+.form-desc-inputbox:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.form-amount-inputbox {
+    width: 100%;
+    margin: 0px 40px 40px 0px;
+    padding: 10px 10px;
+    font-size: 14px;
+    background-color: #2B2B2B;
+    border: 2px solid #444444;
+    color: white;
+    box-sizing: border-box;
+}
+
+.form-amount-inputbox:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.form-amount-inputbox::-webkit-outer-spin-button,
+.form-amount-inputbox::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.reward-form-submit {
+    text-align: center;
+    background-color: #44fff0;
+    width: 100%;
+}
