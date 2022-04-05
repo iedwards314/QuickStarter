@@ -109,13 +109,9 @@ const projectReducer = (state = initialState, action) => {
             return setState
         case EDIT_ONE:
             setState = {...state, projects: {...state.projects, [action.project.id]: action.project}, selected: {...state.selected}}
-            // let prj = action.project
-            // setState.projects[prj.id] = prj
             return setState
         case GET_ONE:
             setState = {...state, projects: {...state.projects}, selected: {...state.selected, [action.project.id]: {...action.project}}}
-            // let project = action.project
-            // setState.selected[project.id] = project
             return setState
         default:
             return state;
