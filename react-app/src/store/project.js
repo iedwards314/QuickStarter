@@ -15,9 +15,9 @@ const addOne = (project) => ({
     project,
 })
 
-const deleteOne = (projectId) => ({
+const deleteOne = (project) => ({
     type: DELETE_ONE,
-    projectId,
+    project,
 })
 
 const editOne = (project) => ({
@@ -39,8 +39,8 @@ export const getProjects = () => async (dispatch) => {
     }
 }
 
-export const getProject = (project) => async (dispatch) => {
-    const response = await fetch(`/api/projects/${project.id}`)
+export const getProject = (projectId) => async (dispatch) => {
+    const response = await fetch(`/api/projects/${projectId}`)
     if (response.ok) {
         const project = await response.json();
         dispatch(getOne(project))
@@ -63,14 +63,18 @@ export const addProject = (project) => async (dispatch) => {
     }
 }
 
-export const deleteProject = (projectId) => async (dispatch) => {
-    const response = await fetch(`/api/projects/delete/${projectId}`, {
+export const deleteProject = (project) => async (dispatch) => {
+    const response = await fetch(`/api/projects/delete/${project.id}`, {
         method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(project),
     });
     if (response.ok) {
-        const projectId = await response.json();
-        dispatch(deleteOne(projectId))
-        return;
+        const project = await response.json();
+        dispatch(deleteOne(project))
+        return project;
     }
 }
 
@@ -113,7 +117,7 @@ const projectReducer = (state = initialState, action) => {
             // setState.projects[prj.id] = prj
             return setState
         case GET_ONE:
-            setState = {...state, projects: {...state.projects}, selected: {...state.selected, [action.project.id]: {...action.project}}}
+            setState = {...state, projects: {...state.projects}, selected: { [action.project.id]: {...action.project}}}
             // let project = action.project
             // setState.selected[project.id] = project
             return setState
