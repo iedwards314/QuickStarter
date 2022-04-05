@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addReward } from "../../store/rewards";
 import { getProject } from "../../store/project";
-import { editReward } from "../../store/rewards";
+import { editReward, getRewards } from "../../store/rewards";
 import './style/tierform.css'
 
 
 const TierRewardForm = ({ projectId, editForm, reward }) => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [cost, setCost] = useState("");
+    const [title, setTitle] = useState(reward ? reward.title : "");
+    const [description, setDescription] = useState(reward ? reward.description : "");
+    const [cost, setCost] = useState(reward ? reward.cost : "");
     // eslint-disable-next-line
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -41,20 +41,20 @@ const TierRewardForm = ({ projectId, editForm, reward }) => {
                 description,
                 cost
             };
-            console.log(editedReward);
             dispatch(editReward(editedReward));
-            dispatch(getProject(projectId));
+            dispatch(getRewards(projectId));
+            // dispatch(getProject(projectId));
             return
         }
 
-           const newReward = {
-               project_id: projectId,
-               title,
-               description,
-               cost
-           };
-           dispatch(addReward(newReward));
-           dispatch(getProject(projectId));
+        const newReward = {
+            project_id: projectId,
+            title,
+            description,
+            cost
+        };
+        dispatch(addReward(newReward));
+        dispatch(getProject(projectId));
 
     }
 

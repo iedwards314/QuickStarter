@@ -15,7 +15,7 @@ const TierRewards = () => {
     const rewards = useSelector((state) => Object.values(state.rewards))
     const [modalIsOpen, setIsOpen] = useState(false);
     const { projectId } = useParams();
-    
+
     useEffect(() => {
         dispatch(getProject(projectId));
         dispatch(getRewards(projectId))
@@ -83,7 +83,7 @@ const TierRewards = () => {
                             margin: "5px 0px 0px 0px"
                         }}>Select an option below</p>
                     </div>
-                   {addButton}
+                    {addButton}
 
                 </div>
 
@@ -118,7 +118,7 @@ const TierRewards = () => {
                         </div>
                     </label>
                     {rewards?.map((reward) => (
-                        <RewardCard reward={reward} />
+                        <RewardCard reward={reward} projectId={projectId} />
                     ))}
                 </div>
 

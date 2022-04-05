@@ -5,7 +5,7 @@ import TierRewardForm from './TierRewardForm';
 import Modal from 'react-modal';
 import './style/newrewardcards.css'
 
-const RewardCard = ({ reward }) => {
+const RewardCard = ({ reward, projectId }) => {
     const dispatch = useDispatch();
     const [modalIsOpen, setIsOpen] = useState(false);
     const [newTitle, setNewTitle] = useState(reward.title)
@@ -51,11 +51,11 @@ const RewardCard = ({ reward }) => {
                                 isOpen={modalIsOpen}
                                 onRequestClose={closeModal}
                                 className="reward-modal">
-                                <TierRewardForm reward={reward} editForm={true}/>
+                                <TierRewardForm reward={reward} editForm={true} projectId={projectId} />
                             </Modal>
                             <div
                                 onClick={() => handleDelete(reward.id)}
-                                style={{cursor: "pointer"}}>Delete</div>
+                                style={{ cursor: "pointer" }}>Delete</div>
                         </div>
                         {/* Add onclick for continue div to render payment page */}
                     </div>

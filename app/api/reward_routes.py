@@ -34,11 +34,9 @@ def delete_reward(id):
 @reward_routes.route('/edit', methods=["PUT"])
 def edit_reward():
     reward = dict(request.json)
-    print(reward)
-    dbReward = Reward.query.filter(Reward.id == reward['id']).all()
-    dictReward = dbReward.to_dict()
+    dbReward = Reward.query.get(reward['id'])
     dbReward.title = reward['title']
     dbReward.description = reward['description']
     dbReward.cost = reward['cost']
     db.session.commit()
-    return dictReward
+    return dbReward.to_dict()
