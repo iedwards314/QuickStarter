@@ -13,8 +13,8 @@ function ProjectForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [goal, setGoal] = useState(0);
-  const [end_date, set_end_date] = useState('2000-01-01')
-  const [image, setImage] = useState('')
+  const [end_date, set_end_date] = useState('1800-01-01')
+  const [image, setImage] = useState('https://drive.google.com/uc?id=1FU5VA1G8mJoY8q7NSuBwYZpV-1UOHLv3')
   const [category_id, set_category_id] = useState(1)
 
 
@@ -26,10 +26,9 @@ function ProjectForm() {
   const updateCategory = (e) => set_category_id(e.target.value);
 
 
-
 //   useEffect(() => {
-
-//   }, [dispatch]);
+//     console.log(category_id)
+//   }, [category_id]);
 
 
   const handleSubmit = async (e) => {
@@ -44,30 +43,24 @@ function ProjectForm() {
       category_id
     };
     const createdProject = await dispatch(addProject(payload));
+
+    return <Redirect to='/' />;
+
   };
 
   return (
     <section className="new-form-holder centered middled">
       <form className="create-project-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">Enter a Title: </label>
+        <label htmlFor="title">Title: </label>
         <input
           type="text"
           name="title"
-          placeholder="Description"
+          placeholder="Enter a nice title for your project"
           required
           value={title}
           onChange={updateTitle}
         />
-        <label htmlFor="desc">Enter a Description: </label>
-        <input
-          type="text"
-          name="desc"
-          placeholder="Description"
-          required
-          value={description}
-          onChange={updateDescription}
-        />
-        <label htmlFor="goal">Enter a funding goal for your project: </label>
+        <label htmlFor="goal">Funding Goal: </label>
         <input
           type="number"
           name="goal"
@@ -76,7 +69,7 @@ function ProjectForm() {
           value={goal}
           onChange={updateGoal}
         />
-        <label htmlFor="enddate">Enter a funding goal for your project: </label>
+        <label htmlFor="enddate">End Date: </label>
         <input
           type="date"
           name="enddate"
@@ -85,7 +78,7 @@ function ProjectForm() {
           value={end_date}
           onChange={updateEndDate}
         />
-        <label htmlFor="img">Enter an Image URL: </label>
+        <label htmlFor="img">Image URL: </label>
         <input
           type="text"
           name="img"
@@ -95,13 +88,20 @@ function ProjectForm() {
         />
         <label htmlFor="ctgy">Project Category</label>
         <select name="ctgy" onChange={updateCategory}>
-            <option value={() => 1}>Games</option>
-            <option value={() => 2}>Music</option>
-            <option value={() => 3}>Health</option>
-            <option value={() => 4}>Film</option>
-            <option value={() => 5}>Food</option>
-            <option value={() => 6}>Tech</option>
+            <option value={1}>Games</option>
+            <option value={2}>Music</option>
+            <option value={3}>Health</option>
+            <option value={4}>Film</option>
+            <option value={5}>Food</option>
+            <option value={6}>Tech</option>
         </select>
+        <label htmlFor="desc">Description: </label>
+        <textarea className="project-description"
+        name="desc"
+        placeholder="Write a description for your project"
+        value={description}
+        onChange={updateDescription}
+        />
         <button className="create-new-project-button" type="submit">Create new Project</button>
       </form>
     </section>
