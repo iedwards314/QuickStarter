@@ -16,9 +16,11 @@
   }
 
   .reward-card {
+    cursor: pointer;
     width: 591px;
     height: 109px;
     background-color: #444444;
+    margin: 20px 0px 20px 0px;
   }
 
   .reward-container {
@@ -29,16 +31,25 @@
       background-color: #444444;
       text-align: center;
   } .reward-title-title {
-      padding-top: 30px;
+      padding-top: 20px;
       font-size: 32px;
       margin: 0px;
   } .reward-title-user {
-      font-size: 18px;
+      font-size: 16px;
       margin: 0px;
-      padding-bottom: 30px;
+      padding-bottom: 20px;
   }
 
   .pledge-container {
       position: absolute;
       left: 25%;
+  }
+
+  .reward-support-text {
+    display: flex;
+    justify-content: space-between;
+  }
+  .reward-open-modal {
+    align-self: end;
+    cursor: pointer;
   }

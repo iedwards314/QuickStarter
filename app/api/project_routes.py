@@ -10,7 +10,7 @@ def projects():
     return {'projects': [project.to_dict() for project in projects]}
 
 @project_routes.route('/<int:id>')
-def get_project():
+def get_project(id):
     project = Project.query.get(id)
     return project.to_dict()
 
