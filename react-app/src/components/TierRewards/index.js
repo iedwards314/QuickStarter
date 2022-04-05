@@ -15,14 +15,10 @@ const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [currentProject, setCurrentProject] = useState(null);
     const { projectId }  = useParams();
-    if (project) {
-        console.log(project);
-        console.log(rewards);
-    }
-
+   
     useEffect(() => {
             const project = { id: projectId }
-            const ret = dispatch(getProject(project));
+            dispatch(getProject(project));
             dispatch(getRewards(projectId))
 
     }, [dispatch])
