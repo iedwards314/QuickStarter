@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './style/signup.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -43,51 +44,68 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='form-container'>
+      <form className='signup-container' onSubmit={onSignUp}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div>
+          <p style={{
+            fontSize: "28px",
+            margin: "60px 0px 20px 0px",
+            color: "white",
+          }}>Sign up</p>
+        </div>
+        <div className='signup-username-input'>
+          <input
+            type='text'
+            name='username'
+            placeholder='Username'
+            onChange={updateUsername}
+            value={username}
+            className='signup-username-box'
+          />
+        </div>
+        <div className='signup-email-input'>
+          <input
+            type='text'
+            name='email'
+            placeholder='Email'
+            onChange={updateEmail}
+            value={email}
+            className='signup-email-box'
+          />
+        </div>
+        <div className='signup-password-input'>
+          <input
+            type='password'
+            name='password'
+            placeholder='Password'
+            onChange={updatePassword}
+            value={password}
+            className='signup-password-box'
+          />
+        </div>
+        <div className='signup-reppass-input'>
+          <input
+            type='password'
+            name='repeat_password'
+            placeholder='Repeat password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            className='signup-reppass-box'
+            required={true}
+          />
+        </div>
+        <button className='signup-submit-button' type='submit'>Create account</button>
+      </form>
+      <div className='signup-tologin'>
+        <p style={{margin:"0px 5px 0px 0px", padding:"20px 0px"}}>Have an account?</p>
+        <a href='/login' style={{color:"#44fff0"}}>Log in</a>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    </div>
   );
 };
 

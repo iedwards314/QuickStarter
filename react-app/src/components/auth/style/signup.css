@@ -1,0 +1,98 @@
+.form-container {
+    display: grid;
+    justify-content: center;
+}
+
+.signup-container {
+    width: 338px;
+}
+
+.signup-username-input {
+    margin-bottom: 18px;
+}
+
+.signup-username-box {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    background-color: #2b2b2b;
+    border: 2px solid #444444;
+    color: white;
+}
+
+.signup-username-box:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.signup-email-input {
+    margin-bottom: 18px;
+}
+
+.signup-email-box {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    background-color: #2b2b2b;
+    border: 2px solid #444444;
+    color: white;
+}
+
+.signup-email-box:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.signup-password-input {
+    margin-bottom: 18px;
+}
+
+.signup-password-box {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    background-color: #2b2b2b;
+    border: 2px solid #444444;
+    color: white;
+}
+
+.signup-password-box:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.signup-reppass-input {
+    margin-bottom: 18px;
+}
+
+.signup-reppass-box {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    background-color: #2b2b2b;
+    border: 2px solid #444444;
+    color: white;
+}
+
+.signup-reppass-box:focus {
+    outline: none !important;
+    border: 2px solid #44fff0;
+}
+
+.signup-submit-button {
+    background-color: #44fff0;
+    width: 100%;
+    padding: 10.5px 18px;
+    border: none;
+}
+
+.signup-tologin {
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
