@@ -39,4 +39,5 @@
     color: white;
     margin-right: 10px;
     margin-left: 10px;
+    overflow-y: auto;
 }
