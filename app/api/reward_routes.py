@@ -19,7 +19,7 @@ def create_reward():
 
 @reward_routes.route('/<int:id>')
 def get_rewards(id):
-    rewards = Reward.query.filter(Reward.project_id == id).all()
+    rewards = Reward.query.filter(Reward.project_id == id).order_by(Reward.cost).all()
     rewardList = []
     for reward in rewards:
         rewardList.append(reward.to_dict())
