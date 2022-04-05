@@ -24,3 +24,9 @@ def get_rewards(id):
     for reward in rewards:
         rewardList.append(reward.to_dict())
     return jsonify(rewardList)
+
+@reward_routes.route('/delete/<int:id>', methods=["DELETE"])
+def delete_reward(id):
+    Reward.query.filter(Reward.id == id).delete()
+    db.session.commit()
+    return jsonify("Success")

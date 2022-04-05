@@ -1,5 +1,6 @@
 const ADD_ONE = "rewards/ADD_ONE";
-const LOAD = "rewards/LOAD"
+const LOAD = "rewards/LOAD";
+const DELETE = "rewards/DELETE";
 
 const addOne = (reward) => ({
     type: ADD_ONE,
@@ -10,6 +11,22 @@ const load = (rewards) => ({
     type: LOAD,
     rewards
 })
+
+const deleteOne = (rewardId) => ({
+    type: DELETE,
+    rewardId
+})
+
+export const deleteReward = (rewardId) => async (dispatch) => {
+    const response = await fetch(`/api/rewards/delete/${rewardId}`, {
+        method: "DELETE"
+    });
+    if (response.ok) {
+        const res = await response.json();
+        dispatch(deleteOne(rewardId))
+        return res;
+    };
+};
 
 export const addReward = (reward) => async (dispatch) => {
     const response = await fetch('/api/rewards/create', {
@@ -50,6 +67,10 @@ const rewardReducer = (state = initialState, action) => {
             action.rewards.forEach((reward) => {
                 newState[reward.id] = reward
             });
+            return newState;
+        case DELETE:
+            newState = {...state};
+            delete newState[action.rewardId];
             return newState;
         default:
             return state;
