@@ -106,7 +106,7 @@ const TierRewards = () => {
                             </div>
                         </div>
                     </label>
-                    {project[projectId]?.rewards?.map((reward) => (
+                    {rewards?.map((reward) => (
                         <RewardCard reward={reward}/>
                     ))}
                 </div>
