@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import ProjectForm from './components/ProjectForm'
+import ProjectForm from './components/ProjectForm';
+import ProjectPage from './components/ProjectPage';
 // import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -48,8 +49,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        {/* <Route path="/projects/:projectId">
-        </Route> */}
+        <Route path="/projects/:projectId">
+          <ProjectPage />
+        </Route>
         <ProtectedRoute path="/projects/:projectId/rewards">
           <TierRewards />
         </ProtectedRoute>

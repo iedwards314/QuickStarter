@@ -15,9 +15,9 @@ const addOne = (project) => ({
     project,
 })
 
-const deleteOne = (projectId) => ({
+const deleteOne = (project) => ({
     type: DELETE_ONE,
-    projectId,
+    project,
 })
 
 const editOne = (project) => ({
@@ -63,14 +63,18 @@ export const addProject = (project) => async (dispatch) => {
     }
 }
 
-export const deleteProject = (projectId) => async (dispatch) => {
-    const response = await fetch(`/api/projects/delete/${projectId}`, {
+export const deleteProject = (project) => async (dispatch) => {
+    const response = await fetch(`/api/projects/delete/${project.id}`, {
         method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(project),
     });
     if (response.ok) {
-        const projectId = await response.json();
-        dispatch(deleteOne(projectId))
-        return;
+        const project = await response.json();
+        dispatch(deleteOne(project))
+        return project;
     }
 }
 

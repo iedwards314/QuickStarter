@@ -19,7 +19,6 @@ const TierRewards = () => {
     useEffect(() => {
         dispatch(getProject(projectId));
         dispatch(getRewards(projectId))
-
     }, [dispatch, projectId])
 
     let title;
