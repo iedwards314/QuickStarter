@@ -15,10 +15,9 @@ const TierRewards = () => {
     const rewards = useSelector((state) => Object.values(state.rewards))
     const [modalIsOpen, setIsOpen] = useState(false);
     const { projectId } = useParams();
-
+    
     useEffect(() => {
-        const project = { id: projectId }
-        dispatch(getProject(project));
+        dispatch(getProject(projectId));
         dispatch(getRewards(projectId))
 
     }, [dispatch, projectId])

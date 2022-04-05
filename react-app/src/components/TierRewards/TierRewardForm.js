@@ -39,9 +39,9 @@ const TierRewardForm = ({ projectId }) => {
                description,
                cost
            };
-           const project = { id: projectId }
+        //    const project = { id: projectId }
            dispatch(addReward(reward));
-           dispatch(getProject(project));
+           dispatch(getProject(projectId));
 
     }
 

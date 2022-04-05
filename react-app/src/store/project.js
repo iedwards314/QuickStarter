@@ -39,8 +39,8 @@ export const getProjects = () => async (dispatch) => {
     }
 }
 
-export const getProject = (project) => async (dispatch) => {
-    const response = await fetch(`/api/projects/${project.id}`)
+export const getProject = (projectId) => async (dispatch) => {
+    const response = await fetch(`/api/projects/${projectId}`)
     if (response.ok) {
         const project = await response.json();
         dispatch(getOne(project))
@@ -111,8 +111,9 @@ const projectReducer = (state = initialState, action) => {
             setState = {...state, projects: {...state.projects, [action.project.id]: action.project}, selected: {...state.selected}}
             return setState
         case GET_ONE:
-            setState = {...state, projects: {...state.projects}, selected: {...state.selected, [action.project.id]: {...action.project}}}
+            setState = {...state, projects: {...state.projects}, selected: { [action.project.id]: {...action.project}}}
             return setState
+
         default:
             return state;
     }
