@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addReward } from "../../store/rewards";
+import { getProject } from "../../store/project";
 import './style/tierform.css'
+
 
 const TierRewardForm = ({ projectId }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [cost, setCost] = useState("");
+    // eslint-disable-next-line
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
@@ -29,13 +32,16 @@ const TierRewardForm = ({ projectId }) => {
     const handleSubmit = () => {
         setHasSubmitted(true);
 
-        const reward = {
-            project_id: projectId,
-            title,
-            description,
-            cost
-        };
-        dispatch(addReward(reward));
+
+           const reward = {
+               project_id: projectId,
+               title,
+               description,
+               cost
+           };
+           const project = { id: projectId }
+           dispatch(addReward(reward));
+           dispatch(getProject(project));
 
     }
 

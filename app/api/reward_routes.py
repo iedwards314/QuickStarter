@@ -16,3 +16,11 @@ def create_reward():
     db.session.add(newReward)
     db.session.commit()
     return newReward.to_dict()
+
+@reward_routes.route('/<int:id>')
+def get_rewards(id):
+    rewards = Reward.query.filter(Reward.project_id == id).order_by(Reward.cost).all()
+    rewardList = []
+    for reward in rewards:
+        rewardList.append(reward.to_dict())
+    return jsonify(rewardList)

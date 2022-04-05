@@ -25,7 +25,8 @@ class Project(db.Model):
             rewardArray.append({ "title": reward.__dict__["title"],
                                  "description": reward.__dict__["description"],
                                  "cost": reward.__dict__["cost"] })
-
+        newList = sorted(rewardArray, key=lambda d: d['cost'])
+        
         return {
             'id': self.id,
             'title': self.title,
@@ -36,5 +37,5 @@ class Project(db.Model):
             'user_id': self.user_id,
             'category_id': self.category_id,
             'username': self.user.username,
-            'rewards': rewardArray
+            'rewards': newList
         }
