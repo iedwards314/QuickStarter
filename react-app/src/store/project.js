@@ -1,3 +1,4 @@
+
 const LOAD = "projects/LOAD"
 const ADD_ONE = "projects/ADD_ONE"
 const DELETE_ONE = "projects/DELETE_ONE"
@@ -95,28 +96,26 @@ const projectReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             const allProjects = {};
-            console.log('HEY THERE NMOPTICE ME',action.projects.projects)
             action.projects.projects.forEach((project) => {
                 allProjects[project.id] = project
             })
             return { ...state, projects: allProjects }
         case ADD_ONE:
-            setState = {...state}
-            setState.projects[action.project.id] = action.project
+            setState = {...state, projects: {...state.projects, [action.project.id]: action.project}, selected: {...state.selected}}
             return setState
         case DELETE_ONE:
-            setState = {...state}
+            setState = {...state, projects: {...state.projects}, selected: {...state.selected}}
             delete setState.projects[action.projectId];
             return setState
         case EDIT_ONE:
-            setState = {...state}
-            let prj = action.project
-            setState.projects[prj.id] = prj
+            setState = {...state, projects: {...state.projects, [action.project.id]: action.project}, selected: {...state.selected}}
+            // let prj = action.project
+            // setState.projects[prj.id] = prj
             return setState
         case GET_ONE:
-            setState = {...state}
-            let project = action.project
-            setState.selected[project.id] = project
+            setState = {...state, projects: {...state.projects}, selected: {...state.selected, [action.project.id]: action.project}}
+            // let project = action.project
+            // setState.selected[project.id] = project
             return setState
         default:
             return state;
