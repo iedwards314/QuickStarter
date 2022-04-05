@@ -42,10 +42,15 @@ function ProjectForm() {
       user_id,
       category_id
     };
-    const createdProject = await dispatch(addProject(payload));
-
-    return <Redirect to='/' />;
-
+    let createdProject
+    try {
+        createdProject = await dispatch(addProject(payload));
+    } catch (error) {
+        console.log("There is an error")
+    }
+    if(createdProject){
+        history.push('/')
+    }
   };
 
   return (
