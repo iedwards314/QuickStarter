@@ -11,21 +11,21 @@ import './style/index.css';
 const TierRewards = () => {
     const dispatch = useDispatch();
     const project = useSelector((state) => state.project.selected)
+    const user = useSelector((state) => state.session.user)
     const rewards = useSelector((state) => Object.values(state.rewards))
     const [modalIsOpen, setIsOpen] = useState(false);
-    const { projectId }  = useParams();
+    const { projectId } = useParams();
 
     useEffect(() => {
-            const project = { id: projectId }
-            dispatch(getProject(project));
-            dispatch(getRewards(projectId))
+        const project = { id: projectId }
+        dispatch(getProject(project));
+        dispatch(getRewards(projectId))
 
     }, [dispatch, projectId])
 
     let title;
-
     if (project) {
-            title = (
+        title = (
             <>
                 <p className='reward-title-title'>{project[projectId]?.title}</p>
                 <p className='reward-title-user'>by {project[projectId]?.username}</p>
@@ -37,6 +37,23 @@ const TierRewards = () => {
         )
 
     }
+
+    let addButton;
+    if (user?.id == project[projectId]?.user_id) {
+        addButton = (
+            <div
+                className='reward-open-modal'
+                onClick={() => {
+                    openModal();
+                }}
+            >
+                Add reward
+            </div>
+        )
+    } else {
+        addButton = null;
+    }
+
     // When done remove tier rewards from "/" route
 
     const openModal = () => {
@@ -67,15 +84,8 @@ const TierRewards = () => {
                             margin: "5px 0px 0px 0px"
                         }}>Select an option below</p>
                     </div>
+                   {addButton}
 
-                    <div
-                        className='reward-open-modal'
-                        onClick={() => {
-                            openModal();
-                        }}
-                    >
-                        Add reward
-                    </div>
                 </div>
 
 
@@ -109,7 +119,7 @@ const TierRewards = () => {
                         </div>
                     </label>
                     {rewards?.map((reward) => (
-                        <RewardCard reward={reward}/>
+                        <RewardCard reward={reward} />
                     ))}
                 </div>
 
