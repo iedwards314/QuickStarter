@@ -24,3 +24,19 @@ def get_rewards(id):
     for reward in rewards:
         rewardList.append(reward.to_dict())
     return jsonify(rewardList)
+
+@reward_routes.route('/delete/<int:id>', methods=["DELETE"])
+def delete_reward(id):
+    Reward.query.filter(Reward.id == id).delete()
+    db.session.commit()
+    return jsonify("Success")
+
+@reward_routes.route('/edit', methods=["PUT"])
+def edit_reward():
+    reward = dict(request.json)
+    dbReward = Reward.query.get(reward['id'])
+    dbReward.title = reward['title']
+    dbReward.description = reward['description']
+    dbReward.cost = reward['cost']
+    db.session.commit()
+    return dbReward.to_dict()

@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addReward } from "../../store/rewards";
 import { getProject } from "../../store/project";
+import { editReward, getRewards } from "../../store/rewards";
 import './style/tierform.css'
 
 
-const TierRewardForm = ({ projectId }) => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [cost, setCost] = useState("");
+const TierRewardForm = ({ projectId, editForm, reward }) => {
+    const [title, setTitle] = useState(reward ? reward.title : "");
+    const [description, setDescription] = useState(reward ? reward.description : "");
+    const [cost, setCost] = useState(reward ? reward.cost : "");
     // eslint-disable-next-line
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -32,16 +33,28 @@ const TierRewardForm = ({ projectId }) => {
     const handleSubmit = () => {
         setHasSubmitted(true);
 
+        if (editForm) {
+            const editedReward = {
+                id: reward.id,
+                project_id: projectId,
+                title,
+                description,
+                cost
+            };
+            dispatch(editReward(editedReward));
+            dispatch(getRewards(projectId));
+            // dispatch(getProject(projectId));
+            return
+        }
 
-           const reward = {
-               project_id: projectId,
-               title,
-               description,
-               cost
-           };
-           const project = { id: projectId }
-           dispatch(addReward(reward));
-           dispatch(getProject(project));
+        const newReward = {
+            project_id: projectId,
+            title,
+            description,
+            cost
+        };
+        dispatch(addReward(newReward));
+        dispatch(getProject(projectId));
 
     }
 
@@ -51,6 +64,7 @@ const TierRewardForm = ({ projectId }) => {
                 <p className="form-ptag">Reward Title</p>
                 <input
                     type="text"
+                    defaultValue={reward ? reward.title : ""}
                     placeholder="Reward Title"
                     onChange={(e) => setTitle(e.target.value)}
                     className="form-title-inputbox"
@@ -60,6 +74,7 @@ const TierRewardForm = ({ projectId }) => {
                 <p className="form-ptag">Description</p>
                 <textarea
                     placeholder="Description"
+                    defaultValue={reward ? reward.description : ""}
                     rows={10}
                     columns={10}
                     style={{ resize: "None" }}
@@ -71,6 +86,7 @@ const TierRewardForm = ({ projectId }) => {
                 <p className="form-ptag">Amount</p>
                 <input
                     type="number"
+                    defaultValue={reward ? reward.cost : ""}
                     onChange={(e) => setCost(e.target.value)}
                     placeholder="Amount"
                     className="form-amount-inputbox"

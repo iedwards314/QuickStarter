@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line
-import * as sessionActions from '../../store/session';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
@@ -31,6 +29,10 @@ const LoginForm = () => {
 
   if (user) {
     return <Redirect to='/' />;
+  }
+
+  const demoLogin = async () => {
+    await dispatch(login("demo@aa.io", "password"));
   }
 
   return (
@@ -73,8 +75,12 @@ const LoginForm = () => {
         <button className='login-submit-button' type='submit'>Log in</button>
       </form>
       <div className='login-tosignup'>
-        <p style={{ margin: "0px 5px 0px 0px", padding: "20px 0px" }}>New to Kickstarter?</p>
-        <a href='/sign-up' style={{ color: "#44fff0" }}>Click here.</a>
+        <p style={{ margin: "0px 5px 0px 0px", padding: "20px 0px 5px 0px" }}>New to Kickstarter?</p>
+        <a href='/sign-up' style={{ color: "#44fff0", padding: "20px 0px 5px 0px" }}>Click here.</a>
+      </div>
+      <div className='login-tosignup'>
+        <p className="demo-login-text" style={{ margin: "0px 5px 0px 0px", padding: "20px 0px" }}>Want to try the site?</p>
+        <p className="demo-login-text" onClick={demoLogin} style={{ color: "#44fff0", cursor: "pointer" }}>Demo Login</p>
       </div>
     </div>
   );
