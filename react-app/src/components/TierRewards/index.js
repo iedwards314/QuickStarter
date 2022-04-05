@@ -16,6 +16,9 @@ const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const { projectId } = useParams();
 
+    // Sorts rewards based on their cost before rendering : 
+    rewards?.sort((a,b) => a.cost - b.cost)
+
     useEffect(() => {
         dispatch(getProject(projectId));
         dispatch(getRewards(projectId))
