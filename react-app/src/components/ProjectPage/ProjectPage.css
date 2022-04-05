@@ -1,0 +1,20 @@
+.Project-Image-Container{
+
+}
+
+.Project-Image{
+    max-width: 40%;
+}
+
+.Project-Detail-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Project-Container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20px;
+}

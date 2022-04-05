@@ -16,8 +16,7 @@ const TierRewards = () => {
     const { projectId }  = useParams();
 
     useEffect(() => {
-            const project = { id: projectId }
-            dispatch(getProject(project));
+            dispatch(getProject(projectId));
             dispatch(getRewards(projectId))
 
     }, [dispatch, projectId])
