@@ -8,7 +8,6 @@ import './style/newrewardcards.css'
 const RewardCard = ({ reward, projectId }) => {
     const dispatch = useDispatch();
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [newTitle, setNewTitle] = useState(reward.title)
 
     const handleDelete = (rewardId) => {
         dispatch(deleteReward(rewardId))
