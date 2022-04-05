@@ -15,7 +15,7 @@ const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [currentProject, setCurrentProject] = useState(null);
     const { projectId }  = useParams();
-   
+
     useEffect(() => {
             const project = { id: projectId }
             dispatch(getProject(project));
@@ -78,6 +78,7 @@ const TierRewards = () => {
                 <div className="reward-modal-container">
                     {/* Modal container */}
                     <Modal
+                        ariaHideApp={false}
                         style={{ overlay: { backgroundColor: "rgba(68,68,68,.3" } }}
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
