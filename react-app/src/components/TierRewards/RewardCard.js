@@ -1,13 +1,27 @@
 import { useDispatch } from 'react-redux';
 import { deleteReward } from '../../store/rewards';
-import { getProject } from '../../store/project';
+import { useState } from 'react';
+import TierRewardForm from './TierRewardForm';
+import Modal from 'react-modal';
 import './style/newrewardcards.css'
 
 const RewardCard = ({ reward }) => {
     const dispatch = useDispatch();
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [newTitle, setNewTitle] = useState(reward.title)
 
     const handleDelete = (rewardId) => {
         dispatch(deleteReward(rewardId))
+    }
+
+    const openModal = () => {
+        setIsOpen(true);
+        return;
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+        return
     }
 
     return (
@@ -27,7 +41,18 @@ const RewardCard = ({ reward }) => {
                         <input className='reward-number-inputbox' placeholder='Number' type="number"></input>
                         <div>
                             <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
-                            <div>Edit</div>
+                            <div
+                                onClick={() => {
+                                    openModal();
+                                }}>Edit</div>
+                            <Modal
+                                ariaHideApp={false}
+                                style={{ overlay: { backgroundColor: "rgba(68,68,68,.3" } }}
+                                isOpen={modalIsOpen}
+                                onRequestClose={closeModal}
+                                className="reward-modal">
+                                <TierRewardForm reward={reward} editForm={true}/>
+                            </Modal>
                             <div
                                 onClick={() => handleDelete(reward.id)}
                                 style={{cursor: "pointer"}}>Delete</div>
