@@ -16,6 +16,9 @@ const TierRewards = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const { projectId } = useParams();
 
+    // Sorts rewards based on their cost before rendering :
+    rewards?.sort((a,b) => a.cost - b.cost)
+
     useEffect(() => {
         dispatch(getProject(projectId));
         dispatch(getRewards(projectId))
@@ -37,7 +40,7 @@ const TierRewards = () => {
     }
 
     let addButton;
-    if (user?.id == project[projectId]?.user_id) {
+    if (user?.id === project[projectId]?.user_id) {
         addButton = (
             <div
                 className='reward-open-modal'
@@ -51,8 +54,6 @@ const TierRewards = () => {
     } else {
         addButton = null;
     }
-
-    // When done remove tier rewards from "/" route
 
     const openModal = () => {
         setIsOpen(true);
@@ -117,7 +118,7 @@ const TierRewards = () => {
                         </div>
                     </label>
                     {rewards?.map((reward) => (
-                        <RewardCard reward={reward} projectId={projectId} />
+                        <RewardCard key={reward.id} reward={reward} projectId={projectId} />
                     ))}
                 </div>
 

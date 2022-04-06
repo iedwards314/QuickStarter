@@ -25,7 +25,7 @@ const ProjectsList = () => {
               <>
                 {projectsArr?.map((project) => (
                   <div className="project-div" key={project?.id}>
-                    <img className="project-image" src={project?.image} alt="project image" />
+                    <img className="project-image" src={project?.image} alt="project" />
                     <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
                       <h3>{project?.title}</h3>
                     </NavLink>

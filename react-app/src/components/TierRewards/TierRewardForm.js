@@ -42,7 +42,7 @@ const TierRewardForm = ({ projectId, editForm, reward }) => {
                 cost
             };
             dispatch(editReward(editedReward));
-            dispatch(getRewards(projectId));
+            // dispatch(getRewards(projectId));
             // dispatch(getProject(projectId));
             return
         }

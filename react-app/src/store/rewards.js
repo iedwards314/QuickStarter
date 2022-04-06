@@ -68,7 +68,6 @@ export const getRewards = (projectId) => async (dispatch) => {
     const response = await fetch(`/api/rewards/${projectId}`);
     if (response.ok) {
         const rewards = await response.json();
-        console.log(rewards);
         dispatch(load(rewards));
         return rewards;
     }
@@ -84,7 +83,7 @@ const rewardReducer = (state = initialState, action) => {
             newState[action.reward.id] = action.reward;
             return newState;
         case LOAD:
-            newState = {...state};
+            newState = {};
             action.rewards.forEach((reward) => {
                 newState[reward.id] = reward
             });
@@ -96,7 +95,7 @@ const rewardReducer = (state = initialState, action) => {
         case EDIT:
             newState = {...state};
             newState[action.reward.id] = action.reward;
-            return newState; 
+            return newState;
         default:
             return state;
     };
