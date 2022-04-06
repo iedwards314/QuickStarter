@@ -76,7 +76,7 @@ const PaymentPage = () => {
                             className="payment-form-input"
                             placeholder="1234-1234-1234-1234"
                             type="text"
-                            style={{ color: "black" }}
+                            style={{ color: "white" }}
                         />
                     </div>
                     <div>
@@ -84,14 +84,14 @@ const PaymentPage = () => {
                         <input
                             className="payment-form-input"
                             placeholder="Cardholder name"
-                            style={{ color: "black" }}
+                            style={{ color: "white" }}
                         />
                     </div>
                     <div className="expiration-securitycode">
                         <div className="payment-form-input-half1">
                             <p className="form-text">Expiration</p>
                             <input
-                                style={{padding: "12px"}}
+                                style={{padding: "12px", backgroundColor: "#a0a0a0"}}
                                 className="payment-form-input-half1"
                                 placeholder="MM/YY"
                                 type="text"
@@ -116,13 +116,12 @@ const PaymentPage = () => {
                         />
                     </div>
                     <div
-                        className=""
+                        className="form-pledge-button"
                         style={{
                             cursor: "pointer",
                             display: "inline-block"
                         }}
-                        onClick={handleSubmit}>
-                        <p className="">Pledge</p>
+                        onClick={handleSubmit}>Pledge
                     </div>
                 </form>
             </div>
