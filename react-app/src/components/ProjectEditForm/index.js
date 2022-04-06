@@ -1,57 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import { getProjectTypes, addProject } from "../../store/project";
+import { Redirect, useHistory, useParams } from "react-router-dom";
+import { getProject, editProject } from "../../store/project";
+import SetDate from "../utils/DateManagement"
 
-import './ProjectForm.css';
+import './ProjectEdit.css';
 
-function ProjectForm() {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const user_id = useSelector((state) => state.session?.user.id)
+function ProjectEditForm() {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const user_id = useSelector((state) => state.session?.user.id);
+    const { projectId } = useParams();
+    const project = useSelector((state) => state.project.selected[projectId]);
+    let endDate = project?.end_date
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [goal, setGoal] = useState(0);
-  const [end_date, set_end_date] = useState('1800-05-01')
-  const [image, setImage] = useState('https://drive.google.com/uc?id=1FU5VA1G8mJoY8q7NSuBwYZpV-1UOHLv3')
-  const [category_id, set_category_id] = useState(1)
-
-
-  const updateTitle = (e) => setTitle(e.target.value);
-  const updateDescription = (e) => setDescription(e.target.value);
-  const updateGoal = (e) => setGoal(e.target.value);
-  const updateEndDate = (e) => set_end_date(e.target.value);
-  const updateImage = (e) => setImage(e.target.value);
-  const updateCategory = (e) => set_category_id(e.target.value);
+    let theDate = SetDate(endDate)
+    console.log(theDate, 'GOOOOOOD')
+    const [title, setTitle] = useState(`${project.title}`);
+    const [description, setDescription] = useState(`${project.description}`);
+    const [goal, setGoal] = useState(`${project.goal}`);
+    const [end_date, set_end_date] = useState(theDate)
+    const [image, setImage] = useState(`${project.image}`)
+    const [category_id, set_category_id] = useState(`${project.category_id}`)
 
 
-//   useEffect(() => {
-//     console.log(category_id)
-//   }, [category_id]);
+    const updateTitle = (e) => setTitle(e.target.value);
+    const updateDescription = (e) => setDescription(e.target.value);
+    const updateGoal = (e) => setGoal(e.target.value);
+    const updateEndDate = (e) => set_end_date(e.target.value);
+    const updateImage = (e) => setImage(e.target.value);
+    const updateCategory = (e) => set_category_id(e.target.value);
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const payload = {
-      title,
-      description,
-      goal,
-      end_date,
-      image,
-      user_id,
-      category_id
+    useEffect(() => {
+        dispatch(getProject(projectId))
+    }, [dispatch]);
+
+
+    const handleSubmit = async (e) => {
+        let id = projectId
+      e.preventDefault();
+      const payload = {
+        id,
+        title,
+        description,
+        goal,
+        end_date,
+        image,
+        user_id,
+        category_id
+      };
+      let editedProject
+      try {
+          editedProject = await dispatch(editProject(payload, projectId));
+      } catch (error) {
+          console.log("There is an error")
+      }
+      if(editedProject){
+          history.push('/')
+      }
     };
-    let createdProject
-    try {
-        createdProject = await dispatch(addProject(payload));
-    } catch (error) {
-        console.log("There is an error")
-    }
-    if(createdProject){
-        history.push('/')
-    }
-  };
 
   return (
     <section className="new-form-holder centered middled">
@@ -113,4 +121,4 @@ function ProjectForm() {
   );
 };
 
-export default ProjectForm;
+export default ProjectEditForm;

@@ -81,12 +81,15 @@ export const deleteProject = (project) => async (dispatch) => {
 export const editProject = (project, id) => async (dispatch) => {
     const response = await fetch(`/api/projects/edit/${id}`, {
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify(project)
     });
     if (response.ok) {
         const editProject = await response.json();
         dispatch(editOne(editProject))
-        return;
+        return editProject;
     }
 }
 
@@ -117,7 +120,6 @@ const projectReducer = (state = initialState, action) => {
         case GET_ONE:
             setState = {...state, projects: {...state.projects}, selected: { [action.project.id]: {...action.project}}}
             return setState
-
         default:
             return state;
     }

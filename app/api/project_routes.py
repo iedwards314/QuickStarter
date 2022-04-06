@@ -39,3 +39,19 @@ def delete_project(id):
     db.session.delete(project)
     db.session.commit()
     return res
+
+@project_routes.route('/edit/<int:id>', methods=["PUT"])
+def edit_project(id):
+    project = dict(request.json)
+    data = Project.query.get(project['id'])
+
+    data.title = project['title'],
+    data.description = project['description'],
+    data.goal = project['goal'],
+    data.end_date = project['end_date'],
+    data.image = project['image'],
+    data.user_id = project['user_id'],
+    data.category_id = project['category_id'],
+
+    db.session.commit()
+    return data.to_dict()

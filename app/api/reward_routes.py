@@ -40,3 +40,4 @@ def edit_reward():
     dbReward.cost = reward['cost']
     db.session.commit()
     return dbReward.to_dict()
+#Yes
