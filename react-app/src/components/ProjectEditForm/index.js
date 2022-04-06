@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getProject, editProject } from "../../store/project";
 import SetDate from "../utils/DateManagement"
 
@@ -15,7 +15,6 @@ function ProjectEditForm() {
     let endDate = project?.end_date
 
     let theDate = SetDate(endDate)
-    console.log(theDate, 'GOOOOOOD')
     const [title, setTitle] = useState(`${project.title}`);
     const [description, setDescription] = useState(`${project.description}`);
     const [goal, setGoal] = useState(`${project.goal}`);
@@ -34,7 +33,7 @@ function ProjectEditForm() {
 
     useEffect(() => {
         dispatch(getProject(projectId))
-    }, [dispatch]);
+    }, [dispatch, projectId]);
 
 
     const handleSubmit = async (e) => {

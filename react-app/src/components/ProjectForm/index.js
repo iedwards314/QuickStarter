@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import { getProjectTypes, addProject } from "../../store/project";
+import { useHistory } from "react-router-dom";
+import { addProject } from "../../store/project";
 
 import './ProjectForm.css';
 

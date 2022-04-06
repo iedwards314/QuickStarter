@@ -6,12 +6,20 @@ contribution_routes = Blueprint('contributions', __name__)
 @contribution_routes.route('/create', methods=["POST"])
 def post_contribution():
     contribution = dict(request.json)
-    newContribution = Contribution(
-        amount=contribution['amount'],
-        project_id=contribution['project_id'],
-        user_id=contribution['user_id'],
-        reward_id=contribution['reward_id']
-    )
+    if (len(contribution) == 4):
+        newContribution = Contribution(
+            amount=contribution['amount'],
+            project_id=contribution['project_id'],
+            user_id=contribution['user_id'],
+            reward_id=contribution['reward_id']
+        )
+    else:
+        newContribution = Contribution(
+            amount=contribution['amount'],
+            project_id=contribution['project_id'],
+            user_id=contribution['user_id'],
+        )
+
     db.session.add(newContribution)
     db.session.commit()
     return newContribution.to_dict()

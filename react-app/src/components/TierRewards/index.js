@@ -2,22 +2,25 @@ import Modal from 'react-modal';
 import TierRewardForm from './TierRewardForm';
 import RewardCard from './RewardCard';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProject } from '../../store/project';
 import { getRewards } from '../../store/rewards';
+import { postContribution } from '../../store/contributions';
 import './style/index.css';
 
 const TierRewards = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const project = useSelector((state) => state.project.selected)
     const user = useSelector((state) => state.session.user)
     const rewards = useSelector((state) => Object.values(state.rewards))
+    const [amount, setAmount] = useState("")
     const [modalIsOpen, setIsOpen] = useState(false);
     const { projectId } = useParams();
 
     // Sorts rewards based on their cost before rendering :
-    rewards?.sort((a,b) => a.cost - b.cost)
+    rewards?.sort((a, b) => a.cost - b.cost)
 
     useEffect(() => {
         dispatch(getProject(projectId));
@@ -65,6 +68,21 @@ const TierRewards = () => {
         return
     }
 
+    const submitContribution = async () => {
+        // submit contribution
+        if (amount < 0) return alert('Amount must be more than $0 >:^[')
+        if (amount > 0) {
+            const contribution = {
+                amount,
+                project_id: projectId,
+                user_id: user.id
+            };
+            const res = await postContribution(contribution)
+            return history.push(`/checkout/${res.id}`)
+        }
+    };
+
+
     return (
         <div className="reward-container">
             <div className="reward-title-container">
@@ -111,8 +129,8 @@ const TierRewards = () => {
                             </div>
                             <div className='reward-inputbox'>
                                 <label className='dollarsign'>$</label>
-                                <input className='reward-number-inputbox' placeholder='Number' type="number"></input>
-                                <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
+                                <input className='reward-number-inputbox' onChange={(e) => setAmount(e.target.value)} placeholder='Number' type="number"></input>
+                                <div className='reward-inputcontinue' onClick={submitContribution} style={{ cursor: "pointer" }}>Continue</div>
                                 {/* Add onclick for continue div to render payment page */}
                             </div>
                         </div>

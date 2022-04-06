@@ -15,5 +15,4 @@ const CarouselCard = () => {
         </div>
     )
 };
-
 export default CarouselCard;

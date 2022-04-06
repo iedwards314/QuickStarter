@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addReward } from "../../store/rewards";
 import { getProject } from "../../store/project";
-import { editReward, getRewards } from "../../store/rewards";
+import { editReward } from "../../store/rewards";
 import './style/tierform.css'
 
 
