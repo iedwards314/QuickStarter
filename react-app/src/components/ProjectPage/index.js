@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  useHistory, useParams, NavLink } from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
+
 import { getProject, deleteProject } from "../../store/project";
 import './ProjectPage.css';
 
 function ProjectForm() {
-    //get one
     const dispatch = useDispatch();
     const history = useHistory();
     const { projectId } = useParams();
@@ -97,7 +97,7 @@ function ProjectForm() {
                         <p>{project?.description}</p>
                     </div>
                     <div className="Project-Image-Container">
-                        <img className="Project-Image" src={`${project?.image}`} alt="projectpic" />
+                        <img alt={`${project?.title}`} className="Project-Image" src={`${project?.image}`} />
                     </div>
                 </>
             )
