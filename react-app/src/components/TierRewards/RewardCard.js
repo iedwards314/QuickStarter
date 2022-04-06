@@ -38,7 +38,7 @@ const RewardCard = ({ reward, projectId }) => {
                 user_id: user.id
             };
             const res = await postContribution(contribution)
-            return history.push('/checkout/:contributionId')
+            // return history.push(`/checkout/${res.id}`)
         }
         // redirect to payment page
     };

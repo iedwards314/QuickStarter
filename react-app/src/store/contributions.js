@@ -9,7 +9,7 @@ export const postContribution = async (contribution) => {
         body: JSON.stringify(contribution),
     });
     if (response.ok) {
-        // const res = await response.json();
-        return contribution;
+        const res = await response.json();
+        return res;
     };
 }

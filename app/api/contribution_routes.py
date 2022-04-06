@@ -13,4 +13,4 @@ def post_contribution():
     )
     db.session.add(newContribution)
     db.session.commit()
-    return "newContribution"
+    return newContribution.to_dict()
