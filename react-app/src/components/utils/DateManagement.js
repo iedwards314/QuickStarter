@@ -14,14 +14,13 @@ function SetDate(endDate) {
         'Nov':'11',
         'Dec':'12',
     }
-    let NEWDATE = endDate.split(' 0')[0]
+    let NEWDATE = endDate.slice(5, 17)
     let NDATE = NEWDATE.split(' ')
-    let day = NDATE[1]
-    let year = NDATE[3]
-    let fMonth = NDATE[2]
+    let day = NDATE[0]
+    let year = NDATE[2]
+    let fMonth = NDATE[1]
     let month = DATEDICT[fMonth]
     let theDate = `${year}-${month}-${day}`
-
     return theDate
 }
 
