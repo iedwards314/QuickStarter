@@ -7,7 +7,7 @@ class Project(db.Model):
     description = db.Column(db.Text, nullable=False)
     goal = db.Column(db.Integer, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
-    image = db.Column(db.String(100))
+    image = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
 
@@ -26,7 +26,7 @@ class Project(db.Model):
                                  "description": reward.__dict__["description"],
                                  "cost": reward.__dict__["cost"] })
         newList = sorted(rewardArray, key=lambda d: d['cost'])
-        
+
         return {
             'id': self.id,
             'title': self.title,

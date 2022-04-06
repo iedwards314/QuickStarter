@@ -114,7 +114,7 @@ function ProjectEditForm() {
         value={description}
         onChange={updateDescription}
         />
-        <button className="create-new-project-button" type="submit">Create new Project</button>
+        <button className="create-new-project-button" type="submit">Finalize Edit</button>
       </form>
     </section>
   );

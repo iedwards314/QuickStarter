@@ -21,7 +21,9 @@ def upgrade():
     op.create_table('categories',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('category', sa.String(length=50), nullable=False),
+    sa.Column('image', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('payments',
@@ -40,7 +42,7 @@ def upgrade():
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('goal', sa.Integer(), nullable=False),
     sa.Column('end_date', sa.Date(), nullable=False),
-    sa.Column('image', sa.String(length=100), nullable=True),
+    sa.Column('image', sa.String(length=255), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('category_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),
