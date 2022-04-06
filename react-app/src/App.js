@@ -16,6 +16,7 @@ import { authenticate } from './store/session';
 import Banner from './components/Banner/index';
 import SplashPage from './components/SplashPage/index';
 import TierRewards from './components/TierRewards';
+import PaymentPage from './components/PaymentPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -64,8 +65,11 @@ function App() {
         <Route path="/projects/:projectId/edit" exact={true}>
           <ProjectEditForm />
         </Route>
-        <ProtectedRoute path="/projects/:projectId/rewards">
+        <ProtectedRoute path="/projects/:projectId/rewards" exact={true}>
           <TierRewards />
+        </ProtectedRoute>
+        <ProtectedRoute path="/checkout/:contributionId" exact={true}>
+          <PaymentPage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <SplashPage />

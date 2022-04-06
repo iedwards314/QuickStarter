@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
+
 import { getProject, deleteProject } from "../../store/project";
 import './ProjectPage.css';
 
@@ -24,6 +25,9 @@ function ProjectForm() {
                 <div className="Project-btns">
                     <NavLink className="Project-edit-btn" exact to={`/projects/${cProject?.id}/edit`}>
                         Edit
+                    </NavLink>
+                    <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/rewards`}>
+                        Edit Rewards
                     </NavLink>
                     {deleteButtons()}
                 </div>
