@@ -26,11 +26,6 @@ function ProjectForm() {
   const updateCategory = (e) => set_category_id(e.target.value);
 
 
-//   useEffect(() => {
-//     console.log(category_id)
-//   }, [category_id]);
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
