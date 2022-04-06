@@ -13,6 +13,16 @@ class Contribution(db.Model):
     reward = db.relationship("Reward", back_populates="contributions", cascade="all, delete")
 
     def to_dict(self):
+        if self.reward_id is None:
+            return {
+            'id': self.id,
+            'amount': self.amount,
+            'project_id': self.project_id,
+            'user_id': self.user_id,
+            'project_title': self.project.title,
+            'project_username': self.project.user.username,
+            'project_image': self.project.image,
+        }
         return {
             'id': self.id,
             'amount': self.amount,
