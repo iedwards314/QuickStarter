@@ -15,3 +15,8 @@ def post_contribution():
     db.session.add(newContribution)
     db.session.commit()
     return newContribution.to_dict()
+
+@contribution_routes.route('/<int:id>')
+def get_contribution(id):
+    contribution = Contribution.query.get(id)
+    return contribution.to_dict()
