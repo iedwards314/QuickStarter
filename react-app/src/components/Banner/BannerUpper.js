@@ -62,7 +62,7 @@ const BannerUpper = () => {
         >
             {/* TODO : Add link paths to nav buttons */}
             <div className='banner-left-button-container'>
-                <NavLink to="">
+                <NavLink to="/categories">
                     <div className='banner-discover nav-button'>
                         <p>Discover</p>
                     </div>
