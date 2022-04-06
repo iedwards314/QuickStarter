@@ -5,6 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProjectForm from './components/ProjectForm';
 import ProjectPage from './components/ProjectPage';
+import ProjectEditForm from './components/ProjectEditForm';
 // import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -51,6 +52,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/projects/:projectId" exact={true}>
           <ProjectPage />
+        </Route>
+        <Route path="/projects/:projectId/edit" exact={true}>
+          <ProjectEditForm />
         </Route>
         <ProtectedRoute path="/projects/:projectId/rewards">
           <TierRewards />
