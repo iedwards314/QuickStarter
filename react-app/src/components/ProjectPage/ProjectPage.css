@@ -18,3 +18,41 @@
     flex-direction: column;
     margin-left: 20px;
 }
+
+.Project-btns{
+    display: flex;
+    max-width: 30%;
+}
+
+.Project-rewards-btn {
+    color: black;
+    background-color: #44fff0;
+    padding: 10px 20px;
+    margin-bottom: 6.5px;
+
+}
+
+.Project-edit-btn {
+    color: black;
+    background-color: #44fff0;
+    padding: 10px 20px;
+    margin-bottom: 6.5px;
+
+}
+
+.Project-delete-btn {
+    display: block;
+    background: transparent;
+    outline: solid #767676;
+    outline-width: thin;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: #444444;
+
+}

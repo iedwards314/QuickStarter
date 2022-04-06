@@ -18,19 +18,25 @@ function ProjectForm() {
         dispatch(getProject(projectId))
     }, [dispatch]);
 
-    const showEditDeleteButtons = () => {
+    const showButtons = () => {
         if(!sessionUser) return;
         if(sessionUser.id === cProject?.user_id){
             return (
-                <>
-                    <NavLink exact to={`/projects/${cProject?.id}/edit`}>
+                <div className="Project-btns">
+                    <NavLink className="Project-edit-btn" exact to={`/projects/${cProject?.id}/edit`}>
                         Edit
                     </NavLink>
                     {deleteButtons()}
-                </>
+                </div>
             )
         } else {
-            return null;
+            return (
+                <div className="Project-btns">
+                    <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/rewards`}>
+                        Back this Project
+                    </NavLink>
+                </div>
+            );
         }
     }
 
@@ -71,7 +77,7 @@ function ProjectForm() {
         else{
             return (
                 <>
-                  <button onClick={() => setDeletePrompt(true)}>Delete</button>
+                  <button className="Project-delete-btn" onClick={() => setDeletePrompt(true)}>Delete</button>
                 </>
               );
         }
@@ -99,9 +105,7 @@ function ProjectForm() {
         <>
             <div className="Project-Container">
                 {projectDetail()}
-                <div>
-                    {showEditDeleteButtons()}
-                </div>
+                {showButtons()}
             </div>
         </>
     );
