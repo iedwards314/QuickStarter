@@ -9,7 +9,8 @@ def post_contribution():
     newContribution = Contribution(
         amount=contribution['amount'],
         project_id=contribution['project_id'],
-        user_id=contribution['user_id']
+        user_id=contribution['user_id'],
+        reward_id=contribution['reward_id']
     )
     db.session.add(newContribution)
     db.session.commit()

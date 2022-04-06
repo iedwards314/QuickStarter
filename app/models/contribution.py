@@ -19,5 +19,6 @@ class Contribution(db.Model):
             'project_id': self.project_id,
             'user_id': self.user_id,
             'project_title': self.project.title,
-            'project_username': self.project.user.username
+            'project_username': self.project.user.username,
+            'reward_title': self.reward.title
         }

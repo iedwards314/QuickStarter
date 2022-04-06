@@ -33,14 +33,14 @@ const RewardCard = ({ reward, projectId }) => {
         if (amount < 0) return alert('Amount must be more than $0 >:^[')
         if (amount > 0) {
             const contribution = {
+                reward_id: reward.id,
                 amount,
                 project_id: projectId,
                 user_id: user.id
             };
             const res = await postContribution(contribution)
-            // return history.push(`/checkout/${res.id}`)
+            return history.push(`/checkout/${res.id}`)
         }
-        // redirect to payment page
     };
 
     return (
