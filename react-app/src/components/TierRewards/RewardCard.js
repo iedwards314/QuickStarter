@@ -38,12 +38,15 @@ const RewardCard = ({ reward, projectId }) => {
                     <div className='reward-inputbox'>
                         <label className='dollarsign'>$</label>
                         <input className='reward-number-inputbox' placeholder='Number' type="number"></input>
-                        <div>
-                            <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
+                        <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
+                        <div className='reward-buttons'>
                             <div
+                                className='reward-edit'
                                 onClick={() => {
                                     openModal();
-                                }}>Edit</div>
+                                }}>
+                                Edit
+                            </div>
                             <Modal
                                 ariaHideApp={false}
                                 style={{ overlay: { backgroundColor: "rgba(68,68,68,.3" } }}
@@ -53,8 +56,11 @@ const RewardCard = ({ reward, projectId }) => {
                                 <TierRewardForm reward={reward} editForm={true} projectId={projectId} />
                             </Modal>
                             <div
+                                className='reward-delete'
                                 onClick={() => handleDelete(reward.id)}
-                                style={{ cursor: "pointer" }}>Delete</div>
+                                style={{ cursor: "pointer" }}>
+                                Delete
+                            </div>
                         </div>
                         {/* Add onclick for continue div to render payment page */}
                     </div>

@@ -64,3 +64,36 @@
     padding: 10px 20px;
     margin-bottom: 6.5px;
 }
+
+.reward-inputcontinue:hover {
+    background-color: rgba(68, 255, 240, 0.8);
+}
+
+.reward-buttons {
+    display: flex;
+    text-align: center;
+    margin: 0px 20px 0px 5px;
+}
+
+.reward-edit {
+    margin-bottom: 7px;
+    padding: 10px;
+    background-color: #444444;
+    border: 2px solid #2B2B2B;
+    border-right: 0.5px;
+}
+
+.reward-edit:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.reward-delete {
+    margin-bottom: 7px;
+    padding: 10px;
+    background-color: #444444;
+    border: 2px solid #2B2B2B;
+}
+
+.reward-delete:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
