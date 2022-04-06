@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import projectReducer from './project';
 import rewardReducer from './rewards';
+import categoryReducer from './category';
 
 const rootReducer = combineReducers({
   session,
   project: projectReducer,
-  rewards: rewardReducer
+  rewards: rewardReducer,
+  category: categoryReducer
 });
 
 

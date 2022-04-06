@@ -5,6 +5,8 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProjectForm from './components/ProjectForm';
 import ProjectPage from './components/ProjectPage';
+import CategoriesList from './components/CategoriesPage';
+import CategoryPage from './components/CategoryPage';
 import ProjectEditForm from './components/ProjectEditForm';
 // import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -43,6 +45,12 @@ function App() {
         </Route>
         <Route path='/create-project' exact={true}>
           <ProjectForm />
+        </Route>
+        <Route path='/categories/:id' exact={true}>
+          <CategoryPage />
+        </Route>
+        <Route path='/categories' exact={true}>
+          <CategoriesList />
         </Route>
         <ProtectedRoute path='/users' exact={true}>
           <UsersList/>
