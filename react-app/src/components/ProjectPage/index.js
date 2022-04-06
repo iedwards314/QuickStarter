@@ -26,6 +26,9 @@ function ProjectForm() {
                     <NavLink className="Project-edit-btn" exact to={`/projects/${cProject?.id}/edit`}>
                         Edit
                     </NavLink>
+                    <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/rewards`}>
+                        Edit Rewards
+                    </NavLink>
                     {deleteButtons()}
                 </div>
             )
