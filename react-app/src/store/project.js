@@ -1,4 +1,3 @@
-
 const LOAD = "projects/LOAD"
 const ADD_ONE = "projects/ADD_ONE"
 const DELETE_ONE = "projects/DELETE_ONE"

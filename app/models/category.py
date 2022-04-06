@@ -7,3 +7,10 @@ class Category(db.Model):
     description = db.Column(db.Text, nullable=False)
 
     project = db.relationship("Project", back_populates="category")
+
+    def to_dict(self):
+        return {
+        'id': self.id,
+        'category': self.category,
+        'description': self.description,
+    }
