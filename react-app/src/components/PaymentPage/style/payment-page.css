@@ -1,0 +1,21 @@
+.payment-page-container {
+    display: flex;
+}
+.payment-page-image {
+    height: 100px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.payment-page-image-project-container {
+    display: flex;
+    width: 50%;
+    height: 90%;
+    flex-direction: column;
+}
+
+.payment-page-form-container {
+    width: 50%;
+    height: 90%;
+    background-color: #A8D3D1;
+}

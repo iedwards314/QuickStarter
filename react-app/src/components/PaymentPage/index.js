@@ -2,7 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react"
 import { loadContribution } from "../../store/contributions";
-
+import './style/payment-page.css';
 
 const PaymentPage = () => {
     const dispatch = useDispatch();
@@ -20,31 +20,35 @@ const PaymentPage = () => {
 
 
     return (
-        <div>
-            <p>Pledge Summary</p>
-            <p>We won't charge you at this time. If the project reaches its funding goal, your payment method will be charged when the campaign ends. You'll recieve a confirmation ends. You'll recieve a confirmation email at "USEREMAIL" when your pledge is successfully processed. </p>
-            <div>
+        <div className="payment-page-container">
+            <div className="payment-page-image-project-container">
+                <p style={{fontSize: "40px"
+                         , fontWeight: "bold",
+                           margin: "50px 50px 15px 50px"}}>Pledge Summary</p>
+                <p style={{}}>We won't charge you at this time. If the project reaches its funding goal, your payment method will be charged when the campaign ends. You'll recieve a confirmation ends. You'll recieve a confirmation email at "USEREMAIL" when your pledge is successfully processed. </p>
                 <div>
-                    <img src={contribution?.project_image} alt=''></img>
+                    <img
+                        className="payment-page-image"
+                        src={contribution?.project_image} alt=''></img>
                 </div>
                 <div>
                     <p>{contribution?.project_title}</p>
                     <p>by {contribution?.project_username}</p>
                     {/* make the p tags into links */}
                 </div>
-            </div>
-            <div>
-                <p>Your Pledge</p>
                 <div>
-                    <p>Reward</p>
-                    <p>{contribution?.reward_title}</p>
-                    <p>Bonus</p>
-                    <p>${contribution?.amount - contribution?.reward_cost}</p>
-                    <p>Total amount</p>
-                    <p>${contribution?.amount}</p>
+                    <p>Your Pledge</p>
+                    <div>
+                        <p>Reward</p>
+                        <p>{contribution?.reward_title}</p>
+                        <p>Bonus</p>
+                        <p>${contribution?.amount - contribution?.reward_cost}</p>
+                        <p>Total amount</p>
+                        <p>${contribution?.amount}</p>
+                    </div>
                 </div>
             </div>
-            <div>
+            <div className="payment-page-form-container">
                 <form>
                     <div>
                         <p className="">Card Number</p>
