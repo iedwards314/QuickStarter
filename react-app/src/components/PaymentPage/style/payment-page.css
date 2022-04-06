@@ -5,6 +5,7 @@
     height: 100px;
     width: 300px;
     object-fit: cover;
+    margin-left: 50px;
 }
 
 .payment-page-image-project-container {
@@ -16,6 +17,33 @@
 
 .payment-page-form-container {
     width: 50%;
-    height: 90%;
+    height: 82vh;
     background-color: #A8D3D1;
+}
+
+.payment-page-image-contribution {
+    display: flex;
+}
+
+.payment-page-reward-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 0% 10% 0% 10%;
+}
+
+.payment-page-bonus {
+    display: flex;
+    justify-content: space-between;
+    margin: 0% 10% 0% 10%;
+}
+
+.payment-page-contribution-text {
+    margin-left: 30px;
+}
+
+.payment-page-total {
+    border-top: 1px solid #444444;
+    display: flex;
+    justify-content: space-between;
+    margin: 0% 10% 0% 10%;
 }

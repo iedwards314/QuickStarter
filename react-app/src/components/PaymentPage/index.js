@@ -9,6 +9,7 @@ const PaymentPage = () => {
     const history = useHistory();
     const { contributionId } = useParams();
     const contribution = useSelector(state => state.contributions[contributionId])
+    const user = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(loadContribution(contributionId))
@@ -22,29 +23,48 @@ const PaymentPage = () => {
     return (
         <div className="payment-page-container">
             <div className="payment-page-image-project-container">
-                <p style={{fontSize: "40px"
-                         , fontWeight: "bold",
-                           margin: "50px 50px 15px 50px"}}>Pledge Summary</p>
-                <p style={{}}>We won't charge you at this time. If the project reaches its funding goal, your payment method will be charged when the campaign ends. You'll recieve a confirmation ends. You'll recieve a confirmation email at "USEREMAIL" when your pledge is successfully processed. </p>
-                <div>
+                <p style={{
+                    fontSize: "40px"
+                    , fontWeight: "bold",
+                    margin: "50px 50px 15px 50px"
+                }}>Pledge Summary</p>
+                <p style={{
+                    margin: "0px 50px 20px 50px",
+                    fontSize: "18px"
+                }}>We won't charge you at this time. If the project reaches its funding goal, your payment method will be charged when the campaign ends. You'll receive a confirmation ends. You'll recieve a confirmation email at {user?.email} when your pledge is successfully processed. </p>
+                <div className="payment-page-image-contribution">
                     <img
                         className="payment-page-image"
                         src={contribution?.project_image} alt=''></img>
+                    <div className="payment-page-contribution-text">
+                        <p style={{ margin: "0px" }}>{contribution?.project_title}</p>
+                        <p style={{ margin: "0px" }}>by {contribution?.project_username}</p>
+                        {/* make the p tags into links */}
+                    </div>
                 </div>
                 <div>
-                    <p>{contribution?.project_title}</p>
-                    <p>by {contribution?.project_username}</p>
-                    {/* make the p tags into links */}
-                </div>
-                <div>
-                    <p>Your Pledge</p>
                     <div>
-                        <p>Reward</p>
-                        <p>{contribution?.reward_title}</p>
-                        <p>Bonus</p>
-                        <p>${contribution?.amount - contribution?.reward_cost}</p>
-                        <p>Total amount</p>
-                        <p>${contribution?.amount}</p>
+                        <p
+                            style={{
+                                fontSize: "21px"
+                                , fontWeight: "bold",
+                                margin: "30px 50px 15px 50px"
+                            }}>Your Pledge</p>
+                    </div>
+                    <div>
+                        <div className="payment-page-reward-title">
+                            <p >Reward</p>
+                            <p >{contribution?.reward_title}</p>
+                            <p >${contribution?.reward_cost}</p>
+                        </div>
+                        <div className="payment-page-bonus">
+                            <p>Bonus</p>
+                            <p >${contribution?.amount - contribution?.reward_cost}</p>
+                        </div>
+                        <div className="payment-page-total">
+                            <p>Total amount</p>
+                            <p style={{color: "#A8D3D1"}}>${contribution?.amount}</p>
+                        </div>
                     </div>
                 </div>
             </div>
