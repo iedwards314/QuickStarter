@@ -19,7 +19,6 @@ const initialState = {
 }
 
 const categoryReducer = (state = initialState, action) => {
-    let setState;
     switch (action.type) {
         case LOAD:
             const allCategories = {};

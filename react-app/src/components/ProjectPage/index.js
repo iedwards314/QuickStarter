@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory, useParams, NavLink } from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
 import { getProject, deleteProject } from "../../store/project";
 import './ProjectPage.css';
 
 function ProjectForm() {
-    //get one
     const dispatch = useDispatch();
     const history = useHistory();
     const { projectId } = useParams();
@@ -16,7 +15,7 @@ function ProjectForm() {
 
     useEffect(() => {
         dispatch(getProject(projectId))
-    }, [dispatch]);
+    }, [dispatch, projectId]);
 
     const showButtons = () => {
         if(!sessionUser) return;
@@ -94,7 +93,7 @@ function ProjectForm() {
                         <p>{project?.description}</p>
                     </div>
                     <div className="Project-Image-Container">
-                        <img className="Project-Image" src={`${project?.image}`} />
+                        <img alt={`${project?.title}`} className="Project-Image" src={`${project?.image}`} />
                     </div>
                 </>
             )

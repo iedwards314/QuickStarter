@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import { getProjectTypes, addProject } from "../../store/project";
+import { useHistory } from "react-router-dom";
+import { addProject } from "../../store/project";
 
 import './ProjectForm.css';
 
@@ -24,11 +24,6 @@ function ProjectForm() {
   const updateEndDate = (e) => set_end_date(e.target.value);
   const updateImage = (e) => setImage(e.target.value);
   const updateCategory = (e) => set_category_id(e.target.value);
-
-
-//   useEffect(() => {
-//     console.log(category_id)
-//   }, [category_id]);
 
 
   const handleSubmit = async (e) => {
