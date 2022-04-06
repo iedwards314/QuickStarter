@@ -7,22 +7,26 @@ import "./CategoryPage.css";
 
 const CategoryPage = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const categories = useSelector((state) => state.category.categories);
     const { id } = useParams();
-    console.log('CAT ID', categories, id)
+    //console.log('CAT ID', categories, id)
 
     let categoryInfo = categories[id]
-    console.log('CAT NAME',categoryInfo.category)
-    useEffect(() => {
-      dispatch(getCategories());
-    }, [dispatch]);
+    console.log(categoryInfo);
+    //console.log('CAT NAME',categoryInfo.category)
+    // useEffect(() => {
+    //   dispatch(getCategories());
+    // }, [dispatch]);
 
 
     return (
-        <div>
-        <h2>{categoryInfo.category}</h2>
+        <>
+        <div className='category-img-container'>
+        <img src={`${categoryInfo.image}`} alt={`${categoryInfo.category}`}></img>
         </div>
+        <h2>{categoryInfo.category}</h2>
+        </>
     )
 }
 

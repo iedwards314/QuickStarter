@@ -15,7 +15,10 @@ def seed_categories():
         category='Food', image="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",description='See how artisans and entrepreneurs are using Kickstarter to break new ground in food.')
     tech = Category(
         category='Tech', image="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHRlY2h8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",description='Discover projects from creators working to build a more beautiful future.')
-
+    epicfail = Category(
+        category='Epic Fails', image="https://images.unsplash.com/photo-1633707879430-1ca365fb1f6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",description="A place for scammers and scum alike, these projects are considered failures and no longer belong anywhere but here.")
+    watchout = Category(
+        category='Watch Out', image="https://images.unsplash.com/photo-1478479474071-8a3014d422c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fGZ1bm55fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",description="Projects that are so good we want you to keep an eye on them regardless of what they are")
 
     db.session.add(games)
     db.session.add(music)
@@ -23,6 +26,8 @@ def seed_categories():
     db.session.add(film)
     db.session.add(food)
     db.session.add(tech)
+    db.session.add(epicfail)
+    db.session.add(watchout)
 
     db.session.commit()
 

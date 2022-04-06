@@ -6,7 +6,7 @@ import "./CategoriesPage.css";
 
 const CategoriesList = () => {
     const dispatch = useDispatch();
-    const sectionsList = ["Games", "Music", "Health", "Film", "Food", "Tech"];
+    const sectionsList = ["Games", "Music", "Health", "Film", "Food", "Tech", "Epic Fails", "Watch Out"];
 
     useEffect(() => {
       dispatch(getCategories());
@@ -38,8 +38,6 @@ const CategoriesList = () => {
         <p>Creators We Like</p>
         <p>Most Funded Projects</p>
         <p>Most Recent</p>
-        <p>Epic Fails</p>
-        <p>Watch Out</p>
       </div>
     </>
   );
