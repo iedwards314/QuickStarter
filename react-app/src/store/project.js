@@ -88,7 +88,6 @@ export const editProject = (project, id) => async (dispatch) => {
     });
     if (response.ok) {
         const editProject = await response.json();
-        console.log('NOTICE ME RIGHT NOW YOU SON OF A BITCH',editProject)
         dispatch(editOne(editProject))
         return editProject;
     }

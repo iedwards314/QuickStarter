@@ -15,7 +15,6 @@ function ProjectEditForm() {
     let endDate = project?.end_date
 
     let theDate = SetDate(endDate)
-    console.log([theDate], 'YEP THIS IS IT')
     const [title, setTitle] = useState(`${project.title}`);
     const [description, setDescription] = useState(`${project.description}`);
     const [goal, setGoal] = useState(`${project.goal}`);
