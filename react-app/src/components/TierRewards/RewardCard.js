@@ -1,13 +1,18 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteReward } from '../../store/rewards';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import TierRewardForm from './TierRewardForm';
+import { postContribution } from '../../store/contributions';
 import Modal from 'react-modal';
 import './style/newrewardcards.css'
 
 const RewardCard = ({ reward, projectId }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
+    const user = useSelector((state) => state.session.user)
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [amount, setAmount] = useState(null);
 
     const handleDelete = (rewardId) => {
         dispatch(deleteReward(rewardId))
@@ -23,6 +28,21 @@ const RewardCard = ({ reward, projectId }) => {
         return
     }
 
+    const submitContribution = async () => {
+        // submit contribution
+        if (amount < 0) return alert('Amount must be more than $0 >:^[')
+        if (amount > 0) {
+            const contribution = {
+                reward_id: reward.id,
+                amount,
+                project_id: projectId,
+                user_id: user.id
+            };
+            const res = await postContribution(contribution)
+            return history.push(`/checkout/${res.id}`)
+        }
+    };
+
     return (
         <>
             <label className='reward-card'>
@@ -37,8 +57,12 @@ const RewardCard = ({ reward, projectId }) => {
                     </div>
                     <div className='reward-inputbox'>
                         <label className='dollarsign'>$</label>
-                        <input className='reward-number-inputbox' placeholder='Number' type="number"></input>
-                        <div className='reward-inputcontinue' style={{ cursor: "pointer" }}>Continue</div>
+                        <input
+                            onChange={(e) => setAmount(e.target.value)}
+                            className='reward-number-inputbox' placeholder='Number' type="number"></input>
+                        <div
+                            className='reward-inputcontinue' style={{ cursor: "pointer" }}
+                            onClick={submitContribution}>Continue</div>
                         <div className='reward-buttons'>
                             <div
                                 className='reward-edit'

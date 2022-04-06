@@ -9,6 +9,7 @@ class Reward(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey("projects.id"), nullable=False)
 
     project = db.relationship("Project", back_populates="reward")
+    contributions = db.relationship("Contribution", back_populates="reward")
 
     def to_dict(self):
         return {
