@@ -34,6 +34,7 @@ function ProjectForm() {
         }
     }
 
+    //function for destroy
     const destroyProjectButton = async(e) => {
         e.preventDefault();
         const payload = {
@@ -53,23 +54,18 @@ function ProjectForm() {
         }
     }
 
+    //confirmation for user delete
     const deleteButtons = () => {
         if(deletePrompt === true){
             return (
                 <>
-              <button
-                type="submit"
-                onClick={destroyProjectButton}
-              >
-                Confirm Delete
-              </button>
-                <button
-                onClick={() => setDeletePrompt(false)}
-              >
-                Cancel Delete
-              </button>
+                    <button type="submit" onClick={destroyProjectButton} >
+                        Confirm Delete
+                    </button>
+                    <button onClick={() => setDeletePrompt(false)} >
+                        Cancel Delete
+                    </button>
                 </>
-
             )
         }
         else{
@@ -81,25 +77,33 @@ function ProjectForm() {
         }
     }
 
-
+    //prevents a 404 error on initial render
+    const projectDetail = () => {
+        if(project === undefined) return null;
+        else {
+            return (
+                <>
+                    <div className="Project-Detail-div">
+                        <h1>{project?.title}</h1>
+                        <p>{project?.description}</p>
+                    </div>
+                    <div className="Project-Image-Container">
+                        <img className="Project-Image" src={`${project?.image}`} />
+                    </div>
+                </>
+            )
+        }
+    }
 
     return(
         <>
             <div className="Project-Container">
-                <div className="Project-Detail-div">
-                    <h1>{project?.title}</h1>
-                    <p>{project?.description}</p>
-                </div>
-                <div className="Project-Image-Container">
-                    <img className="Project-Image" src={`${project?.image}`} />
-                </div>
+                {projectDetail()}
                 <div>
                     {showEditDeleteButtons()}
                 </div>
             </div>
-
         </>
-
     );
 };
 
