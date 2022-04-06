@@ -23,6 +23,7 @@ def upgrade():
     sa.Column('category', sa.String(length=50), nullable=False),
     sa.Column('image', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('payments',
