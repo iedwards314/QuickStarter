@@ -41,6 +41,21 @@ const BannerUpper = () => {
         )
     }
 
+    const showCreateButton = (user) => {
+        if(user) {
+            return(
+            <>
+                <NavLink to="/create-project">
+                <div className='banner-create-project nav-button'>
+                    <p>Create a project</p>
+                </div>
+                </NavLink>
+            </>
+            )
+        }
+        else{ return null }
+    }
+
     return (
         <div
             className='banner-upper-container'
@@ -52,11 +67,7 @@ const BannerUpper = () => {
                         <p>Discover</p>
                     </div>
                 </NavLink>
-                <NavLink to="/create-project">
-                    <div className='banner-create-project nav-button'>
-                        <p>Create a project</p>
-                    </div>
-                </NavLink>
+                {showCreateButton(user)}
             </div>
             <NavLink exact to="/">
                 <div>
