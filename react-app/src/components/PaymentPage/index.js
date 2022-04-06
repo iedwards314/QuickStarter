@@ -69,44 +69,48 @@ const PaymentPage = () => {
                 </div>
             </div>
             <div className="payment-page-form-container">
-                <form>
+                <form className="payment-form">
                     <div>
-                        <p className="">Card Number</p>
+                        <p className="form-text">Card Number</p>
                         <input
-                            className=""
+                            className="payment-form-input"
                             placeholder="1234-1234-1234-1234"
                             type="text"
                             style={{ color: "black" }}
                         />
                     </div>
                     <div>
-                        <p className="">Cardholder Name</p>
+                        <p className="form-text">Cardholder Name</p>
                         <input
-                            className=""
+                            className="payment-form-input"
                             placeholder="Cardholder name"
                             style={{ color: "black" }}
                         />
                     </div>
-                    <div>
-                        <p className="">Expiration</p>
-                        <input
-                            className=""
-                            placeholder="MM/YY"
-                            type="text"
-                        />
+                    <div className="expiration-securitycode">
+                        <div className="payment-form-input-half1">
+                            <p className="form-text">Expiration</p>
+                            <input
+                                style={{padding: "12px"}}
+                                className="payment-form-input-half1"
+                                placeholder="MM/YY"
+                                type="text"
+                            />
+                        </div>
+                        <div className="payment-form-input-half1">
+                            <p style={{marginLeft: "3%"}}className="form-text">Security Code</p>
+                            <input
+                                style={{padding: "12px"}}
+                                className="payment-form-input-half2"
+                                placeholder="CVC"
+                                type="text"
+                            />
+                        </div>
                     </div>
                     <div>
-                        <p className="">Security Code</p>
+                        <p className="form-text">Zip/Postal code</p>
                         <input
-                            className=""
-                            placeholder="CVC"
-                            type="text"
-                        />
-                    </div>
-                    <div>
-                        <p className="">Zip/Postal code</p>
-                        <input
-                            className=""
+                            className="payment-form-input"
                             placeholder="Zip/Postal code"
                             type="text"
                         />
@@ -118,7 +122,7 @@ const PaymentPage = () => {
                             display: "inline-block"
                         }}
                         onClick={handleSubmit}>
-                        <p>Pledge</p>
+                        <p className="">Pledge</p>
                     </div>
                 </form>
             </div>

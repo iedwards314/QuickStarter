@@ -47,3 +47,44 @@
     justify-content: space-between;
     margin: 0% 10% 0% 10%;
 }
+
+.expiration-securitycode {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.payment-form {
+    margin: 6% 10%;
+}
+
+.payment-form-input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.payment-form-input-half1 {
+    width: 90%;
+}
+
+.payment-form-input-half2 {
+    width: 90%;
+    margin-left: 3%;
+}
+
+.form-text {
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: #2B2B2B;
+}
+
+.payment-form-input:focus {
+    border: 2px solid #44fff0;
+    outline: #44fff0;
+} .payment-form-input-half2:focus {
+    border: 2px solid #44fff0;
+    outline: #44fff0;
+} .payment-form-input-half1:focus {
+    border: 2px solid #44fff0;
+    outline: #44fff0;
+}
