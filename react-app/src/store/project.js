@@ -3,6 +3,7 @@ const ADD_ONE = "projects/ADD_ONE"
 const DELETE_ONE = "projects/DELETE_ONE"
 const EDIT_ONE = "projects/EDIT_ONE"
 const GET_ONE = "projects/GET_ONE"
+const GET_CAT = "projects/GET_CAT"
 
 const load = (projects) => ({
     type: LOAD,
@@ -29,6 +30,11 @@ const getOne = (project) => ({
     project
 })
 
+const getCat = (projects) => ({
+    type: GET_CAT,
+    projects
+})
+
 export const getProjects = () => async (dispatch) => {
     const response = await fetch(`/api/projects`)
     if (response.ok) {
@@ -44,6 +50,15 @@ export const getProject = (projectId) => async (dispatch) => {
         const project = await response.json();
         dispatch(getOne(project))
         return project
+    }
+}
+
+export const getCategory = (id) => async (dispatch) => {
+    const response = await fetch(`/api/categories/project/${id}`)
+    if (response.ok) {
+        const projects = await response.json();
+        dispatch(getCat(projects))
+        return projects
     }
 }
 
@@ -95,6 +110,7 @@ export const editProject = (project, id) => async (dispatch) => {
 const initialState = {
     projects: {},
     selected: {},
+    category: {},
 }
 
 const projectReducer = (state = initialState, action) => {
@@ -118,6 +134,9 @@ const projectReducer = (state = initialState, action) => {
             return setState
         case GET_ONE:
             setState = {...state, projects: {...state.projects}, selected: { [action.project.id]: {...action.project}}}
+            return setState
+        case GET_CAT:
+            setState = {...state, projects: {...state.projects}, selected: {...state.selected}, category: action.projects }
             return setState
         default:
             return state;
