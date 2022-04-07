@@ -44,14 +44,14 @@ const BannerUpper = () => {
                     </div>
                 </NavLink>
                 <div className='banner-right-button-container'>
-                        <div className='banner-search nav-button'>
-                            <p onClick={() => setSearchActive(true)}>Search</p>
-                        </div>
+                    <div className='banner-search nav-button'>
+                        <p onClick={() => setSearchActive(true)}>Search</p>
+                    </div>
                     <LogoutButton />
                 </div>
             </>
         )
-    } else if (!user && !searchActive){
+    } else if (!user && !searchActive) {
         links = (
             <>
                 <div className='banner-left-button-container'>
@@ -107,24 +107,23 @@ const BannerUpper = () => {
             className='banner-upper-container'
         >
             <div className={searchActive ? 'search-bar-container' : 'transition'}>
-                    <input
-                        placeholder='Search for projects...'
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        onKeyDown={(e) => {
-                            if (e.keyCode === 13) {
-                                console.log("Searching!");
-                                handleSearch(searchTerm)
-                            }
-                        }}
-                        className='search-bar-input'
-                        type="text"
-                    />
-                    <div className="cancel-search">
-                        <p
-                            onClick={() => setSearchActive(false)}
-                            style={{color:"#444444", fontSize: "20px", cursor: "pointer"}}>X</p>
-                    </div>
+                <input
+                    placeholder='Search for projects...'
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.keyCode === 13) {
+                            handleSearch(searchTerm)
+                        }
+                    }}
+                    className='search-bar-input'
+                    type="text"
+                />
+                <div className="cancel-search">
+                    <p
+                        onClick={() => setSearchActive(false)}
+                        style={{ color: "#444444", fontSize: "20px", cursor: "pointer" }}>X</p>
                 </div>
+            </div>
             {links}
         </div>
     )

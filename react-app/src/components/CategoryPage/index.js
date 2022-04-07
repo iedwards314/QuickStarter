@@ -6,62 +6,64 @@ import "./CategoryPage.css";
 
 const CategoryPage = () => {
 
-    const dispatch = useDispatch();
-    const categories = useSelector((state) => state.category.categories);
-    const { id } = useParams();
-    //console.log('CAT ID', categories, id)
-    const projects = useSelector((state) => state.project.category);
-    console.log(projects, 'NOTICE ME NOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW', categories);
-    let projectsArr = [];
-    let categoryInfo = categories[id]
-    let countArr = Object.values(projects);
-    //console.log('CAT NAME',categoryInfo.category)
-    useEffect(() => {
-      dispatch(getCategory(id));
-    }, [dispatch, id]);
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.category.categories);
+  const { id } = useParams();
 
-    const projectListMap = () => {
+  const projects = useSelector((state) => state.project.category);
 
-        if (projects !== undefined) {
-          projectsArr = Object.values(projects);
-          return (
-            <>
-              {projectsArr?.map((project) => (
-                <div className="project-div" key={project?.id}>
-                  <img className="project-image" src={project?.image} alt="project" />
-                  <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
-                    <h3>{project?.title}</h3>
-                  </NavLink>
-                  <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
-                    {project?.description}
-                  </NavLink>
-                </div>
-              ))}
-            </>
-          );
-        }
-      };
+  let projectsArr = [];
+  let categoryInfo = categories[id]
+  let countArr = Object.values(projects);
 
-    return (
-        <div className='category-container-div'>
-            <div className='category-img-container'>
-                <img src={`${categoryInfo.image}`} alt={`${categoryInfo.category}`}></img>
+  useEffect(() => {
+    dispatch(getCategory(id));
+  }, [dispatch, id]);
+
+  const projectListMap = () => {
+
+    if (projects !== undefined) {
+      projectsArr = Object.values(projects);
+      return (
+        <>
+          {projectsArr?.map((project) => (
+            <div className="project-div" key={project?.id}>
+              <NavLink className="project-image-container" exact to={`/projects/${project?.id}`}>
+                <img className="project-image" src={project?.image} alt="project" />
+              </NavLink>
+              <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
+                <h3>{project?.title}</h3>
+              </NavLink>
+              <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
+                {project?.description}
+              </NavLink>
             </div>
-            <div className="category-title-div">
-                <h2>{categoryInfo.category}</h2>
-            </div>
-            <div className='div-line-one'>
-            </div>
-            <div className='div-line-grey'>
-            </div>
-            <div className='div-line-two'>
-            </div>
-            <div className='project-number'><h1>{`Explore ${countArr.length} Project(s)`}</h1></div>
-            <div className="projects-container-div">
-                {projectListMap()}
-            </div>
-        </div>
-    )
+          ))}
+        </>
+      );
+    }
+  };
+
+  return (
+    <div className='category-container-div'>
+      <div className='category-img-container'>
+        <img src={`${categoryInfo.image}`} alt={`${categoryInfo.category}`}></img>
+      </div>
+      <div className="category-title-div">
+        <h2>{categoryInfo.category}</h2>
+      </div>
+      <div className='div-line-one'>
+      </div>
+      <div className='div-line-grey'>
+      </div>
+      <div className='div-line-two'>
+      </div>
+      <div className='project-number'><h1>{`Explore ${countArr.length} Project(s)`}</h1></div>
+      <div className="projects-container-div">
+        {projectListMap()}
+      </div>
+    </div>
+  )
 }
 
 export default CategoryPage;
