@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getProjects } from "../../store/project";
 import "./style/project-list.css"
+import { getCategories } from "../../store/category";
 
 const ProjectsList = ({search}) => {
     const dispatch = useDispatch();
@@ -14,6 +15,10 @@ const ProjectsList = ({search}) => {
     useEffect(() => {
       if (!search) dispatch(getProjects());
     }, [dispatch, search]);
+
+    useEffect(() => {
+        dispatch(getCategories());
+    },[dispatch])
 
     console.log('STATE',projects)
 
