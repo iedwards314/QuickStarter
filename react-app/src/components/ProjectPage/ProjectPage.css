@@ -1,9 +1,18 @@
-.Project-Image-Container{
+.main-container {
+    margin: 20px;
+}
 
+.Project-Image-Container{
+    max-width: 100%;
 }
 
 .Project-Image{
-    max-width: 40%;
+    max-width: 95%;
+}
+
+.Project-Rewards-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .Project-Detail-div{
@@ -12,41 +21,58 @@
     flex-direction: column;
 }
 
-.Project-Container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-left: 20px;
-}
-
 .Project-btns{
     display: flex;
-    max-width: 30%;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
 }
 
 .Project-rewards-btn {
+    display: block;
     color: black;
     background-color: #44fff0;
     padding: 10px 20px;
     margin-bottom: 6.5px;
+    text-align: center;
+    border-radius: 5%;
+    outline-width: thin;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none;
+    font-size: 12px;
+    box-shadow: inset 0 0 0 1.5px #7c7c7c;
 
 }
 
 .Project-edit-btn {
-    color: black;
-    background-color: #44fff0;
-    padding: 10px 20px;
-    margin-bottom: 6.5px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    background: transparent;
+    background-color: #444444;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    border-radius: 5%;
+    outline-width: thin;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none;
+    font-size: 12px;
+    box-shadow: inset 0 0 0 1.5px #7c7c7c;
+
 
 }
 
-.Project-delete-btn {
+.Project-delete-btn,
+.Delete-cancel-btn {
     display: block;
     background: transparent;
-    outline: solid #767676;
+    outline: solid #3d3d3d;
+    border-radius: 5%;
     outline-width: thin;
     text-align: center;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
     line-height: 25px;
     padding: 5px 20px;
@@ -55,4 +81,33 @@
     font-size: 12px;
     background-color: #444444;
 
+}
+
+.Delete-confirm-btn{
+    display: block;
+    background: transparent;
+    outline: solid #580101;
+    border-radius: 5%;
+    outline-width: thin;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: #af0101;
+}
+
+.lower-link-container{
+    display: flex;
+}
+
+.project-links-list{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 10px;
+    gap: 50px;
 }
