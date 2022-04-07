@@ -7,7 +7,7 @@
     width: 556px;
     height: 300px;
     object-fit: cover;
-    margin-left: 40%
+    justify-self: end;
 }
 
 .Project-Image{

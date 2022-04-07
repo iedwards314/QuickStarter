@@ -5,6 +5,7 @@ const EDIT_ONE = "projects/EDIT_ONE"
 const GET_ONE = "projects/GET_ONE"
 const GET_CAT = "projects/GET_CAT"
 const GET_INFO = "projects/GET_INFO"
+const GETONE_INFO = "projects/GETONE_INFO"
 
 const load = (projects) => ({
     type: LOAD,
@@ -38,6 +39,11 @@ const getCat = (projects) => ({
 
 const loadInfo = (info) => ({
     type: GET_INFO,
+    info
+})
+
+const loadProjectInfo = (info) => ({
+    type: GETONE_INFO,
     info
 })
 
@@ -126,7 +132,15 @@ export const getInfo = () => async (dispatch) => {
     const response = await fetch('/api/projects/info');
     if (response.ok) {
         const info = await response.json();
-        console.log(info);
+        dispatch(loadInfo(info))
+        return info;
+    }
+}
+
+export const getProjectInfo = (projectId) => async (dispatch) => {
+    const response = await fetch(`/api/projects/${projectId}/info`);
+    if (response.ok) {
+        const info = await response.json();
         dispatch(loadInfo(info))
         return info;
     }

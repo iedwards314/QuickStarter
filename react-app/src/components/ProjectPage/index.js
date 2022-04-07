@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink, Link } from "react-router-dom";
-
-import { getProject, deleteProject } from "../../store/project";
+import { getProject, deleteProject, getProjectInfo } from "../../store/project";
 import './ProjectPage.css';
 
 function ProjectForm() {
@@ -11,11 +10,13 @@ function ProjectForm() {
     const { projectId } = useParams();
     const sessionUser = useSelector((state) => state.session.user)
     const project = useSelector((state) => state.project.selected[projectId]);
+    const info = useSelector((state) => state.project.info)
     let cProject = {...project}
     const [deletePrompt, setDeletePrompt] = useState(false);
 
     useEffect(() => {
         dispatch(getProject(projectId))
+        dispatch(getProjectInfo(projectId))
     }, [dispatch, projectId]);
 
     const showButtons = () => {
@@ -129,9 +130,9 @@ function ProjectForm() {
 
             return (
                 <>
-                    <p>{`$${rewardSum}`}</p>
+                    <p>{`$${info?.total}`}</p>
                     <h3>{`pledged of $${project?.goal} goal`}</h3>
-                    <p>{project?.rewards?.length}</p>
+                    <p>{info?.backers}</p>
                     <h3>backers</h3>
                     <p>{hours}</p>
                     <h3>hours to go</h3>
