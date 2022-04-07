@@ -107,11 +107,22 @@ export const editProject = (project, id) => async (dispatch) => {
     }
 }
 
+export const searchProjects = (searchTerms) => async (dispatch) => {
+    const response = await fetch(`/api/projects/search/${searchTerms}`);
+    if (response.ok) {
+        const searchedProjects = await response.json();
+        console.log(searchedProjects);
+        dispatch(load(searchedProjects));
+        return searchedProjects;
+    }
+}
+
 const initialState = {
     projects: {},
     selected: {},
     category: {},
 }
+
 
 const projectReducer = (state = initialState, action) => {
     let setState;
