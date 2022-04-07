@@ -18,7 +18,7 @@ const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
                 </div>
             </div>
             <div className='link-container'>
-                <Link  to={{ pathname: `${github}` }} target="_blank">
+                <Link to={{ pathname: `${github}` }} target="_blank">
                     {/* change name */}
                     <div>
                         <img
@@ -27,7 +27,7 @@ const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
                     </div>
                 </Link>
                 <Link to={{ pathname: `${linkedIn}` }} target="_blank">
-                {/* change name */}
+                    {/* change name */}
                     <div>
                         <img
                             className="about-link-1"
