@@ -18,6 +18,7 @@ const CarouselCard = ({ img, name, description, github, linkedIn }) => {
                 </div>
             </div>
             <div className='link-container'>
+
                 <Link  to={{ pathname: `${github}` }} target="_blank">
                     <div>
                         <img

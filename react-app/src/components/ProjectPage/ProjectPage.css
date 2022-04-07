@@ -2,7 +2,7 @@
     margin: 20px;
 }
 
-.Project-Image-Container{
+.Project-Image-Container {
     max-width: 100%;
     width: 556px;
     height: 300px;
@@ -10,16 +10,16 @@
     justify-self: end;
 }
 
-.Project-Image{
+.Project-Image {
     max-width: 95%;
 }
 
-.Project-Rewards-container{
+.Project-Rewards-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.Project-Rewards{
+.Project-Rewards {
     max-width: 100%;
 }
 
@@ -30,7 +30,7 @@
     flex-direction: column;
 }
 
-.Project-btns{
+.Project-btns {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,11 +106,11 @@
     background-color: #af0101;
 }
 
-.lower-link-container{
+.lower-link-container {
     display: flex;
 }
 
-.project-links-list{
+.project-links-list {
     display: flex;
     flex-direction: row;
     list-style: none;

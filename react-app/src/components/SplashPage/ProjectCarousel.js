@@ -19,7 +19,7 @@ const ProjectCarousel = () => {
                         linkedIn={"https://www.linkedin.com/in/antarellano/"}
                         github={"https://github.com/badjub1es"}
                         description={"Full Stack Software Engineer | Javascript | Python | React.js | Redux.js | PostgreSQL | Express | Node.js"}
-                        img={"https://media-exp1.licdn.com/dms/image/C5603AQEMfoI1QucysQ/profile-displayphoto-shrink_200_200/0/1517630088884?e=1654732800&v=beta&t=D_d4ilGDH57zA_hp4TrorBkNbQlc-dnJJ9obhXKGMV0"}/>
+                        img={"https://media-exp1.licdn.com/dms/image/C5603AQEMfoI1QucysQ/profile-displayphoto-shrink_200_200/0/1517630088884?e=1654732800&v=beta&t=D_d4ilGDH57zA_hp4TrorBkNbQlc-dnJJ9obhXKGMV0"} />
                 </div>
                 <div>
                     <CarouselCard
@@ -27,7 +27,7 @@ const ProjectCarousel = () => {
                         linkedIn={"https://www.linkedin.com/in/edwards-ian/"}
                         github={"https://github.com/iedwards314"}
                         description={"Full Stack Software Engineer | Javascript | Python | React.js | Redux.js | PostgreSQL | Express | Node.js"}
-                        img={"https://drive.google.com/uc?id=1Lw1PEN2P86MX35sstUaTpVwrEhmiUws0"}/>
+                        img={"https://drive.google.com/uc?id=1Lw1PEN2P86MX35sstUaTpVwrEhmiUws0"} />
                 </div>
                 <div>
                     <CarouselCard
@@ -35,7 +35,7 @@ const ProjectCarousel = () => {
                         linkedIn={"https://www.linkedin.com/in/jason-li-6668b81ba/"}
                         github={"https://github.com/itsjongy"}
                         description={"Full Stack Software Engineer | Javascript | Python | React.js | Redux.js | PostgreSQL | Express | Node.js"}
-                        img={"https://drive.google.com/uc?id=1Oha_zLSEoo-6ve4INgjraY1-vIq_T0t4"}/>
+                        img={"https://drive.google.com/uc?id=1Oha_zLSEoo-6ve4INgjraY1-vIq_T0t4"} />
                 </div>
                 <div>
                     <CarouselCard

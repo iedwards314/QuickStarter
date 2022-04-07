@@ -10,7 +10,7 @@ const FundingInfoCard = () => {
     useEffect(() => {
         dispatch(getInfo())
     }, [dispatch])
-    
+
     return (
         <div className='info-card-container'>
             <div className='info-card box-one'>

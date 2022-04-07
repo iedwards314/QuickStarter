@@ -14,6 +14,7 @@ function ProjectForm() {
     const project = useSelector((state) => state.project.selected[projectId]);
     const info = useSelector((state) => state.project.info)
     let cProject = {...project}
+
     const [deletePrompt, setDeletePrompt] = useState(false);
 
     useEffect(() => {
@@ -22,8 +23,8 @@ function ProjectForm() {
     }, [dispatch, projectId]);
 
     const showButtons = () => {
-        if(!sessionUser) return;
-        if(sessionUser.id === cProject?.user_id){
+        if (!sessionUser) return;
+        if (sessionUser.id === cProject?.user_id) {
             return (
                 <div className="Project-btns">
                     <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/rewards`}>
@@ -47,7 +48,7 @@ function ProjectForm() {
     }
 
     //function for destroy
-    const destroyProjectButton = async(e) => {
+    const destroyProjectButton = async (e) => {
         e.preventDefault();
         const payload = {
             userId: sessionUser?.id,
@@ -61,14 +62,14 @@ function ProjectForm() {
             console.log("error in delete")
         }
 
-        if(destroyedProject?.id){
+        if (destroyedProject?.id) {
             history.push("/");
         }
     }
 
     //confirmation for user delete
     const deleteButtons = () => {
-        if(deletePrompt === true){
+        if (deletePrompt === true) {
             return (
                 <>
                     <div className="Delete-confirm-btn" type="submit" onClick={destroyProjectButton} >
@@ -80,18 +81,18 @@ function ProjectForm() {
                 </>
             )
         }
-        else{
+        else {
             return (
                 <>
                   <div className="Project-rewards-btn" onClick={() => setDeletePrompt(true)}>Delete</div>
                 </>
-              );
+            );
         }
     }
 
     //prevents a 404 error on initial render
     const projectDetail = () => {
-        if(project === undefined) return null;
+        if (project === undefined) return null;
         else {
             return (
                 <>
@@ -105,9 +106,9 @@ function ProjectForm() {
     }
 
     const projectImage = () => {
-        if(project === undefined) return null;
-        else{
-            return(
+        if (project === undefined) return null;
+        else {
+            return (
                 <>
                     <div className="Project-Image-Container">
                         <img alt={`${project?.title}`} className="Project-Image" src={`${project?.image}`} />
@@ -118,13 +119,12 @@ function ProjectForm() {
     }
 
     const projectRewardsDetail = () => {
-        if(project === undefined) return null;
+        if (project === undefined) return null;
         else {
-
             let date_now = new Date();
             let end_date = new Date(project?.end_date)
-            let seconds = Math.floor((end_date - (date_now))/1000);
-            let hours = Math.floor(seconds/3600);
+            let seconds = Math.floor((end_date - (date_now)) / 1000);
+            let hours = Math.floor(seconds / 3600);
 
 
             let completionPercent = (Math.floor((info?.total / project?.goal) * 100));
@@ -152,7 +152,7 @@ function ProjectForm() {
         }
     }
 
-    return(
+    return (
         <div className="main-container">
             <div className="Project-container">
                 <div className="Project-detail-container">
