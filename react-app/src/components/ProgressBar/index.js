@@ -1,11 +1,11 @@
 const ProgressBar = ({bgcolor, completed}) => {
 
     if (completed > 100) completed = 100;
-    
+
     const containerStyles = {
         height: 10,
         width: '65%',
-        backgroundColor: "#e0e0de",
+        backgroundColor: "#444444",
         // borderRadius: 50,
         // margin: 50
       }

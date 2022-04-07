@@ -131,12 +131,15 @@ function ProjectForm() {
 
 
             let completionPercent = (Math.floor((info?.total / project?.goal) * 100));
-            
+
             return (
                 <>
                     <ProgressBar completed={completionPercent} bgcolor={'#44fff0'}/>
-                    <p>{`$${info?.total}`}</p>
-                    <h3>{`pledged of $${project?.goal} goal`}</h3>
+                    <p style={{fontSize: "30px",
+                               margin: "10px 0px 0px 0px",
+                               color: "#44FFF0",
+                               fontWeight: "bold"}}>{`$${info?.total}`}</p>
+                    <h3 style={{margin: "0px"}}>{`pledged of $${project?.goal} goal`}</h3>
                     <p>{info?.backers}</p>
                     <h3>backers</h3>
                     <p>{hours}</p>
