@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getProjects } from "../../store/project";
 import "./style/project-list.css"
 
-const ProjectsList = () => {
+const ProjectsList = ({search}) => {
     const dispatch = useDispatch();
     // eslint-disable-next-line
     const state = useSelector((state) => state)
@@ -12,7 +12,7 @@ const ProjectsList = () => {
     let projectsArr = [];
 
     useEffect(() => {
-      dispatch(getProjects());
+      if (!search) dispatch(getProjects());
     }, [dispatch]);
 
     console.log('STATE',projects)

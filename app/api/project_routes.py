@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.models import Project, db
+from sqlalchemy import any_
 
 project_routes = Blueprint('projects', __name__)
 
@@ -55,3 +56,11 @@ def edit_project(id):
 
     db.session.commit()
     return data.to_dict()
+
+@project_routes.route('/search/<searchTerms>')
+def search_projects(searchTerms):
+    terms = searchTerms.split("-")
+    readyTerms = ["%" + term + "%" for term in terms]
+    projects = Project.query.filter(Project.title.ilike(any_(readyTerms))).all()
+    print(projects)
+    return {"projects": [project.to_dict() for project in projects] }
