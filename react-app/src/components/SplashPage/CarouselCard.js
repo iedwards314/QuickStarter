@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './style/project-carousel.css';
 
-const CarouselCard = ({ img, name, description, github, linkedIn }) => {
+const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
 
     return (
         <div className='carousel-card-container'>
@@ -14,7 +14,7 @@ const CarouselCard = ({ img, name, description, github, linkedIn }) => {
             <div className='carousel-text-container'>
                 <p className='carousel-text-title'>Developer : {name}</p>
                 <div className='carousel-description-container'>
-                    <p className='carousel-text'>{description}</p>
+                    <p className={'carousel-text'}>{description}</p>
                 </div>
             </div>
             <div className='link-container'>

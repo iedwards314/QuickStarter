@@ -42,7 +42,7 @@ const ProjectCarousel = () => {
                         name={"Morgan Gravelat"}
                         linkedIn={"https://www.linkedin.com/in/morgan-gravelat-1927b4194/"}
                         github={"https://github.com/MorganGravelat"}
-                        description={""}
+                        description={"I recognize the importance of communication, and accuracy. I strive for perfection and try to display my active imagination in all my work."}
                         img={"https://drive.google.com/uc?id=1shmo_iOrEUJd2n7FJhD5PM6KkzKhH8xf"} />
                 </div>
             </Carousel>
