@@ -93,8 +93,8 @@ function ProjectForm() {
             return (
                 <>
                     <div className="Project-Detail-div">
-                        <h1>{project?.title}</h1>
-                        <p>{project?.description}</p>
+                        <h1 style={{margin: "0px"}}>{project?.title}</h1>
+                        <p style={{margin: "5px 0px 30px 0px"}}>{project?.description}</p>
                     </div>
                 </>
             )
@@ -107,7 +107,7 @@ function ProjectForm() {
             return(
                 <>
                     <div className="Project-Image-Container">
-                    <img alt={`${project?.title}`} className="Project-Image" src={`${project?.image}`} />
+                        <img alt={`${project?.title}`} className="Project-Image" src={`${project?.image}`} />
                     </div>
                 </>
             )

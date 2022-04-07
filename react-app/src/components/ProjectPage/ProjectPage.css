@@ -4,6 +4,10 @@
 
 .Project-Image-Container{
     max-width: 100%;
+    width: 556px;
+    height: 300px;
+    object-fit: cover;
+    margin-left: 40%
 }
 
 .Project-Image{
@@ -20,6 +24,7 @@
 }
 
 .Project-Detail-div{
+    margin: 0% 30% 0% 30%;
     display: flex;
     align-items: center;
     flex-direction: column;
