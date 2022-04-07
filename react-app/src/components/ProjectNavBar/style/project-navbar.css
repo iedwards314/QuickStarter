@@ -2,3 +2,11 @@
     border-bottom: 1px solid #444444;
     margin: 2%;
 }
+
+.selected {
+    border-bottom: 1px solid #44fff0;
+}
+
+.profile-nav-button {
+    cursor: pointer;
+}
