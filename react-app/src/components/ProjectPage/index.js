@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink, Link } from "react-router-dom";
 import { getProject, deleteProject, getProjectInfo } from "../../store/project";
 import ProgressBar from "../ProgressBar";
+import ProjectNavBar from "../ProjectNavBar";
 import './ProjectPage.css';
 
 function ProjectForm() {
@@ -165,7 +166,8 @@ function ProjectForm() {
                     </div>
                 </div>
             </div>
-            <div className="lower-link-container">
+            <ProjectNavBar />
+            {/* <div className="lower-link-container">
                 <ul className="project-links-list">
                     <li>
                         <Link className="" exact to={`/projects/${cProject?.id}`}>
@@ -183,8 +185,7 @@ function ProjectForm() {
                         </Link>
                     </li>
                 </ul>
-            </div>
-            <div></div>
+            </div> */}
         </div>
     );
 };
