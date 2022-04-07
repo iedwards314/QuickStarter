@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink, Link } from "react-router-dom";
 import { getProject, deleteProject, getProjectInfo } from "../../store/project";
+import ProgressBar from "../ProgressBar";
 import './ProjectPage.css';
 
 function ProjectForm() {
@@ -118,18 +119,22 @@ function ProjectForm() {
     const projectRewardsDetail = () => {
         if(project === undefined) return null;
         else {
-            let rewardSum = 0
-            for(let i = 0; i < project?.rewards.length; i++){
-                rewardSum += project?.rewards[i];
-            }
+            // let rewardSum = 0
+            // for(let i = 0; i < project?.rewards.length; i++){
+            //     rewardSum += project?.rewards[i];
+            // }
 
             let date_now = new Date();
             let end_date = new Date(project?.end_date)
             let seconds = Math.floor((end_date - (date_now))/1000);
             let hours = Math.floor(seconds/3600);
 
+
+            let completionPercent = (Math.floor((info?.total / project?.goal) * 100));
+            
             return (
                 <>
+                    <ProgressBar completed={completionPercent} bgcolor={'#44fff0'}/>
                     <p>{`$${info?.total}`}</p>
                     <h3>{`pledged of $${project?.goal} goal`}</h3>
                     <p>{info?.backers}</p>

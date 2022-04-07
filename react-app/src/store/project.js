@@ -5,7 +5,6 @@ const EDIT_ONE = "projects/EDIT_ONE"
 const GET_ONE = "projects/GET_ONE"
 const GET_CAT = "projects/GET_CAT"
 const GET_INFO = "projects/GET_INFO"
-const GETONE_INFO = "projects/GETONE_INFO"
 
 const load = (projects) => ({
     type: LOAD,
@@ -39,11 +38,6 @@ const getCat = (projects) => ({
 
 const loadInfo = (info) => ({
     type: GET_INFO,
-    info
-})
-
-const loadProjectInfo = (info) => ({
-    type: GETONE_INFO,
     info
 })
 
