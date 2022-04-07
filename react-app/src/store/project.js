@@ -4,6 +4,7 @@ const DELETE_ONE = "projects/DELETE_ONE"
 const EDIT_ONE = "projects/EDIT_ONE"
 const GET_ONE = "projects/GET_ONE"
 const GET_CAT = "projects/GET_CAT"
+const GET_INFO = "projects/GET_INFO"
 
 const load = (projects) => ({
     type: LOAD,
@@ -33,6 +34,11 @@ const getOne = (project) => ({
 const getCat = (projects) => ({
     type: GET_CAT,
     projects
+})
+
+const loadInfo = (info) => ({
+    type: GET_INFO,
+    info
 })
 
 export const getProjects = () => async (dispatch) => {
@@ -111,9 +117,17 @@ export const searchProjects = (searchTerms) => async (dispatch) => {
     const response = await fetch(`/api/projects/search/${searchTerms}`);
     if (response.ok) {
         const searchedProjects = await response.json();
-        console.log(searchedProjects);
         dispatch(load(searchedProjects));
         return searchedProjects;
+    }
+}
+
+export const getInfo = () => async (dispatch) => {
+    const response = await fetch('/api/projects/info');
+    if (response.ok) {
+        const info = await response.json();
+        dispatch()
+        return info;
     }
 }
 
@@ -121,6 +135,7 @@ const initialState = {
     projects: {},
     selected: {},
     category: {},
+    info: {}
 }
 
 
@@ -149,6 +164,8 @@ const projectReducer = (state = initialState, action) => {
         case GET_CAT:
             setState = {...state, projects: {...state.projects}, selected: {...state.selected}, category: action.projects }
             return setState
+        // case GET_INFO:
+        //     return state;
         default:
             return state;
     }
