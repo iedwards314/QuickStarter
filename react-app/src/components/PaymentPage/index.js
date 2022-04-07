@@ -1,6 +1,6 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react"
+import { useHistory, useParams } from "react-router-dom";
 import { loadContribution } from "../../store/contributions";
 import './style/payment-page.css';
 
@@ -8,6 +8,7 @@ const PaymentPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { contributionId } = useParams();
+
     const contribution = useSelector(state => state.contributions[contributionId])
     const user = useSelector(state => state.session.user);
 
@@ -19,13 +20,12 @@ const PaymentPage = () => {
         history.push(`/projects/${contribution.project_id}`)
     }
 
-
     return (
         <div className="payment-page-container">
             <div className="payment-page-image-project-container">
                 <p style={{
-                    fontSize: "40px"
-                    , fontWeight: "bold",
+                    fontSize: "40px",
+                    fontWeight: "bold",
                     margin: "50px 50px 15px 50px"
                 }}>Pledge Summary</p>
                 <p style={{
@@ -46,8 +46,8 @@ const PaymentPage = () => {
                     <div>
                         <p
                             style={{
-                                fontSize: "21px"
-                                , fontWeight: "bold",
+                                fontSize: "21px",
+                                fontWeight: "bold",
                                 margin: "30px 50px 15px 50px"
                             }}>Your Pledge</p>
                     </div>
@@ -63,7 +63,7 @@ const PaymentPage = () => {
                         </div>
                         <div className="payment-page-total">
                             <p>Total amount</p>
-                            <p style={{color: "#A8D3D1"}}>${contribution?.amount}</p>
+                            <p style={{ color: "#A8D3D1" }}>${contribution?.amount}</p>
                         </div>
                     </div>
                 </div>
@@ -88,19 +88,17 @@ const PaymentPage = () => {
                         />
                     </div>
                     <div className="expiration-securitycode">
-                        <div className="payment-form-input-half1">
+                        <div className="payment-form-input-half">
                             <p className="form-text">Expiration</p>
                             <input
-                                style={{padding: "12px", backgroundColor: "#a0a0a0"}}
                                 className="payment-form-input-half1"
                                 placeholder="MM/YY"
                                 type="text"
                             />
                         </div>
-                        <div className="payment-form-input-half1">
-                            <p style={{marginLeft: "3%"}}className="form-text">Security Code</p>
+                        <div className="payment-form-input-half">
+                            <p style={{ marginLeft: "3%" }} className="form-text">Security Code</p>
                             <input
-                                style={{padding: "12px"}}
                                 className="payment-form-input-half2"
                                 placeholder="CVC"
                                 type="text"
