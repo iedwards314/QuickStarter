@@ -4,7 +4,6 @@ const DELETE_ONE = "projects/DELETE_ONE"
 const EDIT_ONE = "projects/EDIT_ONE"
 const GET_ONE = "projects/GET_ONE"
 const GET_CAT = "projects/GET_CAT"
-const SEARCH = "projects/SEARCH"
 
 const load = (projects) => ({
     type: LOAD,

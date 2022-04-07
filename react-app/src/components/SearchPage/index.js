@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react"
 import ProjectsList from "../SplashPage/ProjectList";
 import { searchProjects } from "../../store/project";
 

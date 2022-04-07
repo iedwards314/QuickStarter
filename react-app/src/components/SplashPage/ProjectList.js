@@ -13,7 +13,7 @@ const ProjectsList = ({search}) => {
 
     useEffect(() => {
       if (!search) dispatch(getProjects());
-    }, [dispatch]);
+    }, [dispatch, search]);
 
     console.log('STATE',projects)
 
