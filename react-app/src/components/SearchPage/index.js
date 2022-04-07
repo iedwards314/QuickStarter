@@ -9,13 +9,12 @@ const SearchPage = () => {
     const dispatch = useDispatch();
     dispatch(searchProjects(searchTerms))
 
+
     return (
         <>
-            <p>Showing x results for {searchTerms}</p>
+            <p>Showing results for "{searchTerms}" :</p>
             <ProjectsList search={true}/>
         </>
-        // render project list based on results with
-        // search = true to alter logic
     )
 };
 
