@@ -14,6 +14,7 @@ const CategoryPage = () => {
     console.log(projects, 'NOTICE ME NOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW', categories);
     let projectsArr = [];
     let categoryInfo = categories[id]
+    let countArr = Object.values(projects);
     //console.log('CAT NAME',categoryInfo.category)
     useEffect(() => {
       dispatch(getCategory(id));
@@ -55,6 +56,7 @@ const CategoryPage = () => {
             </div>
             <div className='div-line-two'>
             </div>
+            <div className='project-number'><h1>{`Explore ${countArr.length} Project(s)`}</h1></div>
             <div className="projects-container-div">
                 {projectListMap()}
             </div>

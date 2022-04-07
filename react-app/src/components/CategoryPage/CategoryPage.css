@@ -36,6 +36,31 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 2260px) and (min-width: 1551px) {
+    .category-container-div .category-title-div {
+        margin: -4.5%;
+    }
+}
+
+@media screen and (max-width: 1550px) and (min-width: 1300px) {
+    .category-container-div .category-title-div {
+        margin: -5.5%;
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 1299px) and (min-width: 1px) {
+    .category-container-div .category-title-div {
+        margin: -7.5%;
+        width: 100px;
+    }
+}
+
+.project-number {
+    width:100%;
+    margin-left: 5rem;
+}
+
 .category-title-div h2 {
     align-self: center;
 }
