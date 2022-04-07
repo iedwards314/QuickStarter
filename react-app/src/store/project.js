@@ -126,7 +126,15 @@ export const getInfo = () => async (dispatch) => {
     const response = await fetch('/api/projects/info');
     if (response.ok) {
         const info = await response.json();
-        console.log(info);
+        dispatch(loadInfo(info))
+        return info;
+    }
+}
+
+export const getProjectInfo = (projectId) => async (dispatch) => {
+    const response = await fetch(`/api/projects/${projectId}/info`);
+    if (response.ok) {
+        const info = await response.json();
         dispatch(loadInfo(info))
         return info;
     }

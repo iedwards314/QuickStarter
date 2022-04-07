@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams, NavLink, Link } from "react-router-dom";
-
-import { getProject, deleteProject } from "../../store/project";
+import { useHistory, useParams, NavLink } from "react-router-dom";
+import { getProject, deleteProject, getProjectInfo } from "../../store/project";
+import ProgressBar from "../ProgressBar";
+import ProjectNavBar from "../ProjectNavBar";
 import './ProjectPage.css';
 
 function ProjectForm() {
@@ -11,11 +12,14 @@ function ProjectForm() {
     const { projectId } = useParams();
     const sessionUser = useSelector((state) => state.session.user)
     const project = useSelector((state) => state.project.selected[projectId]);
-    let cProject = { ...project }
+    const info = useSelector((state) => state.project.info)
+    let cProject = {...project}
+
     const [deletePrompt, setDeletePrompt] = useState(false);
 
     useEffect(() => {
         dispatch(getProject(projectId))
+        dispatch(getProjectInfo(projectId))
     }, [dispatch, projectId]);
 
     const showButtons = () => {
@@ -26,7 +30,7 @@ function ProjectForm() {
                     <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/rewards`}>
                         Edit Rewards
                     </NavLink>
-                    <NavLink className="Project-edit-btn" exact to={`/projects/${cProject?.id}/edit`}>
+                    <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/edit`}>
                         Edit
                     </NavLink>
                     {deleteButtons()}
@@ -68,19 +72,19 @@ function ProjectForm() {
         if (deletePrompt === true) {
             return (
                 <>
-                    <button className="Delete-confirm-btn" type="submit" onClick={destroyProjectButton} >
+                    <div className="Delete-confirm-btn" type="submit" onClick={destroyProjectButton} >
                         Confirm
-                    </button>
-                    <button className="Delete-cancel-btn" onClick={() => setDeletePrompt(false)} >
+                    </div>
+                    <div className="Delete-cancel-btn" onClick={() => setDeletePrompt(false)} >
                         Cancel
-                    </button>
+                    </div>
                 </>
             )
         }
         else {
             return (
                 <>
-                    <button className="Project-delete-btn" onClick={() => setDeletePrompt(true)}>Delete</button>
+                  <div className="Project-rewards-btn" onClick={() => setDeletePrompt(true)}>Delete</div>
                 </>
             );
         }
@@ -93,8 +97,8 @@ function ProjectForm() {
             return (
                 <>
                     <div className="Project-Detail-div">
-                        <h1>{project?.title}</h1>
-                        <p>{project?.description}</p>
+                        <h1 style={{margin: "0px"}}>{project?.title}</h1>
+                        <p style={{margin: "5px 0px 30px 0px"}}>{project?.description}</p>
                     </div>
                 </>
             )
@@ -117,24 +121,32 @@ function ProjectForm() {
     const projectRewardsDetail = () => {
         if (project === undefined) return null;
         else {
-            let rewardSum = 0
-            for (let i = 0; i < project?.rewards.length; i++) {
-                rewardSum += project?.rewards[i];
-            }
-
             let date_now = new Date();
             let end_date = new Date(project?.end_date)
             let seconds = Math.floor((end_date - (date_now)) / 1000);
             let hours = Math.floor(seconds / 3600);
 
+
+            let completionPercent = (Math.floor((info?.total / project?.goal) * 100));
+
             return (
                 <>
-                    <p>{`$${rewardSum}`}</p>
-                    <h3>{`pledged of $${project?.goal} goal`}</h3>
-                    <p>{project?.rewards?.length}</p>
-                    <h3>backers</h3>
-                    <p>{hours}</p>
-                    <h3>hours to go</h3>
+                    <ProgressBar completed={completionPercent} bgcolor={'#44fff0'}/>
+                    <p style={{fontSize: "30px",
+                               margin: "10px 0px 0px 0px",
+                               color: "#44FFF0",
+                               fontWeight: "bold"}}>{`$${info?.total}`}</p>
+                    <h3 style={{margin: "0px"}}>{`pledged of $${project?.goal} goal`}</h3>
+                    <p style={{fontSize: "30px",
+                               margin: "25px 0px 0px 0px",
+                               color: "#44FFF0",
+                               fontWeight: "bold"}}>{info?.backers}</p>
+                    <h3 style={{margin: "0px"}}>backers</h3>
+                    <p style={{fontSize: "30px",
+                               margin: "30px 0px 0px 0px",
+                               color: "#44FFF0",
+                               fontWeight: "bold"}}>{hours}</p>
+                    <h3 style={{margin: "0px"}}>hours to go</h3>
                 </>
             )
         }
@@ -154,26 +166,7 @@ function ProjectForm() {
                     </div>
                 </div>
             </div>
-            <div className="lower-link-container">
-                <ul className="project-links-list">
-                    <li>
-                        <Link className="" exact to={`/projects/${cProject?.id}`}>
-                            Campaign Details
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="" exact to={`/projects/${cProject?.id}/updates`}>
-                            Updates
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="" exact to={`/projects/${cProject?.id}/comments`}>
-                            Comments
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-            <div></div>
+            <ProjectNavBar />
         </div>
     );
 };

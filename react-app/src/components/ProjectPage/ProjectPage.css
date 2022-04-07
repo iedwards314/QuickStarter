@@ -4,6 +4,10 @@
 
 .Project-Image-Container {
     max-width: 100%;
+    width: 556px;
+    height: 300px;
+    object-fit: cover;
+    justify-self: end;
 }
 
 .Project-Image {
@@ -19,7 +23,8 @@
     max-width: 100%;
 }
 
-.Project-Detail-div {
+.Project-Detail-div{
+    margin: 0% 30% 0% 30%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -33,19 +38,18 @@
 }
 
 .Project-rewards-btn {
+    margin-left: 1%;
+    cursor: pointer;
     display: block;
     color: black;
     background-color: #44fff0;
     padding: 10px 20px;
     margin-bottom: 6.5px;
     text-align: center;
-    border-radius: 5%;
-    outline-width: thin;
     font-weight: bold;
     line-height: 25px;
     text-decoration: none;
     font-size: 12px;
-    box-shadow: inset 0 0 0 1.5px #7c7c7c;
 
 }
 
@@ -70,9 +74,9 @@
 
 .Project-delete-btn,
 .Delete-cancel-btn {
+    cursor: pointer;
     display: block;
     background: transparent;
-    outline: solid #3d3d3d;
     border-radius: 5%;
     outline-width: thin;
     text-align: center;
@@ -87,12 +91,10 @@
 
 }
 
-.Delete-confirm-btn {
+.Delete-confirm-btn{
+    cursor: pointer;
     display: block;
     background: transparent;
-    outline: solid #580101;
-    border-radius: 5%;
-    outline-width: thin;
     text-align: center;
     color: #ffffff;
     font-weight: bold;
