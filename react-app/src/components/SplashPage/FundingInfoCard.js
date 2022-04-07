@@ -16,21 +16,18 @@ const FundingInfoCard = () => {
                     {info?.projects}
                 </p>
                 <p className='info-card-text'>total projects</p>
-                {/* TODO : Live number of projects */}
             </div>
             <div className='info-card box-two'>
                 <p className='info-card-data'>
                     ${info?.total}
                 </p>
                 <p className='info-card-text'>towards creative work</p>
-                {/* TODO : Live number of total dollars donated */}
             </div>
             <div className='info-card box-three'>
                 <p className='info-card-data'>
                     {info?.contributions}
                 </p>
                 <p className='info-card-text'>backings</p>
-                {/* TODO : Live number of contributions */}
             </div>
         </div>
     )
