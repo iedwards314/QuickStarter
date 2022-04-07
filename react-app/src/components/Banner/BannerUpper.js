@@ -1,12 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LogoutButton from '../auth/LogoutButton';
 import { useState } from 'react'
 import './style/banner-style.css'
 
+
 const BannerUpper = () => {
     const user = useSelector(state => state.session.user);
     const [searchActive, setSearchActive] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("");
+    const history = useHistory();
 
     const showCreateButton = (user) => {
         if (user) {
@@ -41,12 +44,9 @@ const BannerUpper = () => {
                     </div>
                 </NavLink>
                 <div className='banner-right-button-container'>
-                    <NavLink to="">
-                        {/* Create search functionality and link */}
                         <div className='banner-search nav-button'>
                             <p onClick={() => setSearchActive(true)}>Search</p>
                         </div>
-                    </NavLink>
                     <LogoutButton />
                 </div>
             </>
@@ -86,8 +86,18 @@ const BannerUpper = () => {
                 </div>
             </>
         )
-    } 
+    }
 
+    const handleSearch = (searchTerm) => {
+        const termArray = searchTerm.split(" ");
+        termArray.forEach((term) => {
+            if (term === "") {
+                return alert('invalid search term. (try removing space at the end)')
+            };
+        });
+        let searchString = termArray.join("-");
+        return history.push(`/search/` + searchString)
+    };
 
     return (
         <div
@@ -96,9 +106,11 @@ const BannerUpper = () => {
             <div className={searchActive ? 'search-bar-container' : 'transition'}>
                     <input
                         placeholder='Search for projects...'
+                        onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyDown={(e) => {
-                            if (e.keyCode == 13) {
-                                console.log("Entered!");
+                            if (e.keyCode === 13) {
+                                console.log("Searching!");
+                                handleSearch(searchTerm)
                             }
                         }}
                         className='search-bar-input'
