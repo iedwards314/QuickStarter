@@ -20,6 +20,13 @@ const ProjectNavBar = () => {
                 </div>
             </div>
         </div>
+        {allActive === "comments" ?
+        // insert comment component
+        <p>Comments Component!</p> :
+        allActive === "updates" ?
+        // insert updates component
+        <p>Updates Component!</p> :
+        null}
     </>
     )
 }
