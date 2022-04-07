@@ -7,7 +7,7 @@ category_routes = Blueprint('categories', __name__)
 @category_routes.route('/')
 def categories():
     categories = Category.query.all()
-    print('YEPYEPYEP',{'categories': [category.to_dict() for category in categories]})
+    print('YEPYEPYEPYEPYEPEYPEYEPYEPYEPAYUDFOIAJFOIAJFOIAJF',{'categories': [category.to_dict() for category in categories]})
     return {'categories': [category.to_dict() for category in categories]}
 
 @category_routes.route('/<int:id>')
@@ -17,3 +17,11 @@ def get_category(id):
     for category in categories:
         categoryList.append(category.to_dict())
     return jsonify(categoryList)
+
+@category_routes.route('/project/<int:id>')
+def get_project_category(id):
+    projects = Project.query.filter(Project.category_id == id).all()
+    projectList = []
+    for project in projects:
+        projectList.append(project.to_dict())
+    return jsonify(projectList)
