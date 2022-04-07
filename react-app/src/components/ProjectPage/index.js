@@ -119,10 +119,6 @@ function ProjectForm() {
     const projectRewardsDetail = () => {
         if(project === undefined) return null;
         else {
-            // let rewardSum = 0
-            // for(let i = 0; i < project?.rewards.length; i++){
-            //     rewardSum += project?.rewards[i];
-            // }
 
             let date_now = new Date();
             let end_date = new Date(project?.end_date)
