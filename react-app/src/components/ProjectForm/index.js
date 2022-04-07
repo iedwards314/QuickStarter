@@ -66,7 +66,8 @@ function ProjectForm() {
         </div>
         <div className="create-input-container">
           <label className="create-form-text" htmlFor="goal">Funding Goal: </label>
-          <div>
+          <div className="money">
+            <p className="money-ptag">$</p>
             <input
               className="create-form-input"
               type="number"
@@ -82,7 +83,7 @@ function ProjectForm() {
           <label className="create-form-text" htmlFor="enddate">End Date: </label>
           <div>
             <input
-              className="create-form-input"
+              className="create-form-calendar"
               type="date"
               name="enddate"
               placeholder="Estimated Completion Date"
