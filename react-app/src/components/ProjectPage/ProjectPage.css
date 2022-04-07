@@ -15,6 +15,10 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.Project-Rewards{
+    max-width: 100%;
+}
+
 .Project-Detail-div{
     display: flex;
     align-items: center;
