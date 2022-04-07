@@ -90,11 +90,13 @@ const BannerUpper = () => {
 
     const handleSearch = (searchTerm) => {
         const termArray = searchTerm.split(" ");
+        let err;
         termArray.forEach((term) => {
             if (term === "") {
-                return alert('invalid search term. (try removing space at the end)')
+                err = true;
             };
         });
+        if (err) return alert('Invalid search term. (try removing a trailing space)')
         let searchString = termArray.join("-");
         setSearchActive(false);
         return history.push(`/search/` + searchString)
