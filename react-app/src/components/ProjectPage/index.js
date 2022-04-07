@@ -167,25 +167,6 @@ function ProjectForm() {
                 </div>
             </div>
             <ProjectNavBar />
-            {/* <div className="lower-link-container">
-                <ul className="project-links-list">
-                    <li>
-                        <Link className="" exact to={`/projects/${cProject?.id}`}>
-                            Campaign Details
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="" exact to={`/projects/${cProject?.id}/updates`}>
-                            Updates
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="" exact to={`/projects/${cProject?.id}/comments`}>
-                            Comments
-                        </Link>
-                    </li>
-                </ul>
-            </div> */}
         </div>
     );
 };
