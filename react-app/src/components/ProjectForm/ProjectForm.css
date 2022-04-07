@@ -1,60 +1,92 @@
-.new-form-holder{
+.new-form-holder {
+    margin: 2% 0%;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 100%;
 }
 
-.create-project-form{
+.create-project-form {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    margin-left: 10px;
+    width: 50%;
 }
 
-.create-project-form input{
-    align-self: center;
+.create-form-input {
+    width: 100%;
     box-sizing: border-box;
-    width: 80%;
     padding: 12px;
     font-size: 14px;
     background-color: #2b2b2b;
     border: 2px solid #444444;
     color: white;
+    margin: 10px 0px;
 }
 
-.create-project-form label{
-    align-self: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+.create-form-input::-webkit-outer-spin-button,
+.create-form-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.create-project-form select{
-    width: 50%;
-    align-self: center;
+
+.create-form-input:focus {
+    border: 2px solid #44fff0;
+    outline: none;
+}
+
+.create-form-calendar {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    font-size: 14px;
     background-color: #2b2b2b;
-    margin-bottom: 10px;
+    border: 2px solid #444444;
+    color: white;
+    margin: 10px 0px;
 }
 
-.create-new-project-button{
+.create-form-calendar:focus {
+    border: 2px solid #44fff0;
+    outline: none;
+}
+
+.create-form-calendar::-webkit-calendar-picker-indicator {
+    background-color: white;
+}
+
+.money {
+    display: flex;
+    align-items: center;
+}
+
+.money-ptag {
+    border: 2px solid #444444;
+    border-right: none;
+    padding: 10px 20px 11px 20px;
+}
+
+.create-new-project-button {
     align-self: center;
     background-color: #44fff0;
     color: black;
     width: 30%;
 }
 
-
-.project-description{
-    color: black;
+.create-project-description {
+    resize: none;
     background-color: #2b2b2b;
-    margin-bottom: 20px;
-    width: 80%;
-    height: 100px;
-    align-self: center;
-    overflow-x:hidden;
-    overflow-y: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    white-space: pre-wrap;
-    word-wrap:break-word;
+    border: 2px solid #444444;
+    overflow-y: auto;
+    height: 150px;
+    margin: 10px 0px;
+    width: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    color: white;
+}
+
+.create-project-description:focus {
+    border: 2px solid #44fff0;
+    outline: none;
 }

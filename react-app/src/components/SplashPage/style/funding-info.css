@@ -5,16 +5,22 @@
     height: 100px;
     width: 1000px;
     margin-top: 40px;
-} .info-card {
+}
+
+.info-card {
     width: 33%;
 
-} .box-one, .box-two {
+}
+
+.box-one,
+.box-two {
     border-right: 1px solid #444444;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .box-three {
     display: flex;
     flex-direction: column;

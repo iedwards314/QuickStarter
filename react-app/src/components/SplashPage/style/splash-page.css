@@ -1,18 +1,22 @@
 * {
     font-family: "MaisonNueBook";
 }
+
 .splash-page-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 .splash-page-header {
     font-family: "MaisonNueBook";
     color: white;
     margin: 2px;
     font-size: 35px;
-} .splash-page-header-container {
+}
+
+.splash-page-header-container {
     display: flex;
     flex-direction: column;
     align-items: center;
