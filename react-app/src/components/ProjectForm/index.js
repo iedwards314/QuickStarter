@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addProject } from "../../store/project";
-
 import './ProjectForm.css';
 
 function ProjectForm() {
@@ -39,69 +38,97 @@ function ProjectForm() {
     };
     let createdProject
     try {
-        createdProject = await dispatch(addProject(payload));
+      createdProject = await dispatch(addProject(payload));
     } catch (error) {
-        console.log("There is an error")
+      console.log("There is an error")
     }
-    if(createdProject){
-        history.push('/')
+    if (createdProject) {
+      history.push('/')
     }
   };
 
   return (
     <section className="new-form-holder centered middled">
       <form className="create-project-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">Title: </label>
-        <input
-          type="text"
-          name="title"
-          placeholder="Enter a nice title for your project"
-          required
-          value={title}
-          onChange={updateTitle}
-        />
-        <label htmlFor="goal">Funding Goal: </label>
-        <input
-          type="number"
-          name="goal"
-          placeholder="Goal"
-          required
-          value={goal}
-          onChange={updateGoal}
-        />
-        <label htmlFor="enddate">End Date: </label>
-        <input
-          type="date"
-          name="enddate"
-          placeholder="Estimated Completion Date"
-          required
-          value={end_date}
-          onChange={updateEndDate}
-        />
-        <label htmlFor="img">Image URL: </label>
-        <input
-          type="text"
-          name="img"
-          placeholder="Image URL"
-          value={image}
-          onChange={updateImage}
-        />
-        <label htmlFor="ctgy">Project Category</label>
-        <select name="ctgy" onChange={updateCategory}>
-            <option value={1}>Games</option>
-            <option value={2}>Music</option>
-            <option value={3}>Health</option>
-            <option value={4}>Film</option>
-            <option value={5}>Food</option>
-            <option value={6}>Tech</option>
-        </select>
-        <label htmlFor="desc">Description: </label>
-        <textarea className="project-description"
-        name="desc"
-        placeholder="Write a description for your project"
-        value={description}
-        onChange={updateDescription}
-        />
+        <div className="create-input-container">
+          <label className="create-form-text" htmlFor="title">Title: </label>
+          <div>
+            <input
+              className="create-form-input"
+              type="text"
+              name="title"
+              placeholder="Enter a nice title for your project"
+              required
+              value={title}
+              onChange={updateTitle}
+            />
+          </div>
+        </div>
+        <div className="create-input-container">
+          <label className="create-form-text" htmlFor="goal">Funding Goal: </label>
+          <div>
+            <input
+              className="create-form-input"
+              type="number"
+              name="goal"
+              placeholder="Goal"
+              required
+              value={goal}
+              onChange={updateGoal}
+            />
+          </div>
+        </div>
+        <div className="create-input-container">
+          <label className="create-form-text" htmlFor="enddate">End Date: </label>
+          <div>
+            <input
+              className="create-form-input"
+              type="date"
+              name="enddate"
+              placeholder="Estimated Completion Date"
+              required
+              value={end_date}
+              onChange={updateEndDate}
+            />
+          </div>
+        </div>
+        <div className="create-input-container">
+          <label className="create-form-text" htmlFor="img">Image URL: </label>
+          <div>
+            <input
+              className="create-form-input"
+              type="text"
+              name="img"
+              placeholder="Image URL"
+              value={image}
+              onChange={updateImage}
+            />
+          </div>
+        </div>
+        <div className="create-input-container">
+          <label className="create-form-text" htmlFor="ctgy">Project Category</label>
+          <div>
+            <select className="create-form-input" name="ctgy" onChange={updateCategory}>
+              <option value={1}>Games</option>
+              <option value={2}>Music</option>
+              <option value={3}>Health</option>
+              <option value={4}>Film</option>
+              <option value={5}>Food</option>
+              <option value={6}>Tech</option>
+            </select>
+          </div>
+        </div>
+        <div className="create-input-container">
+          <label className="create-form-text" htmlFor="desc">Description: </label>
+          <div>
+            <textarea className="create-project-description"
+              name="desc"
+              placeholder="Write a description for your project"
+              value={description}
+              onChange={updateDescription}
+            />
+          </div>
+        </div>
         <button className="create-new-project-button" type="submit">Create new Project</button>
       </form>
     </section>

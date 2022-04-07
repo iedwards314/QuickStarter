@@ -39,4 +39,19 @@
     color: white;
     margin-right: 10px;
     margin-left: 10px;
+    text-overflow: ellipsis;
+}
+
+.project-description::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.project-description::-webkit-scrollbar {
+    width: 10px;
+}
+
+.project-description::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
 }

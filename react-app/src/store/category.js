@@ -6,6 +6,7 @@ const load = (categories) => ({
 })
 
 export const getCategories = () => async (dispatch) => {
+    console.log('I EXIST HERE AND I AM LETTING YOU KNOW!')
     const response = await fetch(`/api/categories/`)
     if (response.ok) {
         const categories = await response.json();
