@@ -30,3 +30,15 @@
 .carousel-description-container {
     width: 300px;
 }
+
+.about-link-1 {
+    height: 75px;
+    width: 75px;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 5%;
+}
