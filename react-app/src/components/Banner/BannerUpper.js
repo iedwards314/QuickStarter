@@ -96,6 +96,7 @@ const BannerUpper = () => {
             };
         });
         let searchString = termArray.join("-");
+        setSearchActive(false);
         return history.push(`/search/` + searchString)
     };
 
