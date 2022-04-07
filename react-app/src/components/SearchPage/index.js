@@ -14,7 +14,7 @@ const SearchPage = () => {
         <>
             <p>Showing results for "{searchTerms}" :</p>
             <div className="splash-page-container">
-                <ProjectsList search={true}/>
+                <ProjectsList search={true} />
             </div>
         </>
     )

@@ -31,7 +31,7 @@ const ProjectsList = ({search}) => {
         <>
           {projectsArr?.map((project) => (
             <div className="project-div" key={project?.id}>
-              <NavLink className="project-image" exact to={`/projects/${project?.id}`}>
+              <NavLink className="project-image-container" exact to={`/projects/${project?.id}`}>
                 <img className="project-image" src={project?.image} alt="project" />
               </NavLink>
               <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
