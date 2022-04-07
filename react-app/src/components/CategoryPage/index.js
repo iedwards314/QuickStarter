@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
+import { getCategories } from "../../store/category";
 import { getCategory } from "../../store/project";
 import "./CategoryPage.css";
 
@@ -11,12 +12,17 @@ const CategoryPage = () => {
     const { id } = useParams();
     //console.log('CAT ID', categories, id)
     const projects = useSelector((state) => state.project.category);
-    console.log(projects, 'NOTICE ME NOWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW', categories);
+
     let projectsArr = [];
-    let categoryInfo = categories[id]
+
+    let categoryInfo;
+    if (categories) {
+      categoryInfo = categories[id]
+    }
     let countArr = Object.values(projects);
-    //console.log('CAT NAME',categoryInfo.category)
+
     useEffect(() => {
+      dispatch(getCategories())
       dispatch(getCategory(id));
     }, [dispatch, id]);
 
@@ -45,10 +51,10 @@ const CategoryPage = () => {
     return (
         <div className='category-container-div'>
             <div className='category-img-container'>
-                <img src={`${categoryInfo.image}`} alt={`${categoryInfo.category}`}></img>
+                <img src={`${categoryInfo?.image}`} alt={`${categoryInfo?.category}`}></img>
             </div>
             <div className="category-title-div">
-                <h2>{categoryInfo.category}</h2>
+                <h2>{categoryInfo?.category}</h2>
             </div>
             <div className='div-line-one'>
             </div>
