@@ -28,7 +28,7 @@ function ProjectForm() {
                     <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/rewards`}>
                         Edit Rewards
                     </NavLink>
-                    <NavLink className="Project-edit-btn" exact to={`/projects/${cProject?.id}/edit`}>
+                    <NavLink className="Project-rewards-btn" exact to={`/projects/${cProject?.id}/edit`}>
                         Edit
                     </NavLink>
                     {deleteButtons()}
@@ -70,19 +70,19 @@ function ProjectForm() {
         if(deletePrompt === true){
             return (
                 <>
-                    <button className="Delete-confirm-btn" type="submit" onClick={destroyProjectButton} >
+                    <div className="Delete-confirm-btn" type="submit" onClick={destroyProjectButton} >
                         Confirm
-                    </button>
-                    <button className="Delete-cancel-btn" onClick={() => setDeletePrompt(false)} >
+                    </div>
+                    <div className="Delete-cancel-btn" onClick={() => setDeletePrompt(false)} >
                         Cancel
-                    </button>
+                    </div>
                 </>
             )
         }
         else{
             return (
                 <>
-                  <button className="Project-delete-btn" onClick={() => setDeletePrompt(true)}>Delete</button>
+                  <div className="Project-rewards-btn" onClick={() => setDeletePrompt(true)}>Delete</div>
                 </>
               );
         }
@@ -140,10 +140,16 @@ function ProjectForm() {
                                color: "#44FFF0",
                                fontWeight: "bold"}}>{`$${info?.total}`}</p>
                     <h3 style={{margin: "0px"}}>{`pledged of $${project?.goal} goal`}</h3>
-                    <p>{info?.backers}</p>
-                    <h3>backers</h3>
-                    <p>{hours}</p>
-                    <h3>hours to go</h3>
+                    <p style={{fontSize: "30px",
+                               margin: "25px 0px 0px 0px",
+                               color: "#44FFF0",
+                               fontWeight: "bold"}}>{info?.backers}</p>
+                    <h3 style={{margin: "0px"}}>backers</h3>
+                    <p style={{fontSize: "30px",
+                               margin: "30px 0px 0px 0px",
+                               color: "#44FFF0",
+                               fontWeight: "bold"}}>{hours}</p>
+                    <h3 style={{margin: "0px"}}>hours to go</h3>
                 </>
             )
         }
