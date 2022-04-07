@@ -6,9 +6,11 @@ import './style/funding-info.css';
 const FundingInfoCard = () => {
     const info = useSelector(state => state.project.info)
     let dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(getInfo())
-    }, [])
+    }, [dispatch])
+    
     return (
         <div className='info-card-container'>
             <div className='info-card box-one'>
