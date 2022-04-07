@@ -57,7 +57,6 @@ function ProjectForm() {
         let destroyedProject;
         try {
             destroyedProject = await dispatch(deleteProject(payload))
-            console.log("destroyed project is...", destroyedProject)
         } catch (error) {
             console.log("error in delete")
         }
