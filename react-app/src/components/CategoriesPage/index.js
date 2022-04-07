@@ -5,22 +5,22 @@ import { getCategories } from "../../store/category";
 import "./CategoriesPage.css";
 
 const CategoriesList = () => {
-    const dispatch = useDispatch();
-    const sectionsList = ["Games", "Music", "Health", "Film", "Food", "Tech", "Epic Fails", "Watch Out"];
+  const dispatch = useDispatch();
+  const sectionsList = ["Games", "Music", "Health", "Film", "Food", "Tech", "Epic Fails", "Watch Out"];
 
-    useEffect(() => {
-      dispatch(getCategories());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <>
-      <div>
-        <h2>Sections</h2>
-
+      <div className="categories-container">
+        <p className="categories-header">Sections</p>
+        <div className="line-break"></div>
         <ul className="section-list">
           {sectionsList.map((section, index) => {
             return (
-              <li key={index}>
+              <li className="section-list-list" key={index}>
                 <NavLink
                   className="section-list-item"
                   exact
@@ -33,11 +33,12 @@ const CategoriesList = () => {
           })}
         </ul>
 
-        <h2>Categories</h2>
-        <p>Your Stuff</p>
-        <p>Creators We Like</p>
-        <p>Most Funded Projects</p>
-        <p>Most Recent</p>
+        <p className="categories-header">Categories</p>
+        <div className="line-break"></div>
+        <p className="categories-stuff">Your Stuff</p>
+        <p className="categories-stuff">Creators We Like</p>
+        <p className="categories-stuff">Most Funded Projects</p>
+        <p className="categories-stuff">Most Recent</p>
       </div>
     </>
   );
