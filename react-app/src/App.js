@@ -8,7 +8,6 @@ import ProjectPage from './components/ProjectPage';
 import CategoriesList from './components/CategoriesPage';
 import CategoryPage from './components/CategoryPage';
 import ProjectEditForm from './components/ProjectEditForm';
-// import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -17,6 +16,7 @@ import Banner from './components/Banner/index';
 import SplashPage from './components/SplashPage/index';
 import TierRewards from './components/TierRewards';
 import PaymentPage from './components/PaymentPage';
+import SearchPage from './components/SearchPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -71,6 +71,9 @@ function App() {
         <ProtectedRoute path="/checkout/:contributionId" exact={true}>
           <PaymentPage />
         </ProtectedRoute>
+        <Route path="/search/:searchTerms">
+          <SearchPage />
+        </Route>
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
