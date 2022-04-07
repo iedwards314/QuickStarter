@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import Project, db
+from app.models import Project, Contribution, db
 from sqlalchemy import any_, or_
 
 project_routes = Blueprint('projects', __name__)
@@ -66,4 +66,17 @@ def search_projects(searchTerms):
 
 @project_routes.route('/info')
 def get_info():
-    return "hi"
+    projects = Project.query.all()
+    projectDicts = [project.to_dict() for project in projects]
+    projectNum = len(projectDicts)
+
+    contributions = Contribution.query.all()
+    contributionDicts = [contribution.to_dict() for contribution in contributions]
+    contributionNum = len(contributionDicts)
+    totalAmount = 0
+    for contribution in contributions:
+        totalAmount += contribution.amount
+
+    return {"projects": projectNum,
+            "contributions": contributionNum,
+            "total": totalAmount}

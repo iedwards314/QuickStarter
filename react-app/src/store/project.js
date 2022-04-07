@@ -126,7 +126,8 @@ export const getInfo = () => async (dispatch) => {
     const response = await fetch('/api/projects/info');
     if (response.ok) {
         const info = await response.json();
-        dispatch()
+        console.log(info);
+        dispatch(loadInfo(info))
         return info;
     }
 }
@@ -164,8 +165,9 @@ const projectReducer = (state = initialState, action) => {
         case GET_CAT:
             setState = {...state, projects: {...state.projects}, selected: {...state.selected}, category: action.projects }
             return setState
-        // case GET_INFO:
-        //     return state;
+        case GET_INFO:
+            setState = {...state, projects: {...state.projects}, selected: {...state.selected}, category: {...state.category}, info: action.info}
+            return setState
         default:
             return state;
     }
