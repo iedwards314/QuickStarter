@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './style/project-carousel.css';
 
-const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
+const CarouselCard = ({ img, name, description, github, linkedIn }) => {
 
     return (
         <div className='carousel-card-container'>

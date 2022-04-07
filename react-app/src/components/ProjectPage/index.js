@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams, NavLink, Link } from "react-router-dom";
+import { useHistory, useParams, NavLink } from "react-router-dom";
 import { getProject, deleteProject, getProjectInfo } from "../../store/project";
 import ProgressBar from "../ProgressBar";
 import ProjectNavBar from "../ProjectNavBar";
