@@ -80,3 +80,15 @@ def get_info():
     return {"projects": projectNum,
             "contributions": contributionNum,
             "total": totalAmount}
+
+@project_routes.route('/<int:id>/info')
+def get_one_info(id):
+    contributions = Contribution.query.filter(Contribution.project_id == id).all()
+    contributionDicts = [contribution.to_dict() for contribution in contributions]
+    contributionNum = len(contributionDicts)
+    totalAmount = 0
+    for contribution in contributions:
+        totalAmount += contribution.amount
+
+    return {"backers": contributionNum,
+            "total": totalAmount}
