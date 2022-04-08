@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReward } from '../../store/rewards';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TierRewardForm from './TierRewardForm';
 import { postContribution } from '../../store/contributions';
