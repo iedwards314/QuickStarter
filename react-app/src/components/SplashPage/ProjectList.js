@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { getProjects } from "../../store/project";
-import ProgressBar from "../ProgressBar";
 import { getCategories } from "../../store/category";
 import CampaignCard from "../CampaignCard";
 import "./style/project-list.css"

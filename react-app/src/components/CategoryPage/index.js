@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getCategories } from "../../store/category";
 import { getCategory } from "../../store/project";
 import CampaignCard from "../CampaignCard";
