@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProject } from '../../store/project';
 import { getRewards } from '../../store/rewards';
 import { postContribution } from '../../store/contributions';
+import { useReward } from '../../Context/RewardContext';
 import './style/index.css';
 
 const TierRewards = () => {
+    const { currentReward, setCurrentReward } = useReward();
     const dispatch = useDispatch();
     const history = useHistory();
     const project = useSelector((state) => state.project.selected)
@@ -121,7 +123,7 @@ const TierRewards = () => {
 
 
                 <div>
-                    <label className='reward-card'>
+                    <label onClick={() => setCurrentReward("base")} className='reward-card'>
                         <div className='reward-card'>
                             <input type="radio" name="reward"></input>
                             <div className='reward-text'>
@@ -130,7 +132,7 @@ const TierRewards = () => {
                             <div className='reward-inputbox'>
                                 <label className='dollarsign'>$</label>
                                 <input className='reward-number-inputbox' onChange={(e) => setAmount(e.target.value)} placeholder='Number' type="number"></input>
-                                <div className='reward-inputcontinue' onClick={submitContribution} style={{ cursor: "pointer" }}>Continue</div>
+                                <div className={currentReward === 'base' ? 'reward-inputcontinue' : 'hidden'} onClick={submitContribution} style={{ cursor: "pointer" }}>Continue</div>
                                 {/* Add onclick for continue div to render payment page */}
                             </div>
                         </div>
