@@ -8,19 +8,23 @@ import './ProjectPage.css';
 
 function ProjectForm() {
     const dispatch = useDispatch();
-    const history = useHistory();
     const { projectId } = useParams();
+    useEffect((projectId) => {
+        console.log('WHYWHYWHWYHWYWHYWHWY')
+        dispatch(getProject(projectId))
+        dispatch(getProjectInfo(projectId))
+    }, [dispatch, projectId]);
+    const history = useHistory();
+    const state = useSelector((state) => state)
+    console.log('PARAMSPARAMSPARAMS', state)
     const sessionUser = useSelector((state) => state.session.user)
     const project = useSelector((state) => state.project.selected[projectId]);
+    console.log('PARAMSPARAMSPARAMS', project)
     const info = useSelector((state) => state.project.info)
     let cProject = {...project}
 
     const [deletePrompt, setDeletePrompt] = useState(false);
 
-    useEffect(() => {
-        dispatch(getProject(projectId))
-        dispatch(getProjectInfo(projectId))
-    }, [dispatch, projectId]);
 
     const showButtons = () => {
         if (!sessionUser) return;

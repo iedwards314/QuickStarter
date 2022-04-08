@@ -12,6 +12,7 @@ def projects():
 
 @project_routes.route('/<int:id>')
 def get_project(id):
+    print('HEYHEYHEY')
     project = Project.query.get(id)
     return project.to_dict()
 

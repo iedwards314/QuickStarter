@@ -45,9 +45,8 @@ const CommentsForm = ({ projectId }) => {
         comment
       };
       console.log('YOOYOYOYO', payload)
-      let editedComment
       try {
-          editedComment = await dispatch(editComments(payload));
+          await dispatch(editComments(payload));
       } catch (error) {
           console.log("There is an error")
       }
