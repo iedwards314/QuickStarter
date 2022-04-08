@@ -7,8 +7,6 @@ import { getCategories } from "../../store/category";
 
 const ProjectsList = ({search}) => {
     const dispatch = useDispatch();
-    // eslint-disable-next-line
-    const state = useSelector((state) => state)
     const projects = useSelector((state) => state.project.projects);
     let projectsArr = [];
 
@@ -34,8 +32,8 @@ const ProjectsList = ({search}) => {
               <NavLink className="project-image-container" exact to={`/projects/${project?.id}`}>
                 <img className="project-image" src={project?.image} alt="project" />
               </NavLink>
-              <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
-                <h3>{project?.title}</h3>
+              <NavLink  className="project-title"exact to={`/projects/${project?.id}`}>
+                <h3 style={{color: "white", margin: "10px 0px 0px 0px"}}>{project?.title}</h3>
               </NavLink>
               <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
                 {project?.description}
