@@ -1,6 +1,5 @@
 const LOAD = "comments/LOAD"
 const CREATE = "comments/CREATE"
-const EDIT_ONE = "comments/EDIT_ONE"
 const DELETE_ONE = "comments/EDIT_ONE"
 
 
@@ -12,11 +11,6 @@ const load = (comments) => ({
 const createOne = (commentX) => ({
     type: CREATE,
     commentX,
-})
-
-const editOne = (editComment) => ({
-    type: EDIT_ONE,
-    editComment,
 })
 
 const deleteOne = (id) => ({
@@ -64,22 +58,6 @@ export const deleteComments = (comment) => async (dispatch) => {
     }
 }
 
-export const editComments = (comment) => async (dispatch) => {
-    const response = await fetch(`/api/comments/edit/${comment.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(comment)
-    });
-    if (response.ok) {
-        const editComment = await response.json();
-        dispatch(editOne(editComment))
-        return editComment;
-    }
-}
-
-
 const initialState = {
     comments: {}
 }
@@ -95,16 +73,12 @@ const commentReducer = (state = initialState, action) => {
             newState = {comments: allComments}
             return newState
         case CREATE:
-            newState = {comments: {...state.comments, [action.comment.id]: action.comment}}
+            newState = {comments: {...state.comments, [action.commentX.id]: action.commentX}}
             return newState
         case DELETE_ONE:
             newState = {comments: {...state.comments}}
-            delete newState.comments[action.id];
+            delete newState.comments[action.id.id];
             return newState
-        case EDIT_ONE:
-            newState = {...state};
-            newState[action.comment.id] = action.comment;
-            return newState;
         default:
             return state;
     }

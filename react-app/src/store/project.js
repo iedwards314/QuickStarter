@@ -51,7 +51,6 @@ export const getProjects = () => async (dispatch) => {
 }
 
 export const getProject = (projectId) => async (dispatch) => {
-    console.log('EYOEYOEYO')
     const response = await fetch(`/api/projects/${projectId}`)
     if (response.ok) {
         const project = await response.json();

@@ -8,7 +8,7 @@ def post_comment():
     comment = dict(request.json)
 
     newComment = Comment(
-        comment=comment['amount'],
+        comment=comment['comment'],
         user_id=comment['user_id'],
         project_id=comment['project_id'],
     )
@@ -27,17 +27,9 @@ def get_comments(id):
 
 @comment_routes.route('/delete/<int:id>', methods=["DELETE"])
 def delete_comment(id):
-    comment = Comment.query.filter(Comment.id == id)
-    commentX = comment.to_dict()
-    id = commentX.id
-    comment.delete()
+    data = dict(request.json)
+    comment = Comment.query.get(id)
+    res = {"id": id}
+    db.session.delete(comment)
     db.session.commit()
-    return id
-
-@comment_routes.route('/edit', methods=["PUT"])
-def edit_comment():
-    comment = dict(request.json)
-    dbComment = Comment.query.get(comment['id'])
-    dbComment.comment = comment['comment']
-    db.session.commit()
-    return dbComment.to_dict()
+    return res

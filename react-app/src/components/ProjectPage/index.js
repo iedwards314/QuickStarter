@@ -8,13 +8,13 @@ import './ProjectPage.css';
 
 function ProjectForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { projectId } = useParams();
-    useEffect((projectId) => {
+    useEffect(() => {
         console.log('WHYWHYWHWYHWYWHYWHWY')
         dispatch(getProject(projectId))
         dispatch(getProjectInfo(projectId))
     }, [dispatch, projectId]);
-    const history = useHistory();
     const state = useSelector((state) => state)
     console.log('PARAMSPARAMSPARAMS', state)
     const sessionUser = useSelector((state) => state.session.user)
@@ -169,7 +169,7 @@ function ProjectForm() {
                     </div>
                 </div>
             </div>
-            <ProjectNavBar project={project} seesionUser={sessionUser} projectId={`${project.id}`}/>
+            <ProjectNavBar project={project} seesionUser={sessionUser} projectId={projectId}/>
         </div>
     );
 };

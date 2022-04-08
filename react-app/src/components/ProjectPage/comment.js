@@ -32,25 +32,10 @@ const CommentsForm = ({ projectId }) => {
         await dispatch(getComments(projectId));
     }
 
-    const commentDeletion = async (id) => {
-        await dispatch(deleteComments(id));
-        await dispatch(getComments(projectId));
+    const commentDeletion = async (comment) => {
+        await dispatch(deleteComments(comment));
+        //await dispatch(getComments(projectId));
     }
-
-    const commentEdit = async (e,id) => {
-      e.preventDefault();
-
-      const payload = {
-        id,
-        comment
-      };
-      console.log('YOOYOYOYO', payload)
-      try {
-          await dispatch(editComments(payload));
-      } catch (error) {
-          console.log("There is an error")
-      }
-    };
 
 
     return (
@@ -63,8 +48,7 @@ const CommentsForm = ({ projectId }) => {
                     <h2 key={`h2{comment.id}`}>{comment.project_username}</h2>
                 </div>
                 {comment.user_id===user.id ?
-                (<><button onClick={()=>commentDeletion(comment.id)} className='comment-button' key={`button${comment.id}`}>DELETE ⇈</button>
-                <button onClick={()=>commentEdit(comment.id)} className='comment-button' key={`button${comment.id}`}>EDIT ⇈</button></>
+                (<><button onClick={()=>commentDeletion(comment)} className='comment-button' key={`Dbutton${comment.id}`}>DELETE ⇈</button></>
                 ) :
                 (<></>)}
             </>
