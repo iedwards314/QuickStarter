@@ -121,7 +121,7 @@ const BannerUpper = () => {
                 <div className="cancel-search">
                     <p
                         onClick={() => setSearchActive(false)}
-                        style={{ color: "#444444", fontSize: "20px", cursor: "pointer" }}>X</p>
+                        style={{ color: "white", fontSize: "20px", cursor: "pointer" }}>X</p>
                 </div>
             </div>
             {links}
