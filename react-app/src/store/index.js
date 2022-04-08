@@ -6,6 +6,7 @@ import rewardReducer from './rewards';
 import contributionReducer from './contributions';
 import categoryReducer from './category';
 import commentReducer from './comment';
+import updateReducer from './updates';
 
 
 const rootReducer = combineReducers({
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   rewards: rewardReducer,
   contributions: contributionReducer,
   category: categoryReducer,
-  comment: commentReducer
+  comment: commentReducer,
+  updates: updateReducer
 });
 
 

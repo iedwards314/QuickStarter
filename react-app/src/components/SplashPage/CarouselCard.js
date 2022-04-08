@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './style/project-carousel.css';
 
-const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
+const CarouselCard = ({ img, name, description, github, linkedIn }) => {
 
     return (
         <div className='carousel-card-container'>
@@ -18,8 +18,8 @@ const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
                 </div>
             </div>
             <div className='link-container'>
+
                 <Link  to={{ pathname: `${github}` }} target="_blank">
-                    {/* change name */}
                     <div>
                         <img
                             className="about-link-1"
@@ -27,7 +27,6 @@ const CarouselCard = ({ img, name, description, github, linkedIn, morgan }) => {
                     </div>
                 </Link>
                 <Link to={{ pathname: `${linkedIn}` }} target="_blank">
-                {/* change name */}
                     <div>
                         <img
                             className="about-link-1"

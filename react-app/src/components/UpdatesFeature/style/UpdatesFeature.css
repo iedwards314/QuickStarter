@@ -1,0 +1,36 @@
+.Update-list-container {
+    margin: 10px;
+}
+
+.Update-list {
+    list-style: none;
+}
+
+.Update-list-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.Update-count-container {
+    margin: 5px;
+}
+
+.Update-count {
+    font-size: larger;
+}
+
+.Update-owner-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.Update-owner-image {
+    height: 100px;
+    border-radius: 50%;
+}
+
+.Update-detail-container {
+    margin: 5px;
+}

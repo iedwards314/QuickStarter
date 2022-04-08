@@ -1,4 +1,5 @@
 from .db import db
+from app.models.contribution import Contribution
 
 class Project(db.Model):
     __tablename__ = 'projects'
@@ -27,6 +28,13 @@ class Project(db.Model):
                                  "cost": reward.__dict__["cost"] })
         newList = sorted(rewardArray, key=lambda d: d['cost'])
 
+        contributions = Contribution.query.filter(Contribution.project_id == self.id).all()
+        contributionDicts = [contribution.to_dict() for contribution in contributions]
+        contributionNum = len(contributionDicts)
+        totalAmount = 0
+        for contribution in contributions:
+            totalAmount += contribution.amount
+
         return {
             'id': self.id,
             'title': self.title,
@@ -37,5 +45,8 @@ class Project(db.Model):
             'user_id': self.user_id,
             'category_id': self.category_id,
             'username': self.user.username,
+            'rewards': newList,
+            'completion': totalAmount,
+            'user_image': self.user.image,
             'rewards': newList
         }
