@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getProjects } from "../../store/project";
-import "./style/project-list.css"
+import ProgressBar from "../ProgressBar";
 import { getCategories } from "../../store/category";
+import "./style/project-list.css"
 
 const ProjectsList = ({search}) => {
     const dispatch = useDispatch();
@@ -38,6 +39,13 @@ const ProjectsList = ({search}) => {
               <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
                 {project?.description}
               </NavLink>
+              <div style={{marginLeft: "20px", marginTop: "20px"}}>
+                {Math.floor((project?.completion / project?.goal) * 100) > 0 ?
+                <ProgressBar bgcolor={"#44fff0"} completed={Math.floor((project?.completion / project?.goal) * 100)} /> :
+                <p style={{margin: "0px"}}>Be the first to contribute</p>}
+                {/* <ProgressBar bgcolor={"#44fff0"} completed={Math.floor((project?.completion / project?.goal) * 100)} /> */}
+                <p style={{margin: "10px 0px 0px 0px", color: "#44fff0"}}>{Math.floor((project?.completion / project?.goal) * 100)}% to goal</p>
+              </div>
             </div>
           ))}
         </>
