@@ -193,4 +193,9 @@
 .review-comment-h3 {
     width: 100%;
     max-width: 100%;
+    color: rgb(223, 223, 223);
+}
+
+.comments-section-info h2 {
+    color: #3ae6d7;
 }
