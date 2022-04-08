@@ -63,7 +63,7 @@ const RewardCard = ({ reward, projectId }) => {
                             onChange={(e) => setAmount(e.target.value)}
                             className='reward-number-inputbox' placeholder='Number' type="number"></input>
                         <div
-                            className={currentReward == reward?.id ? 'reward-inputcontinue' : 'hidden'} style={{ cursor: "pointer" }}
+                            className={parseInt(currentReward) === reward?.id ? 'reward-inputcontinue' : 'hidden'} style={{ cursor: "pointer" }}
                             onClick={submitContribution}>Continue</div>
                         <div className='reward-buttons'>
                             <div
