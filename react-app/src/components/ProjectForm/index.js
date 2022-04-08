@@ -53,7 +53,7 @@ function ProjectForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (errors) return alert('Error Submitting.')
+    if (errors.length) return alert('Error Submitting.')
     const payload = {
       title,
       description,
