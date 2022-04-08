@@ -5,7 +5,6 @@ reward_routes = Blueprint('rewards', __name__)
 
 @reward_routes.route('/create', methods=["POST"])
 def create_reward():
-    # print(request.json)
     reward = dict(request.json)
     newReward = Reward(
         title=reward['title'],

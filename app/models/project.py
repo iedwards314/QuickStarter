@@ -20,7 +20,6 @@ class Project(db.Model):
     comments = db.relationship("Comment", back_populates="project", cascade="all, delete")
 
     def to_dict(self):
-        # print("REAWRD!!!!", self.reward[0].__dict__["title"])
         rewardArray = []
         for reward in self.reward:
             rewardArray.append({ "title": reward.__dict__["title"],

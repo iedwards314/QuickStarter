@@ -12,7 +12,6 @@ def projects():
 
 @project_routes.route('/<int:id>')
 def get_project(id):
-    print('HEYHEYHEY')
     project = Project.query.get(id)
     return project.to_dict()
 
@@ -30,7 +29,6 @@ def create_project():
     )
     db.session.add(newProject)
     db.session.commit()
-    print(newProject)
     return newProject.to_dict()
 
 @project_routes.route('/delete/<int:id>', methods=['DELETE'])
