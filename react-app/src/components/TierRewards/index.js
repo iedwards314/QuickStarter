@@ -71,7 +71,6 @@ const TierRewards = () => {
     }
 
     const submitContribution = async () => {
-        // submit contribution
         if (amount < 0) return alert('Amount must be more than $0 >:^[')
         if (amount > 0) {
             const contribution = {
@@ -109,7 +108,6 @@ const TierRewards = () => {
 
 
                 <div className="reward-modal-container">
-                    {/* Modal container */}
                     <Modal
                         ariaHideApp={false}
                         style={{ overlay: { backgroundColor: "rgba(68,68,68,.3" } }}
@@ -133,7 +131,6 @@ const TierRewards = () => {
                                 <label className='dollarsign'>$</label>
                                 <input className='reward-number-inputbox' onChange={(e) => setAmount(e.target.value)} placeholder='Number' type="number"></input>
                                 <div className={currentReward === 'base' ? 'reward-inputcontinue' : 'hidden'} onClick={submitContribution} style={{ cursor: "pointer" }}>Continue</div>
-                                {/* Add onclick for continue div to render payment page */}
                             </div>
                         </div>
                     </label>

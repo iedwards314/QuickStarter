@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addProject } from "../../store/project";
@@ -15,7 +15,32 @@ function ProjectForm() {
   const [end_date, set_end_date] = useState('1800-05-01')
   const [image, setImage] = useState('https://drive.google.com/uc?id=1FU5VA1G8mJoY8q7NSuBwYZpV-1UOHLv3')
   const [category_id, set_category_id] = useState(1)
+  const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
+
+  // Form Validations:
+  useEffect(() => {
+    let errors = [];
+    if (title) {
+      if (title.length === 0 || title.length > 100) errors.push('Please enter a value for title between 1 - 100 characters.')
+    }
+    if (!title) errors.push('Please enter a value for Title.')
+    if (!description) errors.push('Please enter a description.')
+    if (goal) {
+      if (goal <= 0) errors.push('Goal must be greater than $0.')
+    }
+    if (end_date) {
+      let currentDate = new Date()
+      let formattedDate = currentDate.toISOString().split('T')[0]
+      if (end_date <= formattedDate) errors.push('End Date must be in the future.')
+    }
+    if (image) {
+      if (image.length > 255) errors.push('Image URL must be shorter than 255 characters.')
+    }
+    if (!image) errors.push('Please enter a URL for image.')
+    setErrors(errors);
+  }, [title, description, goal, end_date, image])
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -27,6 +52,8 @@ function ProjectForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
+    if (errors) return alert('Error Submitting.')
     const payload = {
       title,
       description,
@@ -43,12 +70,16 @@ function ProjectForm() {
       console.log("There is an error")
     }
     if (createdProject) {
+      setHasSubmitted(false);
       history.push('/')
     }
   };
 
   return (
     <section className="new-form-holder centered middled">
+      {errors?.map((error) => (
+        <p style={{color: 'red', margin:"0px"}}>{error}</p>
+      ))}
       <form className="create-project-form" onSubmit={handleSubmit}>
         <div className="create-input-container">
           <label className="create-form-text" htmlFor="title">Title: </label>
@@ -58,7 +89,6 @@ function ProjectForm() {
               type="text"
               name="title"
               placeholder="Enter a nice title for your project"
-              required
               value={title}
               onChange={updateTitle}
             />
