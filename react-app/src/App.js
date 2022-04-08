@@ -72,7 +72,7 @@ function App() {
         <ProtectedRoute path="/checkout/:contributionId" exact={true}>
           <PaymentPage />
         </ProtectedRoute>
-        <ProtectedRoute path='/updates/create-form' exact={true}>
+        <ProtectedRoute path='/updates/create-form/:projectId' exact={true}>
           <UpdateForm />
         </ProtectedRoute>
         <Route path="/search/:searchTerms">

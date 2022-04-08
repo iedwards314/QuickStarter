@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { addUpdate } from "../../store/updates";
 import '../ProjectEditForm/ProjectEdit.css';
@@ -7,12 +8,12 @@ import '../ProjectEditForm/ProjectEdit.css';
 function UpdateForm({project}) {
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const {projectId} = useParams();
   const [title, setTitle] = useState("");
   const [update, setUpdate] = useState("");
   const [image_url, setImage] = useState("");
   const updates = useSelector((state) => state.updates);
-  const project_id = updates[1]?.project;
+  // const project_id = updates[1]?.project;
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setUpdate(e.target.value);
@@ -24,8 +25,9 @@ function UpdateForm({project}) {
         title,
         update,
         image_url,
-        project_id,
+        project_id: projectId
     };
+    console.log(payload);
     let createdUpdate
     try {
       createdUpdate = await dispatch(addUpdate(payload));
@@ -33,7 +35,7 @@ function UpdateForm({project}) {
       console.log("There is an error")
     }
     if (createdUpdate) {
-      history.push(`/projects/${project_id}`)
+      history.push(`/projects/${projectId}`)
     }
   };
 
