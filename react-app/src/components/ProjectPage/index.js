@@ -10,11 +10,12 @@ function ProjectForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { projectId } = useParams();
+
     useEffect(() => {
         dispatch(getProject(projectId))
         dispatch(getProjectInfo(projectId))
     }, [dispatch, projectId]);
-    const state = useSelector((state) => state)
+
     const sessionUser = useSelector((state) => state.session.user)
     const project = useSelector((state) => state.project.selected[projectId]);
     const info = useSelector((state) => state.project.info)

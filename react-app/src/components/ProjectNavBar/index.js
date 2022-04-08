@@ -23,7 +23,7 @@ const ProjectNavBar = ({project, projectId}) => {
             </div>
         </div>
         {allActive === "comments" ?
-           <CommentsForm projectId={projectId}/> :
+           <CommentsForm projectId={projectId} /> :
         allActive === "updates" ?
             <UpdatesFeature project={project ? project : null}/> :
         null}
