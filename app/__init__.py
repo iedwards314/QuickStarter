@@ -14,6 +14,7 @@ from .api.contribution_routes import contribution_routes
 from .api.category_routes import category_routes
 from .api.update_routes import update_routes
 from .api.comment_routes import comment_routes
+from .api.payment_routes import payment_routes
 
 
 from .seeds import seed_commands
@@ -44,6 +45,7 @@ app.register_blueprint(contribution_routes, url_prefix='/api/contributions')
 app.register_blueprint(category_routes, url_prefix='/api/categories')
 app.register_blueprint(update_routes, url_prefix='/api/updates')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(payment_routes, url_prefix='/api/payments')
 
 db.init_app(app)
 Migrate(app, db)

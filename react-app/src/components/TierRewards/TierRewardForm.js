@@ -60,50 +60,53 @@ const TierRewardForm = ({ projectId, editForm, reward }) => {
 
     return (
         <div className="reward-form-container">
-            <div>
-                <p className="form-ptag">Reward Title</p>
-                <input
-                    type="text"
-                    defaultValue={reward ? reward.title : ""}
-                    placeholder="Reward Title"
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="form-title-inputbox"
-                />
-            </div>
-            <div>
-                <p className="form-ptag">Description</p>
-                <textarea
-                    placeholder="Description"
-                    defaultValue={reward ? reward.description : ""}
-                    rows={10}
-                    columns={10}
-                    style={{ resize: "None" }}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="form-desc-inputbox"
-                />
-            </div>
-            <div>
-                <p className="form-ptag">Amount</p>
-                <input
-                    type="number"
-                    defaultValue={reward ? reward.cost : ""}
-                    onChange={(e) => setCost(e.target.value)}
-                    placeholder="Amount"
-                    className="form-amount-inputbox"
-                />
-            </div>
-            <div
-                className="reward-form-submit"
-                onClick={handleSubmit}
-                style={{
-                    cursor: "pointer",
-                    display: "inline-block"
-                }}>
-                <p>Submit</p>
-            </div>
-            {errors?.map((error) => (
-                <p>{error}</p>
-            ))}
+                <div>
+                    <p className="form-ptag">Reward Title</p>
+                    <input
+                        type="text"
+                        defaultValue={reward ? reward.title : ""}
+                        placeholder="Reward Title"
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="form-title-inputbox"
+                    />
+                </div>
+                <div>
+                    <p className="form-ptag">Description</p>
+                    <textarea
+                        placeholder="Description"
+                        defaultValue={reward ? reward.description : ""}
+                        rows={10}
+                        columns={10}
+                        style={{ resize: "None" }}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="form-desc-inputbox"
+                    />
+                </div>
+                <div>
+                    <p className="form-ptag">Amount</p>
+                    <div className="form-money-container">
+                        <p className="formg-dollar-sign" style={{ margin: "0px" }}>$</p>
+                        <input
+                            type="number"
+                            defaultValue={reward ? reward.cost : ""}
+                            onChange={(e) => setCost(e.target.value)}
+                            placeholder="Amount"
+                            className="form-amount-inputbox"
+                        />
+                    </div>
+                </div>
+                <div
+                    className="reward-form-submit"
+                    onClick={handleSubmit}
+                    style={{
+                        cursor: "pointer",
+                        display: "inline-block"
+                    }}>
+                    <p>Submit</p>
+                </div>
+                {errors?.map((error) => (
+                    <p>{error}</p>
+                ))}
         </div>
     )
 };

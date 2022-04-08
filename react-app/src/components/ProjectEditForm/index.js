@@ -30,6 +30,33 @@ function ProjectEditForm() {
   const [image, setImage] = useState(`${project?.image}`)
   const [category_id, set_category_id] = useState(`${project?.category_id}`)
 
+  const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+
+  // Form Validations:
+  useEffect(() => {
+    let errors = [];
+    if (title) {
+      if (title.length === 0 || title.length > 100) errors.push('Please enter a value for title between 1 - 100 characters.')
+    }
+    if (!title) errors.push('Please enter a value for Title.')
+    if (!description) errors.push('Please enter a description.')
+    if (goal) {
+      if (goal <= 0) errors.push('Goal must be greater than $0.')
+    }
+    if (end_date) {
+      let currentDate = new Date()
+      let formattedDate = currentDate.toISOString().split('T')[0]
+      if (end_date <= formattedDate) errors.push('End Date must be in the future.')
+    }
+    if (image) {
+      if (image.length > 255) errors.push('Image URL must be shorter than 255 characters.')
+    }
+    if (!image) errors.push('Please enter a URL for image.')
+    setErrors(errors);
+  }, [title, description, goal, end_date, image])
+
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setDescription(e.target.value);
@@ -47,6 +74,8 @@ function ProjectEditForm() {
   const handleSubmit = async (e) => {
     let id = projectId
     e.preventDefault();
+    setHasSubmitted(true);
+    if (errors.length) return alert('Error in Submission')
     const payload = {
       id,
       title,
@@ -69,7 +98,11 @@ function ProjectEditForm() {
   };
 
   return (
+
     <section className="new-form-holder centered middled">
+      {hasSubmitted && errors?.map((error) => (
+        <p style={{color: 'red', margin:"0px"}}>{error}</p>
+      ))}
       <form className="create-project-form" onSubmit={handleSubmit}>
         <div className="create-input-container">
           <label className="create-form-text" htmlFor="title">Title: </label>
@@ -78,7 +111,6 @@ function ProjectEditForm() {
               type="text"
               name="title"
               placeholder="Enter a nice title for your project"
-              required
               value={title}
               onChange={updateTitle}
               className="create-form-input"
@@ -92,7 +124,6 @@ function ProjectEditForm() {
               type="number"
               name="goal"
               placeholder="Goal"
-              required
               value={goal}
               onChange={updateGoal}
               className="create-form-input"
@@ -106,7 +137,6 @@ function ProjectEditForm() {
               type="date"
               name="enddate"
               placeholder="Estimated Completion Date"
-              required
               value={end_date}
               onChange={updateEndDate}
               className="create-form-input"
