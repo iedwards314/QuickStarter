@@ -165,7 +165,7 @@ function ProjectForm() {
                     </div>
                 </div>
             </div>
-            <ProjectNavBar />
+            <ProjectNavBar project={project} seesionUser={sessionUser}/>
         </div>
     );
 };

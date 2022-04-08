@@ -37,5 +37,6 @@ class Project(db.Model):
             'user_id': self.user_id,
             'category_id': self.category_id,
             'username': self.user.username,
+            'user_image': self.user.image,
             'rewards': newList
         }

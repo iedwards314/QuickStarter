@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import UpdatesFeature from '../UpdatesFeature';
 import './style/project-navbar.css';
 
-const ProjectNavBar = () => {
+const ProjectNavBar = ({project}) => {
     const [allActive, setAllActive] = useState('comments');
 
     return (
@@ -24,8 +25,7 @@ const ProjectNavBar = () => {
         // insert comment component
         <p>Comments Component!</p> :
         allActive === "updates" ?
-        // insert updates component
-        <p>Updates Component!</p> :
+            <UpdatesFeature project={project}/> :
         null}
     </>
     )

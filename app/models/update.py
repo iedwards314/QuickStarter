@@ -12,3 +12,13 @@ class Update(db.Model):
     created_at = db.Column(DateTime, default=datetime.utcnow())
 
     project = db.relationship("Project", back_populates="update")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'update': self.update,
+            'image_url':self.image_url,
+            'project': self.project_id,
+            'created_at': self.created_at
+        }

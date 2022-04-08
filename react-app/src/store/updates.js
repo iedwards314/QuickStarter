@@ -71,10 +71,6 @@ const updateReducer = (state = initialState, action) => {
             newState = {...state};
             delete newState[action.updateId];
             return newState;
-        case EDIT:
-            newState = {...state};
-            newState[action.update.id] = action.update;
-            return newState;
         default:
             return state;
     };

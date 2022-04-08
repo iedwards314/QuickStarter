@@ -3,10 +3,13 @@ from app.models import Update, db
 
 update_routes = Blueprint('updates', __name__)
 
-@update_routes.route('/')
-def updates():
-    updates = Update.query.all()
-    return {'updates': [update.to_dict() for update in updates]}
+@update_routes.route('/<int:id>')
+def get_updates(id):
+    updates = Update.query.filter(Update.project_id == id).order_by(Update.created_at).all()
+    updatesList = []
+    for update in updates:
+        updatesList.append(update.to_dict())
+    return jsonify(updatesList)
 
 @update_routes.route('/create', methods=['POST'])
 def create_update():
