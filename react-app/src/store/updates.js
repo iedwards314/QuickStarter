@@ -41,7 +41,7 @@ export const addUpdate = (update) => async (dispatch) => {
     };
 };
 
-export const deleteReward = (updateId) => async (dispatch) => {
+export const deleteUpdate = (updateId) => async (dispatch) => {
     const response = await fetch(`/api/updates/delete/${updateId}`, {
         method: "DELETE"
     });
