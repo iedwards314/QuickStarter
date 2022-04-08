@@ -1,5 +1,5 @@
 .Update-list-container {
-    margin: 10px;
+
 }
 
 .Update-list {
@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.Update-list-division{
+    max-width: 20%;
 }
 
 .Update-count-container {
@@ -90,9 +94,10 @@
     color: black;
     font-weight: bold;
     line-height: 25px;
+    height: 25px;
     padding: 5px 20px;
     margin: 10px 10px;
     text-decoration: none;
     font-size: 12px;
-    background-color: beige;
+    background-color: #44fff0;
 }

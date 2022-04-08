@@ -68,8 +68,10 @@ const UpdatesFeature = ({project}) => {
                         {project ? projectOwnerAdd() : null}
                         {updatesArr.map((update, idx)=> (
                             <li className='Update-list-item' key={idx}>
-                                <div className='Update-count-container'><p className='Update-count'>{idx + 1}</p></div>
-                                <div className='Update-owner-image-container'><img src={project?.user_image} alt={project?.user} className='Update-owner-image'/></div>
+                                <div className='Update-list-division'>
+                                    <div className='Update-count-container'><p className='Update-count'>{idx + 1}</p></div>
+                                    <div className='Update-owner-image-container'><img src={project?.user_image} alt={project?.user} className='Update-owner-image'/></div>
+                                </div>
                                 <div className='Update-detail-container'>
                                     <div className='Update-title-container'><p className='Update-title'>{update?.title}</p></div>
                                     {update?.image_url ? <div className='Update-image-container'><img className='Update-image' src={update?.image_url} alt={`${update?.title}`} /></div> :null}
