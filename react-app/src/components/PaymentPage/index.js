@@ -54,12 +54,12 @@ const PaymentPage = () => {
                     <div>
                         <div className="payment-page-reward-title">
                             <p >Reward</p>
-                            <p >{contribution?.reward_title}</p>
-                            <p >${contribution?.reward_cost}</p>
+                            <p >{contribution?.reward_title ? contribution?.reward_title : "No Reward"}</p>
+                            <p >${contribution?.reward_cost ? contribution?.reward_cost : 0}</p>
                         </div>
                         <div className="payment-page-bonus">
                             <p>Bonus</p>
-                            <p >${contribution?.amount - contribution?.reward_cost}</p>
+                            <p >${contribution?.amount - (contribution?.reward_cost ? contribution?.reward_cost : 0)}</p>
                         </div>
                         <div className="payment-page-total">
                             <p>Total amount</p>
