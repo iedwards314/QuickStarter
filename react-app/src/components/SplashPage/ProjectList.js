@@ -24,7 +24,7 @@ const ProjectsList = ({search}) => {
       return (
         <>
           {projectsArr?.map((project) => (
-            <CampaignCard project={project ? project : null} />
+            <CampaignCard key={project?.id} project={project ? project : null} />
             // <div className="project-div" key={project?.id}>
             //   <NavLink className="project-image-container" exact to={`/projects/${project?.id}`}>
             //     <img className="project-image" src={project?.image} alt="project" />

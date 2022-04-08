@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUpdates, deleteUpdate } from '../../store/updates';
 import './style/UpdatesFeature.css'
 
 const UpdatesFeature = ({project}) => {
     const dispatch = useDispatch()
-    const history = useHistory
     const sessionUser = useSelector((state) => state.session.user)
     const projectId = project?.id
     const updates = useSelector((state) => state.updates);
