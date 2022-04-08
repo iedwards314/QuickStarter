@@ -16,7 +16,7 @@ const UpdatesFeature = ({project}) => {
         if (sessionUser.id === project?.user_id) {
             return (
                 <>
-                  <div className="Update-delete-btn" onClick={ () => null }>Delete </div>
+                  <div className="Update-delete-btn" onClick={ (e) => destroyUpdatesButton(e, update) }>Delete </div>
                 </>
             )
         } else return null
@@ -37,24 +37,23 @@ const UpdatesFeature = ({project}) => {
         } else return null
     }
 
-    // const destroyUpdatesButton = async (e) => {
-    //     e.preventDefault();
-    //     const payload = {
-    //         userId: sessionUser?.id,
-    //         id: update?.id,
-    //     }
-    //     let destroyedUpdate;
-    //     try {
-    //         // destroyedUpdate = await dispatch(deleteUpdate(payload))
-    //         console.log("Delete success...", update?.id)
-    //     } catch (error) {
-    //         console.log("error in delete")
-    //     }
+    const destroyUpdatesButton = async (e, update) => {
+        e.preventDefault();
+        const payload = {
+            userId: sessionUser?.id,
+            id: update?.id,
+        }
+        let destroyedUpdate;
+        try {
+            destroyedUpdate = await dispatch(deleteUpdate(payload))
+        } catch (error) {
+            console.log("error in delete")
+        }
 
-    //     // if (destroyedUpdate?.id) {
-    //     //     history.push("/");
-    //     // }
-    // }
+        if (destroyedUpdate?.id) {
+            dispatch(getUpdates(projectId))
+        }
+    }
 
     useEffect(() => {
         dispatch(getUpdates(projectId))
