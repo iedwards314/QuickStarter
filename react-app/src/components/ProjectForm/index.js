@@ -77,7 +77,7 @@ function ProjectForm() {
 
   return (
     <section className="new-form-holder centered middled">
-      {errors?.map((error) => (
+      {hasSubmitted && errors?.map((error) => (
         <p style={{color: 'red', margin:"0px"}}>{error}</p>
       ))}
       <form className="create-project-form" onSubmit={handleSubmit}>
