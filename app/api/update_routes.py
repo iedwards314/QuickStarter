@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from app.models import Update, db
 
-reward_routes = Blueprint('updates', __name__)
+update_routes = Blueprint('updates', __name__)
 
 @update_routes.route('/')
 def updates():
