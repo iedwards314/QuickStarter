@@ -9,9 +9,13 @@ function UpdateForm({project}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { projectId } = useParams();
+
   const [title, setTitle] = useState("");
   const [update, setUpdate] = useState("");
   const [image_url, setImage] = useState("");
+
+  const [errors, setErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const updateTitle = (e) => setTitle(e.target.value);
   const updateDescription = (e) => setUpdate(e.target.value);
