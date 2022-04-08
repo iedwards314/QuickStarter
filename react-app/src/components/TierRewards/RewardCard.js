@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TierRewardForm from './TierRewardForm';
 import { postContribution } from '../../store/contributions';
+import { useReward } from '../../Context/RewardContext';
 import Modal from 'react-modal';
 import './style/newrewardcards.css'
 
 const RewardCard = ({ reward, projectId }) => {
+    const { currentReward, setCurrentReward } = useReward();
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user)
@@ -31,6 +33,9 @@ const RewardCard = ({ reward, projectId }) => {
     const submitContribution = async () => {
         // submit contribution
         if (amount < 0) return alert('Amount must be more than $0 >:^[')
+        if (reward?.cost) {
+            if (amount < reward?.cost) return alert ('Amount must be equal or greater than reward cost.')
+        }
         if (amount > 0) {
             const contribution = {
                 reward_id: reward.id,
@@ -47,21 +52,21 @@ const RewardCard = ({ reward, projectId }) => {
         <>
             <label className='reward-card'>
                 <div className='reward-card'>
-                    <input type="radio" name="reward"></input>
+                    <input id={reward?.id} type="radio" name="reward" onChange={(e) => setCurrentReward(e.target.id)}></input>
                     <div className='reward-text'>
                         <p className='cost-ptag'>${reward.cost} or more</p>
                     </div>
                     <div className='reward-info'>
                         <p className='reward-title-ptag'>{reward.title}</p>
-                        <p className='reward-desc-ptag'>{reward.description}</p>
+                        <p style={parseInt(currentReward) !== reward?.id ? {paddingBottom: "20px"} : null} className='reward-desc-ptag'>{reward.description}</p>
                     </div>
-                    <div className='reward-inputbox'>
+                    <div className={parseInt(currentReward) === reward?.id ? 'reward-inputbox' : 'hidden'}>
                         <label className='dollarsign'>$</label>
                         <input
                             onChange={(e) => setAmount(e.target.value)}
                             className='reward-number-inputbox' placeholder='Number' type="number"></input>
                         <div
-                            className='reward-inputcontinue' style={{ cursor: "pointer" }}
+                            className={parseInt(currentReward) === reward?.id ? 'reward-inputcontinue' : 'hidden'} style={{ cursor: "pointer" }}
                             onClick={submitContribution}>Continue</div>
                         <div className='reward-buttons'>
                             <div

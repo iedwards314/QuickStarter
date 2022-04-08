@@ -12,9 +12,9 @@ const load = (updates) => ({
     updates
 })
 
-const deleteOne = (updateId) => ({
+const deleteOne = (update) => ({
     type: DELETE,
-    updateId
+    update
 })
 
 export const getUpdates = (projectId) => async (dispatch) => {
@@ -41,7 +41,9 @@ export const addUpdate = (update) => async (dispatch) => {
     };
 };
 
-export const deleteReward = (updateId) => async (dispatch) => {
+export const deleteUpdate = (update) => async (dispatch) => {
+    console.log("updateId is...", update.id);
+    const updateId = update.id
     const response = await fetch(`/api/updates/delete/${updateId}`, {
         method: "DELETE"
     });
