@@ -7,7 +7,6 @@ category_routes = Blueprint('categories', __name__)
 @category_routes.route('/')
 def categories():
     categories = Category.query.all()
-    print('YEPYEPYEPYEPYEPEYPEYEPYEPYEPAYUDFOIAJFOIAJFOIAJF',{'categories': [category.to_dict() for category in categories]})
     return {'categories': [category.to_dict() for category in categories]}
 
 @category_routes.route('/<int:id>')
