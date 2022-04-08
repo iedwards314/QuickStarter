@@ -8,7 +8,7 @@ export const saveInfo = async (paymentInfo)  => {
         body: JSON.stringify(paymentInfo),
     });
     if (response.ok) {
-        const info = response.json();
+        // const info = response.json();
         // dispatch
         return "Success!"
     }

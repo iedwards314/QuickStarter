@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { saveInfo } from "../../store/paymentInfo";
 
 const PaymentForm = ({contribution}) => {
@@ -14,7 +14,6 @@ const PaymentForm = ({contribution}) => {
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const history = useHistory();
-    const dispatch = useDispatch();
 
     useEffect(() => {
         let errors = [];
@@ -44,7 +43,7 @@ const PaymentForm = ({contribution}) => {
         }
         if (!zip) errors.push('Please enter a value for Zip Code.')
         setErrors(errors);
-    }, [ccNumber, name, exp, cvc, zip])
+    }, [ccNumber, name, exp, cvc, zip, address])
 
     const handleSubmit = async () => {
         setHasSubmitted(true);
