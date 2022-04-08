@@ -47,4 +47,6 @@ class Project(db.Model):
             'username': self.user.username,
             'rewards': newList,
             'completion': totalAmount
+            'user_image': self.user.image,
+            'rewards': newList
         }
