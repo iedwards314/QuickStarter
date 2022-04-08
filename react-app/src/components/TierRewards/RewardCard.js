@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReward } from '../../store/rewards';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import TierRewardForm from './TierRewardForm';
 import { postContribution } from '../../store/contributions';
@@ -33,6 +33,9 @@ const RewardCard = ({ reward, projectId }) => {
     const submitContribution = async () => {
         // submit contribution
         if (amount < 0) return alert('Amount must be more than $0 >:^[')
+        if (reward?.cost) {
+            if (amount < reward?.cost) return alert ('Amount must be equal or greater than reward cost.')
+        }
         if (amount > 0) {
             const contribution = {
                 reward_id: reward.id,
