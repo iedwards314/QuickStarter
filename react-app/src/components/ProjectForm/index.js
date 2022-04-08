@@ -29,6 +29,7 @@ function ProjectForm() {
     if (!description) errors.push('Please enter a description.')
     if (goal) {
       if (goal <= 0) errors.push('Goal must be greater than $0.')
+      if (goal % 1 !== 0) errors.push('Amount must be an integer.')
     }
     if (end_date) {
       let currentDate = new Date()
@@ -70,8 +71,9 @@ function ProjectForm() {
       console.log("There is an error")
     }
     if (createdProject) {
+      console.log(createdProject);
       setHasSubmitted(false);
-      history.push('/')
+      history.push(`/projects/${createdProject.id}`)
     }
   };
 
