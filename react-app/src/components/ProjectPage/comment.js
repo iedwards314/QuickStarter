@@ -48,7 +48,7 @@ const CommentsForm = ({ projectId }) => {
                     <img alt={`UserDisplay`}src={`${comment?.user_image}`} />
                     </div>
                     <div className='comments-section-info'>
-                    <h3 className="review-comment-h3" key={`h3${comment.id}`}>{`"${comment?.comment}"`}</h3>
+                    <h3 className="review-comment-h3" key={`h3${comment?.id}`}>{`"${comment?.comment}"`}</h3>
                     <h2 key={`h2{comment.id}`}>{`~${comment?.project_username}`}</h2>
                     </div>
                 </div>
@@ -67,6 +67,7 @@ const CommentsForm = ({ projectId }) => {
                             <textarea
                             placeholder="Write out a Comment"
                             wrap='soft'
+                            required
                             value={comment}
                             onChange={updateComment}
                             />
