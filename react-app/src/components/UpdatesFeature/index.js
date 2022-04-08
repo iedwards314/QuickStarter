@@ -62,7 +62,6 @@ const UpdatesFeature = ({project}) => {
     const updatesMap = () => {
         if(updates) {
             updatesArr = Object.values(updates)
-            console.log(updatesArr)
             return(
                 <div className='Update-list-container'>
                     <ul className='Update-list'>

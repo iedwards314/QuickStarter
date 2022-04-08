@@ -10,6 +10,12 @@ function ProjectForm() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { projectId } = useParams();
+
+    useEffect(() => {
+        dispatch(getProject(projectId))
+        dispatch(getProjectInfo(projectId))
+    }, [dispatch, projectId]);
+
     const sessionUser = useSelector((state) => state.session.user)
     const project = useSelector((state) => state.project.selected[projectId]);
     const info = useSelector((state) => state.project.info)
@@ -17,10 +23,6 @@ function ProjectForm() {
 
     const [deletePrompt, setDeletePrompt] = useState(false);
 
-    useEffect(() => {
-        dispatch(getProject(projectId))
-        dispatch(getProjectInfo(projectId))
-    }, [dispatch, projectId]);
 
     const showButtons = () => {
         if (!sessionUser) return;
@@ -165,7 +167,7 @@ function ProjectForm() {
                     </div>
                 </div>
             </div>
-            <ProjectNavBar project={project} seesionUser={sessionUser}/>
+            <ProjectNavBar project={project} seesionUser={sessionUser} projectId={projectId}/>
         </div>
     );
 };

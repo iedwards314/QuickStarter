@@ -51,7 +51,7 @@ def upgrade():
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('comment', sa.String(length=255), nullable=False),
+    sa.Column('comment', sa.Text(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('project_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], ),
@@ -81,7 +81,7 @@ def upgrade():
     op.create_table('updates',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('update', sa.Text, nullable=False),
+    sa.Column('update', sa.Text(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('project_id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
