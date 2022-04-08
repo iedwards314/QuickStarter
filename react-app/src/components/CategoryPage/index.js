@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, NavLink } from "react-router-dom";
 import { getCategories } from "../../store/category";
 import { getCategory } from "../../store/project";
+import CampaignCard from "../CampaignCard";
 import "./CategoryPage.css";
 
 const CategoryPage = () => {
@@ -30,17 +31,18 @@ const CategoryPage = () => {
       return (
         <>
           {projectsArr?.map((project) => (
-            <div className="project-div" key={project?.id}>
-              <NavLink className="project-image-container" exact to={`/projects/${project?.id}`}>
-                <img className="project-image" src={project?.image} alt="project" />
-              </NavLink>
-              <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
-                <h3>{project?.title}</h3>
-              </NavLink>
-              <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
-                {project?.description}
-              </NavLink>
-            </div>
+            <CampaignCard project={project ? project : null} />
+            // <div className="project-div" key={project?.id}>
+            //   <NavLink className="project-image-container" exact to={`/projects/${project?.id}`}>
+            //     <img className="project-image" src={project?.image} alt="project" />
+            //   </NavLink>
+            //   <NavLink className="project-title" exact to={`/projects/${project?.id}`}>
+            //     <h3>{project?.title}</h3>
+            //   </NavLink>
+            //   <NavLink className="project-description" exact to={`/projects/${project?.id}`}>
+            //     {project?.description}
+            //   </NavLink>
+            // </div>
           ))}
         </>
       );
