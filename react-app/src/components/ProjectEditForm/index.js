@@ -12,15 +12,23 @@ function ProjectEditForm() {
   const user_id = useSelector((state) => state.session?.user.id);
   const { projectId } = useParams();
   const project = useSelector((state) => state.project.selected[projectId]);
-  let endDate = project?.end_date
 
-  let theDate = SetDate(endDate)
-  const [title, setTitle] = useState(`${project.title}`);
-  const [description, setDescription] = useState(`${project.description}`);
-  const [goal, setGoal] = useState(`${project.goal}`);
+  let endDate;
+  let theDate;
+  if (project) {
+    endDate = project?.end_date
+    theDate = SetDate(endDate)
+  }
+  if (!project) {
+    history.push(`/projects/${projectId}`)
+  }
+
+  const [title, setTitle] = useState(`${project?.title}`);
+  const [description, setDescription] = useState(`${project?.description}`);
+  const [goal, setGoal] = useState(`${project?.goal}`);
   const [end_date, set_end_date] = useState(theDate)
-  const [image, setImage] = useState(`${project.image}`)
-  const [category_id, set_category_id] = useState(`${project.category_id}`)
+  const [image, setImage] = useState(`${project?.image}`)
+  const [category_id, set_category_id] = useState(`${project?.category_id}`)
 
 
   const updateTitle = (e) => setTitle(e.target.value);
