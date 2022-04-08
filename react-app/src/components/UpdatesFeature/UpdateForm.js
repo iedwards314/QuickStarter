@@ -1,29 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { addUpdate } from "../../store/update";
-import './ProjectForm.css';
+import { addUpdate } from "../../store/updates";
+import '../ProjectEditForm/ProjectEdit.css';
 
-function UpdateForm() {
+function UpdateForm({project}) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user_id = useSelector((state) => state.session?.user.id)
 
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [goal, setGoal] = useState(0);
-  const [end_date, set_end_date] = useState('1800-05-01')
-  const [image, setImage] = useState('https://drive.google.com/uc?id=1FU5VA1G8mJoY8q7NSuBwYZpV-1UOHLv3')
-  const [category_id, set_category_id] = useState(1)
-
+  const [update, setUpdate] = useState("");
+  const [image_url, setImage] = useState("");
+  const updates = useSelector((state) => state.updates);
+  const project_id = updates[1]?.project;
 
   const updateTitle = (e) => setTitle(e.target.value);
-  const updateDescription = (e) => setDescription(e.target.value);
-  const updateGoal = (e) => setGoal(e.target.value);
-  const updateEndDate = (e) => set_end_date(e.target.value);
+  const updateDescription = (e) => setUpdate(e.target.value);
   const updateImage = (e) => setImage(e.target.value);
-  const updateCategory = (e) => set_category_id(e.target.value);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +25,6 @@ function UpdateForm() {
         update,
         image_url,
         project_id,
-        created_at
     };
     let createdUpdate
     try {
@@ -41,7 +33,7 @@ function UpdateForm() {
       console.log("There is an error")
     }
     if (createdUpdate) {
-      history.push('/')
+      history.push(`/projects/${project_id}`)
     }
   };
 
@@ -55,39 +47,10 @@ function UpdateForm() {
               className="create-form-input"
               type="text"
               name="title"
-              placeholder="Enter a nice title for your project"
+              placeholder="Enter a nice title for your update"
               required
               value={title}
               onChange={updateTitle}
-            />
-          </div>
-        </div>
-        <div className="create-input-container">
-          <label className="create-form-text" htmlFor="goal">Funding Goal: </label>
-          <div className="money">
-            <p className="money-ptag">$</p>
-            <input
-              className="create-form-input"
-              type="number"
-              name="goal"
-              placeholder="Goal"
-              required
-              value={goal}
-              onChange={updateGoal}
-            />
-          </div>
-        </div>
-        <div className="create-input-container">
-          <label className="create-form-text" htmlFor="enddate">End Date: </label>
-          <div>
-            <input
-              className="create-form-calendar"
-              type="date"
-              name="enddate"
-              placeholder="Estimated Completion Date"
-              required
-              value={end_date}
-              onChange={updateEndDate}
             />
           </div>
         </div>
@@ -99,22 +62,9 @@ function UpdateForm() {
               type="text"
               name="img"
               placeholder="Image URL"
-              value={image}
+              value={image_url}
               onChange={updateImage}
             />
-          </div>
-        </div>
-        <div className="create-input-container">
-          <label className="create-form-text" htmlFor="ctgy">Project Category</label>
-          <div>
-            <select className="create-form-input" name="ctgy" onChange={updateCategory}>
-              <option value={1}>Games</option>
-              <option value={2}>Music</option>
-              <option value={3}>Health</option>
-              <option value={4}>Film</option>
-              <option value={5}>Food</option>
-              <option value={6}>Tech</option>
-            </select>
           </div>
         </div>
         <div className="create-input-container">
@@ -122,13 +72,13 @@ function UpdateForm() {
           <div>
             <textarea className="create-project-description"
               name="desc"
-              placeholder="Write a description for your project"
-              value={description}
+              placeholder="Write a description for your update"
+              value={update}
               onChange={updateDescription}
             />
           </div>
         </div>
-        <button className="create-new-project-button" type="submit">Create new Project</button>
+        <button className="create-new-project-button" type="submit">Create new Update</button>
       </form>
     </section>
   );

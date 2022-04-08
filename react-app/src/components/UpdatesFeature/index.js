@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUpdates, deleteUpdate } from '../../store/updates';
 import './style/UpdatesFeature.css'
@@ -28,7 +28,7 @@ const UpdatesFeature = ({project}) => {
             return (
                 <>
                     <li className='Update-add-btn-list-item' key='Update-add-btn'>
-                        <Link to={`/updates/create-form`} >
+                        <Link to="/updates/create-form" project={project}>
                             <div className="Update-delete-btn" onClick={ () => null }>Add Update </div>
                         </Link>
                     </li>
