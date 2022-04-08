@@ -18,10 +18,6 @@ const ProjectsList = ({search}) => {
         dispatch(getCategories());
     },[dispatch])
 
-  useEffect(() => {
-    if (!search) dispatch(getProjects());
-  }, [dispatch, search]);
-
   const projectListMap = () => {
     if (projects !== undefined) {
       projectsArr = Object.values(projects);
