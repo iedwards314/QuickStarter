@@ -21,18 +21,22 @@ const TierRewardForm = ({ projectId, editForm, reward }) => {
             if (title.length === 0) errors.push("Please enter a value for title.")
             if (title.length > 100) errors.push("Title must be less than 100 characters long.")
         }
+        if (!title) errors.push("Please enter a value for title.")
         if (description) {
             if (description.length === 0) errors.push("Please enter a value for description.")
         }
+        if (!description) errors.push("Please enter a value for description.")
         if (cost) {
             if (cost <= 0) errors.push("Please enter an amount greater than 0.")
+            if (cost % 1 !== 0) errors.push('Amount must be an integer.')
         }
+        if (!cost) errors.push('Please enter a value for amount.')
         setErrors(errors);
     }, [title, description, cost]);
 
     const handleSubmit = () => {
         setHasSubmitted(true);
-
+        if (errors.length) return
         if (editForm) {
             const editedReward = {
                 id: reward.id,
@@ -42,8 +46,6 @@ const TierRewardForm = ({ projectId, editForm, reward }) => {
                 cost
             };
             dispatch(editReward(editedReward));
-            // dispatch(getRewards(projectId));
-            // dispatch(getProject(projectId));
             return
         }
 
@@ -104,7 +106,7 @@ const TierRewardForm = ({ projectId, editForm, reward }) => {
                     }}>
                     <p>Submit</p>
                 </div>
-                {errors?.map((error) => (
+                {hasSubmitted && errors?.map((error) => (
                     <p>{error}</p>
                 ))}
         </div>
