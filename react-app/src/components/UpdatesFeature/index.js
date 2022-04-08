@@ -27,7 +27,7 @@ const UpdatesFeature = ({project}) => {
             return (
                 <>
                     <li className='Update-add-btn-list-item' key='Update-add-btn'>
-                        <Link to={`/updates/create-form/${project?.id}`} project={project}>
+                        <Link to={`/updates/create-form/${project?.id}`} >
                             <div className="Update-delete-btn" onClick={ () => null }>Add Update </div>
                         </Link>
                     </li>
