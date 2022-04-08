@@ -1,10 +1,52 @@
 import { useHistory } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 const PaymentForm = ({contribution}) => {
+    const [ccNumber, setccNumber] = useState("");
+    const [name, setName] = useState("");
+    const [exp, setExp] = useState("");
+    const [cvc, setcvc] = useState("");
+    const [zip, setZip] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
     const history = useHistory();
 
+    useEffect(() => {
+        let errors = [];
+        let ccreg = /[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}/g;
+        let expreg = /[0-9]{2}\/[0-9]{2}/g;
+        if (ccNumber) {
+            let ccformat = ccNumber.split('-').join('');
+            if (!ccformat.match(ccreg)) errors.push('Please enter valid format: 1234-1234-1234-1234.');
+        }
+        if (!ccNumber) errors.push('Please enter value for Card Number.');
+        if (name) {
+            if (name.length > 100) errors.push('Please enter value for name less than 100 characters.')
+        }
+        if (!name) errors.push('Please enter a value for name.')
+        if (exp) {
+            if (!exp.match(expreg)) errors.push('Please enter valid expiration format: MM/YY.')
+        }
+        if (!exp) errors.push('Please enter a value for Expiration.')
+        if (cvc) {
+            if (cvc.length !== 3) errors.push('Invalid Security Code.')
+        }
+        if (!cvc) errors.push('Please enter a value for Security Code.')
+        if (zip) {
+            if (zip.length !== 5) errors.push('Zip code must be 5 digits.')
+        }
+        if (!zip) errors.push('Please enter a value for Zip Code.')
+        setErrors(errors);
+    }, [ccNumber, name, exp, cvc, zip])
+
     const handleSubmit = () => {
-        history.push(`/projects/${contribution.project_id}`)
+        setHasSubmitted(true);
+        if (errors.length) return alert("Error in submission.")
+        if (window.confirm("Save payment information for later?")) {
+
+        }
+
+        return history.push(`/projects/${contribution.project_id}`)
     }
 
     return (
@@ -13,6 +55,7 @@ const PaymentForm = ({contribution}) => {
                     <div>
                         <p className="form-text">Card Number</p>
                         <input
+                            onChange={(e) => setccNumber(e.target.value)}
                             className="payment-form-input"
                             placeholder="1234-1234-1234-1234"
                             type="text"
@@ -22,6 +65,7 @@ const PaymentForm = ({contribution}) => {
                     <div>
                         <p className="form-text">Cardholder Name</p>
                         <input
+                            onChange={(e) => setName(e.target.value)}
                             className="payment-form-input"
                             placeholder="Cardholder name"
                             style={{ color: "white" }}
@@ -31,6 +75,7 @@ const PaymentForm = ({contribution}) => {
                         <div className="payment-form-input-half1">
                             <p className="form-text">Expiration</p>
                             <input
+                                onChange={(e) => setExp(e.target.value)}
                                 style={{padding: "12px", backgroundColor: "#2b2b2b", border: "none"}}
                                 className="payment-form-input-half1"
                                 placeholder="MM/YY"
@@ -40,6 +85,7 @@ const PaymentForm = ({contribution}) => {
                         <div className="payment-form-input-half1">
                             <p style={{marginLeft: "3%"}}className="form-text">Security Code</p>
                             <input
+                                onChange={(e) => setcvc(e.target.value)}
                                 style={{padding: "12px"}}
                                 className="payment-form-input-half2"
                                 placeholder="CVC"
@@ -50,6 +96,7 @@ const PaymentForm = ({contribution}) => {
                     <div>
                         <p className="form-text">Zip/Postal code</p>
                         <input
+                            onChange={(e) => setZip(e.target.value)}
                             className="payment-form-input"
                             placeholder="Zip/Postal code"
                             type="text"
@@ -64,6 +111,9 @@ const PaymentForm = ({contribution}) => {
                         onClick={handleSubmit}>Pledge
                     </div>
                 </form>
+                {hasSubmitted && errors?.map((error) => (
+                    <p style={{color: "red", textAlign: "center", fontWeight: "bold"}}>{error}</p>
+                ))}
             </div>
     )
 };
