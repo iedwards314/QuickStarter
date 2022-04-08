@@ -24,7 +24,8 @@ const ProjectsList = ({search}) => {
       return (
         <>
           {projectsArr?.map((project) => (
-            <CampaignCard project={project ? project : null} />
+            <CampaignCard key={project?.id} project={project ? project : null} />
+
           ))}
         </>
       );

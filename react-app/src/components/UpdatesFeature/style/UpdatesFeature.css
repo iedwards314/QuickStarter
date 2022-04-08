@@ -4,6 +4,7 @@
 
 .Update-list {
     list-style: none;
+
 }
 
 .Update-list-item {
@@ -33,4 +34,19 @@
 
 .Update-detail-container {
     margin: 5px;
+}
+
+.Update-delete-btn{
+    cursor: pointer;
+    display: block;
+    background: transparent;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: #44fff0;
 }
