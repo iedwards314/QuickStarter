@@ -28,7 +28,7 @@ const UpdatesFeature = ({project}) => {
                 <>
                     <li className='Update-add-btn-list-item' key='Update-add-btn'>
                         <Link to={`/updates/create-form/${project?.id}`} >
-                            <div className="Update-delete-btn" onClick={ () => null }>Add Update </div>
+                            <div className="Update-add-btn" onClick={ () => null }>Add Update </div>
                         </Link>
                     </li>
                 </>
@@ -73,7 +73,7 @@ const UpdatesFeature = ({project}) => {
                                 <div className='Update-owner-image-container'><img src={project?.user_image} alt={project?.user} className='Update-owner-image'/></div>
                                 <div className='Update-detail-container'>
                                     <div className='Update-title-container'><p className='Update-title'>{update?.title}</p></div>
-                                    <div className='Update-image-container'><p className='Update-image'>    {update?.image_url}</p></div>
+                                    {update?.image_url ? <div className='Update-image-container'><img className='Update-image' src={update?.image_url} alt={`${update?.title}`} /></div> :null}
                                     <div className='Update-content-container'><p className='Update-content'>{update?.update}</p></div>
                                 </div>
                                     {update ? projectOwnerDelete(update):null}

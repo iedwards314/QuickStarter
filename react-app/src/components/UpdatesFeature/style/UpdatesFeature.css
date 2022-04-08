@@ -4,12 +4,14 @@
 
 .Update-list {
     list-style: none;
+    max-width: 95%;
 
 }
 
 .Update-list-item {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .Update-count-container {
@@ -36,12 +38,41 @@
     margin: 5px;
 }
 
-.Update-delete-btn{
+.Update-title-container{
+    display: flex;
+    align-items: center;
+}
+
+.Update-title{
+    align-self: center;
+}
+
+.Update-image-container {
+    margin: 5px;
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
+    justify-self: end;
+}
+
+.Update-image {
+    max-width: 100%;
+}
+
+.Update-content-container{
+    margin: 5px;
+}
+
+.Update-content{
+    margin: 5px;
+}
+
+.Update-add-btn{
     cursor: pointer;
     display: block;
     background: transparent;
     text-align: center;
-    color: #ffffff;
+    color: black;
     font-weight: bold;
     line-height: 25px;
     padding: 5px 20px;
@@ -49,4 +80,19 @@
     text-decoration: none;
     font-size: 12px;
     background-color: #44fff0;
+}
+
+.Update-delete-btn{
+    cursor: pointer;
+    display: block;
+    background: transparent;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    text-decoration: none;
+    font-size: 12px;
+    background-color: beige;
 }
