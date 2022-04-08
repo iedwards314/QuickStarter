@@ -129,7 +129,7 @@ const TierRewards = () => {
                             <div className='reward-text'>
                                 <p>Pledge without a reward</p>
                             </div>
-                            <div className='reward-inputbox'>
+                            <div className={currentReward === 'base' ? 'reward-inputbox' : 'hidden'}>
                                 <label className='dollarsign'>$</label>
                                 <input className='reward-number-inputbox' onChange={(e) => setAmount(e.target.value)} placeholder='Number' type="number"></input>
                                 <div className={currentReward === 'base' ? 'reward-inputcontinue' : 'hidden'} onClick={submitContribution} style={{ cursor: "pointer" }}>Continue</div>

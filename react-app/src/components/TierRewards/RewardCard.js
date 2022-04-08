@@ -55,9 +55,9 @@ const RewardCard = ({ reward, projectId }) => {
                     </div>
                     <div className='reward-info'>
                         <p className='reward-title-ptag'>{reward.title}</p>
-                        <p className='reward-desc-ptag'>{reward.description}</p>
+                        <p style={parseInt(currentReward) !== reward?.id ? {paddingBottom: "20px"} : null} className='reward-desc-ptag'>{reward.description}</p>
                     </div>
-                    <div className='reward-inputbox'>
+                    <div className={parseInt(currentReward) === reward?.id ? 'reward-inputbox' : 'hidden'}>
                         <label className='dollarsign'>$</label>
                         <input
                             onChange={(e) => setAmount(e.target.value)}
