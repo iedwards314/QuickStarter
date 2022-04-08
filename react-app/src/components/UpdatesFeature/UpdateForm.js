@@ -25,7 +25,6 @@ function UpdateForm({project}) {
         image_url,
         project_id: projectId
     };
-    console.log(payload);
     let createdUpdate
     try {
       createdUpdate = await dispatch(addUpdate(payload));
