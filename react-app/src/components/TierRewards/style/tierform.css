@@ -24,7 +24,6 @@
 
 .form-desc-inputbox {
     width: 100%;
-    margin: 0px 40px 0px 0px;
     padding: 10px 10px;
     font-size: 14px;
     background-color: #2B2B2B;
@@ -40,13 +39,25 @@
 
 .form-amount-inputbox {
     width: 100%;
-    margin: 0px 40px 40px 0px;
     padding: 10px 10px;
     font-size: 14px;
     background-color: #2B2B2B;
     border: 2px solid #444444;
     color: white;
     box-sizing: border-box;
+}
+
+.form-money-container {
+    display: flex;
+    margin: 0px 0px 40px 0px;
+}
+
+.formg-dollar-sign {
+    margin: none;
+    padding: 10px 30px;
+    border: 2px solid #444444;
+    border-right: none;
+    font-size: 13px;
 }
 
 .form-amount-inputbox:focus {
