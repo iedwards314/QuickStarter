@@ -1,15 +1,20 @@
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { saveInfo } from "../../store/paymentInfo";
 
 const PaymentForm = ({contribution}) => {
+    const user = useSelector((state) => state.session.user)
     const [ccNumber, setccNumber] = useState("");
     const [name, setName] = useState("");
     const [exp, setExp] = useState("");
     const [cvc, setcvc] = useState("");
     const [zip, setZip] = useState("");
+    const [address, setAddress] = useState("");
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const history = useHistory();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let errors = [];
@@ -27,6 +32,8 @@ const PaymentForm = ({contribution}) => {
         if (exp) {
             if (!exp.match(expreg)) errors.push('Please enter valid expiration format: MM/YY.')
         }
+        if (address?.length > 100) errors.push('Address must be less than 100 characters.')
+        if (!address) errors.push('Please enter a value for Address.')
         if (!exp) errors.push('Please enter a value for Expiration.')
         if (cvc) {
             if (cvc.length !== 3) errors.push('Invalid Security Code.')
@@ -39,11 +46,18 @@ const PaymentForm = ({contribution}) => {
         setErrors(errors);
     }, [ccNumber, name, exp, cvc, zip])
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         setHasSubmitted(true);
         if (errors.length) return alert("Error in submission.")
         if (window.confirm("Save payment information for later?")) {
-
+            let payInfo = {
+                card_number: ccNumber.split('-').join(''),
+                address,
+                name,
+                area_code: zip,
+                user_id: user.id
+            };
+            await saveInfo(payInfo)
         }
 
         return history.push(`/projects/${contribution.project_id}`)
@@ -66,6 +80,15 @@ const PaymentForm = ({contribution}) => {
                         <p className="form-text">Cardholder Name</p>
                         <input
                             onChange={(e) => setName(e.target.value)}
+                            className="payment-form-input"
+                            placeholder="Cardholder name"
+                            style={{ color: "white" }}
+                        />
+                    </div>
+                    <div>
+                        <p className="form-text">Address</p>
+                        <input
+                            onChange={(e) => setAddress(e.target.value)}
                             className="payment-form-input"
                             placeholder="Cardholder name"
                             style={{ color: "white" }}
