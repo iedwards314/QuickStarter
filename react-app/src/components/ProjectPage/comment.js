@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getComments, createComment, deleteComments, editComments } from "../../store/comment";
+import { getComments, createComments, deleteComments, editComments } from "../../store/comment";
 
 import './ProjectPage.css';
 
@@ -18,17 +18,17 @@ const CommentsForm = ({ projectId }) => {
 
     useEffect(() => {
         dispatch(getComments(projectId))
-    }, [dispatch]);
+    }, [dispatch, projectId]);
 
     const commentSubmit = async (e) => {
         e.preventDefault();
-        const comment = {
+        const commentS = {
             comment,
             user_id,
             project_id,
           };
 
-        await dispatch(createComment(comment));
+        await dispatch(createComments(commentS));
         await dispatch(getComments(projectId));
     }
 
@@ -37,27 +37,19 @@ const CommentsForm = ({ projectId }) => {
         await dispatch(getComments(projectId));
     }
 
-    const commentEdit = async (e) => {
-        let id = projectId
+    const commentEdit = async (e,id) => {
       e.preventDefault();
+
       const payload = {
         id,
-        title,
-        description,
-        goal,
-        end_date,
-        image,
-        user_id,
-        category_id
+        comment
       };
-      let editedProject
+      console.log('YOOYOYOYO', payload)
+      let editedComment
       try {
-          editedProject = await dispatch(editComments(payload, projectId));
+          editedComment = await dispatch(editComments(payload));
       } catch (error) {
           console.log("There is an error")
-      }
-      if(editedProject){
-          history.push('/')
       }
     };
 
@@ -72,8 +64,8 @@ const CommentsForm = ({ projectId }) => {
                     <h2 key={`h2{comment.id}`}>{comment.project_username}</h2>
                 </div>
                 {comment.user_id===user.id ?
-                (<><button onClick={()=>reviewDeletion(comment.id)} className='comment-button' key={`button${review.id}`}>DELETE ⇈</button>
-                <button onClick={()=>reviewEdit(comment.id)} className='comment-button' key={`button${review.id}`}>EDIT ⇈</button></>
+                (<><button onClick={()=>commentDeletion(comment.id)} className='comment-button' key={`button${comment.id}`}>DELETE ⇈</button>
+                <button onClick={()=>commentEdit(comment.id)} className='comment-button' key={`button${comment.id}`}>EDIT ⇈</button></>
                 ) :
                 (<></>)}
             </>

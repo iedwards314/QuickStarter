@@ -38,6 +38,6 @@ def delete_comment(id):
 def edit_comment():
     comment = dict(request.json)
     dbComment = Comment.query.get(comment['id'])
-    dbComment.comment = comment['title']
+    dbComment.comment = comment['comment']
     db.session.commit()
     return dbComment.to_dict()

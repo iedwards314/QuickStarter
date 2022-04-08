@@ -35,7 +35,7 @@ export const getComments = (id) => async (dispatch) => {
 }
 
 export const createComments = (comment) => async (dispatch) => {
-    const response = await fetch(`/api/comments/${id}`,{
+    const response = await fetch(`/api/comments/create`,{
     method: "POST",
     headers: {
         "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const commentReducer = (state = initialState, action) => {
             })
             newState = {comments: allComments}
             return newState
-        case ADD_ONE:
+        case CREATE:
             newState = {comments: {...state.comments, [action.comment.id]: action.comment}}
             return newState
         case DELETE_ONE:
