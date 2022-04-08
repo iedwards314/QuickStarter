@@ -9,6 +9,7 @@ import CategoriesList from './components/CategoriesPage';
 import CategoryPage from './components/CategoryPage';
 import ProjectEditForm from './components/ProjectEditForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import UpdateForm from './components/UpdatesFeature/UpdateForm';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
@@ -70,6 +71,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/checkout/:contributionId" exact={true}>
           <PaymentPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/updates/create-form' exact={true}>
+          <UpdateForm />
         </ProtectedRoute>
         <Route path="/search/:searchTerms">
           <SearchPage />
