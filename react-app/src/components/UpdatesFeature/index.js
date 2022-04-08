@@ -26,11 +26,11 @@ const UpdatesFeature = ({project}) => {
         if (sessionUser.id === project?.user_id) {
             return (
                 <>
-                    <li className='Update-add-btn-list-item' key='Update-add-btn'>
+                    <div className='Update-add-btn-list-item' key='Update-add-btn'>
                         <Link to={`/updates/create-form/${project?.id}`} >
-                            <div className="Update-delete-btn" onClick={ () => null }>Add Update </div>
+                            <div className="Update-add-btn" onClick={ () => null }>Add Update </div>
                         </Link>
-                    </li>
+                    </div>
                 </>
             )
         } else return null
@@ -64,21 +64,25 @@ const UpdatesFeature = ({project}) => {
             updatesArr = Object.values(updates)
             return(
                 <div className='Update-list-container'>
-                    <ul className='Update-list'>
+                    <div className='Update-list'>
                         {project ? projectOwnerAdd() : null}
                         {updatesArr.map((update, idx)=> (
-                            <li className='Update-list-item' key={idx}>
-                                <div className='Update-count-container'><p className='Update-count'>{idx + 1}</p></div>
-                                <div className='Update-owner-image-container'><img src={project?.user_image} alt={project?.user} className='Update-owner-image'/></div>
-                                <div className='Update-detail-container'>
-                                    <div className='Update-title-container'><p className='Update-title'>{update?.title}</p></div>
-                                    <div className='Update-image-container'><p className='Update-image'>    {update?.image_url}</p></div>
-                                    <div className='Update-content-container'><p className='Update-content'>{update?.update}</p></div>
+                            <>
+                                <div className='Update-list-item' key={idx}>
+                                    <div className='Update-list-division'>
+                                        {update?.image_url ? <div className='Update-image-container'><img className='Update-image' src={update?.image_url} alt={`${update?.title}`} /></div> :<div className='Update-owner-image-container'><img src={project?.user_image} alt={project?.user} className='Update-owner-image'/></div>}
+                                        <div className='Update-title-container'><p className='Update-title'>{update?.title}</p></div>
+                                    </div>
+                                    <div className='Update-detail-container'>
+
+                                        <div className='Update-content-container'><p className='Update-content'>{update?.update}</p></div>
+                                    </div>
+                                        {update ? projectOwnerDelete(update):null}
                                 </div>
-                                    {update ? projectOwnerDelete(update):null}
-                            </li>
+                                <div className='divider'></div>
+                            </>
                         ))}
-                    </ul>
+                    </div>
                 </div>
             )
         }
