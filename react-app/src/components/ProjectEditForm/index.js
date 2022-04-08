@@ -26,9 +26,9 @@ function ProjectEditForm() {
   const [title, setTitle] = useState(`${project?.title}`);
   const [description, setDescription] = useState(`${project?.description}`);
   const [goal, setGoal] = useState(`${project?.goal}`);
-  const [end_date, set_end_date] = useState(theDate)
-  const [image, setImage] = useState(`${project?.image}`)
-  const [category_id, set_category_id] = useState(`${project?.category_id}`)
+  const [end_date, set_end_date] = useState(theDate);
+  const [image, setImage] = useState(`${project?.image}`);
+  const [category_id, set_category_id] = useState(project?.category_id);
 
   const [errors, setErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -44,6 +44,7 @@ function ProjectEditForm() {
     if (!description) errors.push('Please enter a description.')
     if (goal) {
       if (goal <= 0) errors.push('Goal must be greater than $0.')
+      if (goal % 1 !== 0) errors.push('Amount must be an integer.')
     }
     if (end_date) {
       let currentDate = new Date()
@@ -93,7 +94,7 @@ function ProjectEditForm() {
       console.log("There is an error")
     }
     if (editedProject) {
-      history.push('/')
+      history.push(`/projects/${id}`)
     }
   };
 
@@ -159,7 +160,7 @@ function ProjectEditForm() {
         <div className="create-input-container">
           <label className="create-form-text" htmlFor="ctgy">Project Category</label>
           <div>
-            <select className="create-form-input" name="ctgy" onChange={updateCategory}>
+            <select className="create-form-input" name="ctgy" value={category_id} onChange={updateCategory}>
               <option value={1}>Games</option>
               <option value={2}>Music</option>
               <option value={3}>Health</option>

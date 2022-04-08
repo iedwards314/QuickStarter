@@ -70,7 +70,7 @@ const BannerUpper = () => {
                 <div className='banner-right-button-container'>
                     <NavLink to="">
                         <div className='banner-search nav-button'>
-                            <p>Search</p>
+                            <p onClick={() => setSearchActive(true)}>Search</p>
                         </div>
                     </NavLink>
                     <NavLink to="/login">
