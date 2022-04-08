@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUpdates } from '../../store/updates';
 import './style/UpdatesFeature.css'
 
 const UpdatesFeature = ({project}) => {
     const dispatch = useDispatch()
-    const sessionUser = useSelector((state) => state.session.user)
+    // const sessionUser = useSelector((state) => state.session.user)
     const projectId = project?.id
     const updates = useSelector((state) => state.updates);
 

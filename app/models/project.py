@@ -46,7 +46,7 @@ class Project(db.Model):
             'category_id': self.category_id,
             'username': self.user.username,
             'rewards': newList,
-            'completion': totalAmount
+            'completion': totalAmount,
             'user_image': self.user.image,
             'rewards': newList
         }
