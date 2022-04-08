@@ -84,6 +84,7 @@ def upgrade():
     sa.Column('update', sa.Text, nullable=False),
     sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('project_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

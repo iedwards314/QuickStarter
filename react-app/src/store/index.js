@@ -5,6 +5,7 @@ import projectReducer from './project';
 import rewardReducer from './rewards';
 import contributionReducer from './contributions';
 import categoryReducer from './category';
+import updateReducer from './updates';
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   project: projectReducer,
   rewards: rewardReducer,
   contributions: contributionReducer,
-  category: categoryReducer
+  category: categoryReducer,
+  updates: updateReducer
 });
 
 
