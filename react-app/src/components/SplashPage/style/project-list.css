@@ -37,14 +37,15 @@
 
 .project-description {
     align-self: center;
-    background-color: #2b2b2b;
+    background-color: #444444;
     border: 2px solid #444444;
     box-sizing: border-box;
     color: white;
-    height: 150px;
+    height: 82px;
     margin: 10px 0px;
     width: 90%;
-    overflow-y: auto;
+    overflow-x:auto;
+    text-overflow: ellipsis;
 }
 
 .project-description::-webkit-scrollbar-track {
