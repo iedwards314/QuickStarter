@@ -8,6 +8,12 @@
     flex-direction: column;
     background: #444444;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 30px;
+}
+
+.project-div:hover {
+    position: relative;
+    top: 5px;
 }
 
 .project-title {
@@ -32,7 +38,7 @@
 
 .project-image-container {
     width: 100%;
-    max-height: 35%;
+    max-height: 45%;
 }
 
 .project-description {

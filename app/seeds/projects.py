@@ -40,7 +40,7 @@ def seed_projects():
     ian = Project(
         title="Ian need help.", description='Help Ian get a computer.', goal='60000', end_date='2022-05-25', image='https://drive.google.com/uc?id=1hhLpcYJcZgxswAnm7IrfKc0oj7hZw6Cu', user_id='6', category_id='6')
     thepill = Project(
-        title="The Pill", description='The Pill helps Ian.', goal='150000', end_date='2022-10-01', image='https://drive.google.com/uc?id=1-xGRdrbSNgzYwuxlM9w3IXz9sfU_-TG0', user_id='1', category_id='6')
+        title="The Pill", description='The Pill helps Rodrigo Rivera.', goal='150000', end_date='2022-10-01', image='https://drive.google.com/uc?id=1-xGRdrbSNgzYwuxlM9w3IXz9sfU_-TG0', user_id='1', category_id='6')
 
 
     db.session.add(subwaysurfer)
