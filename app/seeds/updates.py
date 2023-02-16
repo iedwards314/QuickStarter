@@ -41,5 +41,5 @@ def seed_updates():
 
 
 def undo_updates():
-    db.session.execute('TRUNCATE projects RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE updates RESTART IDENTITY CASCADE;')
     db.session.commit()
