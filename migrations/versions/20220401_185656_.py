@@ -97,7 +97,7 @@ def upgrade():
         op.execute(f"ALTER TABLE rewards SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE projects SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE payment SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE payments SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
