@@ -30,4 +30,7 @@ def post_contribution():
 @contribution_routes.route('/<int:id>')
 def get_contribution(id):
     contribution = Contribution.query.get(id)
+    if not contribution:
+        return jsonify(error="Contribution not found"), 404
     return contribution.to_dict()
+
