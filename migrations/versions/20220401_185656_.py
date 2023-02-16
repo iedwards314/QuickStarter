@@ -8,9 +8,9 @@ Create Date: 2022-04-01 18:56:56.184163
 from alembic import op
 import sqlalchemy as sa
 
-# import os
-# environment = os.getenv("FLASK_ENV")
-# SCHEMA = os.environ.get("SCHEMA")
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
 revision = '2d696851ccf6'
@@ -91,14 +91,14 @@ def upgrade():
     sa.ForeignKeyConstraint(['project_id'], ['projects.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    # if environment == "production":
-    #     op.execute(f"ALTER TABLE updates SET SCHEMA {SCHEMA};")
-    #     op.execute(f"ALTER TABLE contributions SET SCHEMA {SCHEMA};")
-    #     op.execute(f"ALTER TABLE rewards SET SCHEMA {SCHEMA};")
-    #     op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-    #     op.execute(f"ALTER TABLE projects SET SCHEMA {SCHEMA};")
-    #     op.execute(f"ALTER TABLE payments SET SCHEMA {SCHEMA};")
-    #     op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
+    if environment == "production":
+        op.execute(f"ALTER TABLE updates SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE contributions SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE rewards SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE projects SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE payments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
