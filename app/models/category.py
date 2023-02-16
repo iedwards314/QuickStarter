@@ -1,16 +1,19 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 from sqlalchemy.types import DateTime
 from datetime import datetime
 
 class Category(db.Model):
     __tablename__ = 'categories'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+        
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(50), nullable=False)
     image = db.Column(db.String(255))
     description = db.Column(db.Text, nullable=False)
     created_at = db.Column(DateTime, default=datetime.utcnow())
-
 
     project = db.relationship("Project", back_populates="category")
 
